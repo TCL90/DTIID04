@@ -1396,6 +1396,44 @@
 		<property name="tag" value="Prueba" />
 	</bean>
 	
+	<bean id="audit1" class="domain.Audit">
+		<property name="finalMode" value="true" />
+		<property name="text" value="Audit 1 about position 1" />
+		<property name="score" value="0" />
+		<property name="moment" value="10/10/2018 00:00:00" />
+		<property name="auditor" ref="auditor1"/>
+		<property name="position" ref="position1"/>
+	</bean>
+		
+	<bean id="audit2" class="domain.Audit">
+		<property name="finalMode" value="false" />
+		<property name="text" value="Audit 2 about position 2" />
+		<property name="score" value="0" />
+		<property name="moment" value="11/10/2018 00:00:00" />
+		<property name="auditor" ref="auditor1"/>
+		<property name="position" ref="position2"/>
+	</bean>
+		
+	<bean id="audit3" class="domain.Audit">
+		<property name="finalMode" value="true" />
+		<property name="text" value="Audit 3 about position 3" />
+		<property name="score" value="0" />
+		<property name="moment" value="11/10/2018 00:00:00" />
+		<property name="auditor" ref="auditor2"/>
+		<property name="position" ref="position3"/>
+	</bean>
+		
+	<bean id="audit4" class="domain.Audit">
+		<property name="finalMode" value="false" />
+		<property name="text" value="Audit 4 about position 4" />
+		<property name="score" value="0" />
+		<property name="moment" value="11/10/2018 00:00:00" />
+		<property name="auditor" ref="auditor2"/>
+		<property name="position" ref="position4"/>
+	</bean>
+		
+	
+	
 	<!-- B REQUIREMENTS, PROVIDERS AND ITEMS -->
 	
 	<bean id="userAccount9" class="security.UserAccount">

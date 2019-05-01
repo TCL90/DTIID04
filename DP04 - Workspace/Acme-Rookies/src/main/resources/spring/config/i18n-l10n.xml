@@ -43,6 +43,7 @@
 		<value>/views/ban/messages</value>
 		<value>/views/message/messages</value>
 		<value>/views/box/messages</value>
+		<value>/views/auditor/messages</value>
 
 		
 	</util:list>

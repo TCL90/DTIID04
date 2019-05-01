@@ -25,6 +25,7 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="administrator/administrator/create.do"><spring:message code="master.page.administrator.create" /></a></li>
+					<li><a href="auditor/administrator/create.do"><spring:message code="master.page.auditor.create" /></a></li>
 					<li><a href="administrator/administrator/edit.do"><spring:message code="master.page.administrator.edit" /></a></li>
 					<li><a href="dashboard/administrator/dashboard.do"><spring:message code="master.page.administrator.dashboard" /></a></li>
 					<li><a href="customisation/administrator/edit.do"><spring:message code="master.page.administrator.customisation" /></a></li>
@@ -33,6 +34,17 @@
 				</ul>
 			</li>
 		</security:authorize>
+		
+				<security:authorize access="hasRole('AUDITOR')">
+			<li><a class="fNiv"><spring:message	code="master.page.auditor" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="auditor/auditor/edit.do"><spring:message code="master.page.auditor.edit" /></a></li>
+			</ul>
+			</li>
+		</security:authorize>
+		
+		
 		
 		<security:authorize access="hasRole('COMPANY')">
 			<li><a class="fNiv"><spring:message	code="master.page.company" /></a>

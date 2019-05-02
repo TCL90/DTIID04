@@ -25,6 +25,7 @@ public class Customisation extends DomainEntity {
 	private List<String>	spamWords;
 	private Integer			finderDuration;
 	private Integer			resultsNumber;
+	private boolean			notified;
 
 
 	@NotBlank
@@ -94,6 +95,14 @@ public class Customisation extends DomainEntity {
 
 	public void setResultsNumber(final Integer resultsNumber) {
 		this.resultsNumber = resultsNumber;
+	}
+
+	public boolean isNotified() {
+		return this.notified;
+	}
+
+	public void setNotified(final boolean notified) {
+		this.notified = notified;
 	}
 
 }

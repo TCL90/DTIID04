@@ -35,6 +35,7 @@
 		</property>
 		<property name="finderDuration" value="1" />
 		<property name="resultsNumber" value="10" />
+		<property name="notified" value="false" />
 	</bean>
 <!-- User accounts -->
 
@@ -102,7 +103,7 @@
 		</property>
 		<property name="status" value="true" />
 	</bean>
-<bean id="userAccount6" class="security.UserAccount">
+	<bean id="userAccount6" class="security.UserAccount">
 		<property name="username" value="admin2" />
 		<property name="password" value="c84258e9c39059a89ab77d846ddab909" />
 		<property name="authorities">
@@ -114,6 +115,34 @@
 		</property>
 		<property name="status" value="true" />
 	</bean>
+	
+	<bean id="userAccount7" class="security.UserAccount">
+		<property name="username" value="auditor1" />
+		<property name="password" value="175d2e7a63f386554a4dd66e865c3e14" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AUDITOR" />
+				</bean>
+			</list>
+		</property>
+		<property name="status" value="true" />
+	</bean>
+	
+	<bean id="userAccount8" class="security.UserAccount">
+		<property name="username" value="auditor2" />
+		<property name="password" value="04dd94ba3212ac52ad3a1f4cbfb52d4f" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AUDITOR" />
+				</bean>
+			</list>
+		</property>
+		<property name="status" value="true" />
+	</bean>
+	
+	
 	<!-- Actors -->
 	<bean id="admin" class="domain.Administrator">
 		<property name="name" value="Administrator" />
@@ -145,7 +174,7 @@
 		<property name="cvv" value="583"/>
 	</bean>
 
-<bean id="admin2" class="domain.Administrator">
+	<bean id="admin2" class="domain.Administrator">
 		<property name="name" value="admin2"/>
 		<property name="computed" value="false" />
 		<property name="surname" value="admin2"/>
@@ -239,30 +268,28 @@
 		<property name="cvv" value="206"/>
 	</bean>
 
-	<bean id="company1" class="domain.Company">
-		<property name="name" value="Company 1" />
+	<bean id="auditor1" class="domain.Auditor">
+		<property name="name" value="Auditor 1" />
 		<property name="computed" value="false" />
 		<property name="surname" value="One" />
 		<property name="photo" value="http://www.foto.com" />
-		<property name="email" value="company1@hackerrank.com" />
-		<property name="phoneNumber" value="+34 622222222" />
+		<property name="email" value="auditor1@rookies.com" />
+		<property name="phoneNumber" value="+34 621232222" />
 		<property name="address" value="Address 4" />
 		<property name="vat" value="21" />
 		<property name="flagSpam" value="false" />
 		<property name="isBanned" value="false" />
-		<property name="userAccount" ref="userAccount4" />
-		<property name="companyName" value="COM" />
+		<property name="userAccount" ref="userAccount7" />
 		<property name="socialProfiles">
 			<list>
 			</list>
 		</property>
 		<property name="boxes">
 			<list>
-			<ref bean="in2" />
-
+			<ref bean="in7" />
 			</list>
 		</property>
-		<property name="holderName" value="Company One"/>
+		<property name="holderName" value="Auditor One"/>
 		<property name="makeName" value="VISA"/>
 		<property name="number" value="4588502912013759"/>
 		<property name="expirationYear" value="2022"/>
@@ -270,7 +297,64 @@
 		<property name="cvv" value="247"/>
 	</bean>
 
-	<bean id="company2" class="domain.Company">
+	<bean id="auditor2" class="domain.Auditor">
+		<property name="name" value="Auditor 2" />
+		<property name="computed" value="false" />
+		<property name="surname" value="Two" />
+		<property name="photo" value="http://www.foto.com" />
+		<property name="email" value="auditor2@rookies.com" />
+		<property name="phoneNumber" value="+34 622232222" />
+		<property name="address" value="Address 2" />
+		<property name="vat" value="21" />
+		<property name="flagSpam" value="false" />
+		<property name="isBanned" value="false" />
+		<property name="userAccount" ref="userAccount8" />
+		<property name="socialProfiles">
+			<list>
+			</list>
+		</property>
+		<property name="boxes">
+			<list>
+			<ref bean="in8" />
+			</list>
+		</property>
+		<property name="holderName" value="Auditor One"/>
+		<property name="makeName" value="VISA"/>
+		<property name="number" value="4588502912013759"/>
+		<property name="expirationYear" value="2022"/>
+		<property name="expirationMonth" value="2"/>
+		<property name="cvv" value="247"/>
+	</bean>
+	 <bean id="company1" class="domain.Company">
+		  <property name="name" value="Company 1" /> 
+		  <property name="computed" value="false" /> 
+		  <property name="surname" value="One" /> 
+		  <property name="photo" value="http://www.foto.com" /> 
+		  <property name="email" value="company1@hackerrank.com" /> 
+		  <property name="phoneNumber" value="+34 622222222" /> 
+		  <property name="address" value="Address 4" /> 
+		  <property name="vat" value="21" /> 
+		  <property name="flagSpam" value="false" /> 
+		  <property name="isBanned" value="false" /> 
+		  <property name="userAccount" ref="userAccount4" /> 
+		  <property name="companyName" value="COM" /> 
+		 <property name="socialProfiles">
+		  	<list /> 
+		  	</property>
+		 	<property name="boxes">
+		 	<list>
+		  		<ref bean="in2" /> 
+		  	</list>
+		  </property>
+		  <property name="holderName" value="Company One" /> 
+		  <property name="makeName" value="VISA" /> 
+		  <property name="number" value="4588502912013759" /> 
+		  <property name="expirationYear" value="2022" /> 
+		  <property name="expirationMonth" value="2" /> 
+		  <property name="cvv" value="247" /> 
+	  </bean>
+	
+		<bean id="company2" class="domain.Company">
 		<property name="name" value="Company" />
 		<property name="computed" value="false" />
 		<property name="surname" value="Two" />
@@ -300,52 +384,7 @@
 		<property name="expirationMonth" value="7"/>
 		<property name="cvv" value="339"/>
 	</bean>
-	<!-- CREDITCARDS -->
-	<bean id="creditcard1" class="domain.CreditCard">
-		<property name="holderName" value="Hacker One" />
-		<property name="makeName" value="VISA" />
-		<property name="number" value="4128837079312553" />
-		<property name="expirationYear" value="2022" />
-		<property name="expirationMonth" value="4" />
-		<property name="cvv" value="188" />
-		<property name="actor" ref="hacker1" />
-	</bean>
-	<bean id="creditcard2" class="domain.CreditCard">
-		<property name="holderName" value="Hacker Two" />
-		<property name="makeName" value="VISA" />
-		<property name="number" value="4338709129661089" />
-		<property name="expirationYear" value="2023" />
-		<property name="expirationMonth" value="5" />
-		<property name="cvv" value="206" />
-		<property name="actor" ref="hacker2" />
-	</bean>
-	<bean id="creditcard3" class="domain.CreditCard">
-		<property name="holderName" value="Company One" />
-		<property name="makeName" value="VISA" />
-		<property name="number" value="4588502912013759" />
-		<property name="expirationYear" value="2022" />
-		<property name="expirationMonth" value="2" />
-		<property name="cvv" value="247" />
-		<property name="actor" ref="company1" />
-	</bean>
-	<bean id="creditcard4" class="domain.CreditCard">
-		<property name="holderName" value="Company Two" />
-		<property name="makeName" value="VISA" />
-		<property name="number" value="4489952508772500" />
-		<property name="expirationYear" value="2024" />
-		<property name="expirationMonth" value="7" />
-		<property name="cvv" value="339" />
-		<property name="actor" ref="company2" />
-	</bean>
-	<bean id="creditcard5" class="domain.CreditCard">
-		<property name="holderName" value="Admin Admin" />
-		<property name="makeName" value="VISA" />
-		<property name="number" value="4083602396731593" />
-		<property name="expirationYear" value="2025" />
-		<property name="expirationMonth" value="5" />
-		<property name="cvv" value="583" />
-		<property name="actor" ref="admin" />
-	</bean>
+	
 	<!-- Problems -->
 	<bean id="problem1" class="domain.Problem">
 		<property name="title" value="Problem 1" />
@@ -1251,18 +1290,12 @@
 
 	
 	<bean id="in2" class="domain.Box">
-
 		<property name="name" value="Pool" />
-
-
 		<property name="messages">
-
 			<list>
 				<ref bean="message1" />
 			</list>
 		</property>
-
-
 	</bean>
 
 	
@@ -1333,11 +1366,24 @@
 
 			</list>
 		</property>
-
-
-
-
 	</bean>
+	
+	<bean id="in7" class="domain.Box">
+		<property name="name" value="Pool" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="in8" class="domain.Box">
+		<property name="name" value="Pool" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
 	
 	<bean id="message1" class="domain.Message">
 		<property name="body" value="Prueba" />
@@ -1349,4 +1395,212 @@
 		<property name="subject" value="Prueba" />
 		<property name="tag" value="Prueba" />
 	</bean>
+	
+	<bean id="audit1" class="domain.Audit">
+		<property name="finalMode" value="true" />
+		<property name="text" value="Audit 1 about position 1" />
+		<property name="score" value="0" />
+		<property name="moment" value="10/10/2018 00:00:00" />
+		<property name="auditor" ref="auditor1"/>
+		<property name="position" ref="position1"/>
+	</bean>
+		
+	<bean id="audit2" class="domain.Audit">
+		<property name="finalMode" value="false" />
+		<property name="text" value="Audit 2 about position 2" />
+		<property name="score" value="0" />
+		<property name="moment" value="11/10/2018 00:00:00" />
+		<property name="auditor" ref="auditor1"/>
+		<property name="position" ref="position2"/>
+	</bean>
+		
+	<bean id="audit3" class="domain.Audit">
+		<property name="finalMode" value="true" />
+		<property name="text" value="Audit 3 about position 3" />
+		<property name="score" value="0" />
+		<property name="moment" value="11/10/2018 00:00:00" />
+		<property name="auditor" ref="auditor2"/>
+		<property name="position" ref="position3"/>
+	</bean>
+		
+	<bean id="audit4" class="domain.Audit">
+		<property name="finalMode" value="false" />
+		<property name="text" value="Audit 4 about position 4" />
+		<property name="score" value="0" />
+		<property name="moment" value="11/10/2018 00:00:00" />
+		<property name="auditor" ref="auditor2"/>
+		<property name="position" ref="position4"/>
+	</bean>
+		
+	
+	
+	<!-- B REQUIREMENTS, PROVIDERS AND ITEMS -->
+	
+	<bean id="userAccount9" class="security.UserAccount">
+		<property name="username" value="provider1" />
+		<property name="password" value="cdb82d56473901641525fbbd1d5dab56" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PROVIDER" />
+				</bean>
+			</list>
+		</property>
+		<property name="status" value="true" />
+	</bean>
+			<bean id="in9" class="domain.Box">
+		<property name="name" value="Pool" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+		 <bean id="provider1" class="domain.Provider">
+		  <property name="name" value="Provider 1" /> 
+		  <property name="computed" value="false" /> 
+		  <property name="surname" value="One" /> 
+		  <property name="photo" value="http://www.foto.com" /> 
+		  <property name="email" value="provider1@hackerrank.com" /> 
+		  <property name="phoneNumber" value="+34 654654654" /> 
+		  <property name="address" value="Address of the provider" /> 
+		  <property name="vat" value="21" /> 
+		  <property name="flagSpam" value="false" /> 
+		  <property name="isBanned" value="false" /> 
+		  <property name="userAccount" ref="userAccount9" /> 
+		 <property name="socialProfiles">
+		  	<list /> 
+		  	</property>
+		 	<property name="boxes">
+		 	<list>
+		  		<ref bean="in9" /> 
+		  	</list>
+		  </property>
+		  <property name="holderName" value="Provider one" /> 
+		  <property name="makeName" value="VISA" /> 
+		  <property name="number" value="1111222233334444" /> 
+		  <property name="expirationYear" value="2022" /> 
+		  <property name="expirationMonth" value="2" /> 
+		  <property name="cvv" value="247" /> 
+	  </bean>
+	  
+	  <bean id="userAccount10" class="security.UserAccount">
+		<property name="username" value="provider2" />
+		<property name="password" value="ebfc815ee2cc6a16225105bb7b3e1e53" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PROVIDER" />
+				</bean>
+			</list>
+		</property>
+		<property name="status" value="true" />
+	</bean>
+			<bean id="in10" class="domain.Box">
+		<property name="name" value="Pool" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+	  
+	  		 <bean id="provider2" class="domain.Provider">
+		  <property name="name" value="Provider 2" /> 
+		  <property name="computed" value="false" /> 
+		  <property name="surname" value="One" /> 
+		  <property name="photo" value="http://www.foto.com" /> 
+		  <property name="email" value="provider2@hackerrank.com" /> 
+		  <property name="phoneNumber" value="+34 654654654" /> 
+		  <property name="address" value="Address of the provider" /> 
+		  <property name="vat" value="21" /> 
+		  <property name="flagSpam" value="false" /> 
+		  <property name="isBanned" value="false" /> 
+		  <property name="userAccount" ref="userAccount10" /> 
+		 <property name="socialProfiles">
+		  	<list /> 
+		  	</property>
+		 	<property name="boxes">
+		 	<list>
+		  		<ref bean="in10" /> 
+		  	</list>
+		  </property>
+		  <property name="holderName" value="Provider two" /> 
+		  <property name="makeName" value="VISA" /> 
+		  <property name="number" value="1111222233334444" /> 
+		  <property name="expirationYear" value="2022" /> 
+		  <property name="expirationMonth" value="2" /> 
+		  <property name="cvv" value="247" /> 
+	  </bean>
+
+	  
+  	  <bean id="item1" class="domain.Item">
+	  	<property name="name" value="Item name 1"/>
+	  	<property name="description" value="Description" />
+	  	<property name="link" value="http://www.link.com" />
+	  	<property name="photos">
+	  		<list></list>
+	  	</property>
+	  	<property name="provider" ref="provider1"/>
+	  </bean>
+	  
+	  	  <bean id="item2" class="domain.Item">
+	  	<property name="name" value="Item name 2"/>
+	  	<property name="description" value="Description" />
+	  	<property name="link" value="http://www.link.com" />
+	  	<property name="photos">
+	  		<list></list>
+	  	</property>
+	  	<property name="provider" ref="provider1"/>
+	  </bean>
+	  
+	  	  <bean id="item3" class="domain.Item">
+	  	<property name="name" value="Item name 3"/>
+	  	<property name="description" value="Description" />
+	  	<property name="link" value="http://www.link.com" />
+	  	<property name="photos">
+	  		<list></list>
+	  	</property>
+	  	<property name="provider" ref="provider1"/>
+	  </bean>
+	  
+	 <bean id="item4" class="domain.Item">
+	  	<property name="name" value="Item name 4"/>
+	  	<property name="description" value="Description" />
+	  	<property name="link" value="http://www.link.com" />
+	  	<property name="photos">
+	  		<list></list>
+	  	</property>
+	  	<property name="provider" ref="provider1"/>
+	  </bean>	
+
+  	  <bean id="item5" class="domain.Item">
+	  	<property name="name" value="Item name 5"/>
+	  	<property name="description" value="Description" />
+	  	<property name="link" value="http://www.link.com" />
+	  	<property name="photos">
+	  		<list></list>
+	  	</property>
+	  	<property name="provider" ref="provider2"/>
+	  </bean>
+	  
+  	  <bean id="item6" class="domain.Item">
+	  	<property name="name" value="Item name 6"/>
+	  	<property name="description" value="Description" />
+	  	<property name="link" value="http://www.link.com" />
+	  	<property name="photos">
+	  		<list></list>
+	  	</property>
+	  	<property name="provider" ref="provider2"/>
+	  </bean>
+	  
+	  
+  	  <bean id="item7" class="domain.Item">
+	  	<property name="name" value="Item name 7"/>
+	  	<property name="description" value="Description" />
+	  	<property name="link" value="http://www.link.com" />
+	  	<property name="photos">
+	  		<list></list>
+	  	</property>
+	  	<property name="provider" ref="provider2"/>
+	  </bean>
+	  
 </beans>

@@ -97,6 +97,15 @@ public class ActorService {
 		return res;
 	}
 
+	public boolean checkProvider() {
+		boolean res;
+		final Authority a = new Authority();
+		final UserAccount user = LoginService.getPrincipal();
+		a.setAuthority(Authority.PROVIDER);
+		res = user.getAuthorities().contains(a);
+		return res;
+	}
+
 	public Collection<Actor> findAll() {
 		return this.actorRepository.findAll();
 	}

@@ -35,7 +35,7 @@
 			</li>
 		</security:authorize>
 		
-				<security:authorize access="hasRole('AUDITOR')">
+		<security:authorize access="hasRole('AUDITOR')">
 			<li><a class="fNiv"><spring:message	code="master.page.auditor" /></a>
 				<ul>
 					<li class="arrow"></li>
@@ -72,6 +72,15 @@
 			</li>
 		</security:authorize>
 
+		<security:authorize access="hasRole('PROVIDER')">
+			<li><a class="fNiv"><spring:message	code="master.page.provider" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="provider/provider/edit.do"><spring:message code="master.page.edit.provider" /></a></li>
+				</ul>
+			</li>
+		</security:authorize>	
+	
 		
 		<security:authorize access="isAuthenticated()">
 		<li>
@@ -115,6 +124,9 @@
 			</li>
 			<li>
 			<a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a>
+			</li>
+			<li>
+			<a class="fNiv" href="provider/register.do"><spring:message code="master.page.register.provider" /></a>
 			</li>
 			</security:authorize>
 		<security:authorize access="permitAll">

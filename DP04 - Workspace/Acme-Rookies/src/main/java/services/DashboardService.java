@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -13,8 +14,6 @@ import repositories.DashboardRepository;
 import security.Authority;
 import security.LoginService;
 import security.UserAccount;
-import domain.Company;
-import domain.Hacker;
 import domain.Position;
 
 @Service
@@ -72,12 +71,12 @@ public class DashboardService {
 		return this.repository.stddevApplications();
 	}
 
-	public Collection<Company> companiesWithMorePositions() {
+	public Collection<String> companiesWithMorePositions() {
 		Assert.isTrue(this.checkAdmin());
 		return this.repository.companiesWithMorePositions();
 	}
 
-	public Collection<Hacker> hackersWithMorePositions() {
+	public Collection<String> hackersWithMorePositions() {
 		Assert.isTrue(this.checkAdmin());
 		return this.repository.hackersWithMoreApplications();
 	}
@@ -102,12 +101,12 @@ public class DashboardService {
 		return this.repository.stddevSalary();
 	}
 
-	public Collection<Position> highestSalaryPosition() {
+	public Collection<String> highestSalaryPosition() {
 		Assert.isTrue(this.checkAdmin());
 		return this.repository.highestSalaryPosition();
 	}
 
-	public Collection<Position> lowestSalaryPosition() {
+	public Collection<String> lowestSalaryPosition() {
 		Assert.isTrue(this.checkAdmin());
 		return this.repository.lowestSalaryPosition();
 	}
@@ -155,6 +154,93 @@ public class DashboardService {
 	public Double ratioFinders() {
 		Assert.isTrue(this.checkAdmin());
 		return this.repository.ratioFinders();
+	}
+
+	public Double avgAuditScore() {
+		Assert.isTrue(this.checkAdmin());
+		return this.repository.avgAuditScore();
+	}
+
+	public Double minAuditScore() {
+		Assert.isTrue(this.checkAdmin());
+		return this.repository.minAuditScore();
+	}
+
+	public Double maxAuditScore() {
+		Assert.isTrue(this.checkAdmin());
+		return this.repository.maxAuditScore();
+	}
+
+	public Double stddevAuditScore() {
+		Assert.isTrue(this.checkAdmin());
+		return this.repository.stddevAuditScore();
+	}
+
+	public Double avgCompanyScore() {
+		Assert.isTrue(this.checkAdmin());
+		return this.repository.avgCompanyScore();
+	}
+
+	public Double minCompanyScore() {
+		Assert.isTrue(this.checkAdmin());
+		return this.repository.minCompanyScore();
+	}
+
+	public Double maxCompanyScore() {
+		Assert.isTrue(this.checkAdmin());
+		return this.repository.maxCompanyScore();
+	}
+
+	public Double stddevCompanyScore() {
+		Assert.isTrue(this.checkAdmin());
+		return this.repository.stddevCompanyScore();
+	}
+
+	public List<String> highestScoreCompanies() {
+		Assert.isTrue(this.checkAdmin());
+		List<String> res = this.repository.highestScoreCompanies();
+		if (res.size() > 3)
+			res = res.subList(0, 3);
+		return res;
+	}
+
+	public Double avgSalaryHighestScore() {
+		Assert.isTrue(this.checkAdmin());
+		List<Position> pos = this.repository.positionsHighestScore();
+		if (pos.size() > 3)
+			pos = pos.subList(0, 3);
+		Double res = 0.0;
+		for (final Position p : pos)
+			res += p.getSalary();
+		return res / pos.size();
+	}
+
+	public Double avgItems() {
+		Assert.isTrue(this.checkAdmin());
+		return this.repository.avgItems();
+	}
+
+	public Integer minItems() {
+		Assert.isTrue(this.checkAdmin());
+		return this.repository.minItems();
+	}
+
+	public Integer maxItems() {
+		Assert.isTrue(this.checkAdmin());
+		return this.repository.maxItems();
+	}
+
+	public Double stddevItems() {
+		Assert.isTrue(this.checkAdmin());
+		return this.repository.stddevItems();
+	}
+
+	public List<String> top5Providers() {
+		Assert.isTrue(this.checkAdmin());
+		List<String> res = this.repository.top5Providers();
+		if (res.size() > 5)
+			res = res.subList(0, 5);
+		return res;
 	}
 
 }

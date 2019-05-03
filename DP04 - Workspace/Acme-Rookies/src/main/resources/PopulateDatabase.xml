@@ -30,13 +30,15 @@
 				<value>VIAGRA</value>
 				<value>CIALIS</value>
 				<value>HAS SIDO SELECIONADO</value>
-				<value>UN MILL�N</value>
+				<value>UN MILLÓN</value>
 			</list>
 		</property>
 		<property name="finderDuration" value="1" />
 		<property name="resultsNumber" value="10" />
 		<property name="notified" value="false" />
 		<property name="rebranded" value="false" />
+		<property name="vat" value="21"/>
+		<property name="flatRate" value="50"/>
 	</bean>
 <!-- User accounts -->
 
@@ -353,6 +355,7 @@
 		  <property name="expirationYear" value="2022" /> 
 		  <property name="expirationMonth" value="2" /> 
 		  <property name="cvv" value="247" /> 
+		  <property name="score" value="0.0"/>
 	  </bean>
 	
 		<bean id="company2" class="domain.Company">
@@ -384,6 +387,7 @@
 		<property name="expirationYear" value="2024"/>
 		<property name="expirationMonth" value="7"/>
 		<property name="cvv" value="339"/>
+		<property name="score" value="0.0"/>
 	</bean>
 	
 	<!-- Problems -->
@@ -1400,7 +1404,7 @@
 	<bean id="audit1" class="domain.Audit">
 		<property name="finalMode" value="true" />
 		<property name="text" value="Audit 1 about position 1" />
-		<property name="score" value="0" />
+		<property name="score" value="0.0" />
 		<property name="moment" value="10/10/2018 00:00:00" />
 		<property name="auditor" ref="auditor1"/>
 		<property name="position" ref="position1"/>
@@ -1409,7 +1413,7 @@
 	<bean id="audit2" class="domain.Audit">
 		<property name="finalMode" value="false" />
 		<property name="text" value="Audit 2 about position 2" />
-		<property name="score" value="0" />
+		<property name="score" value="0.0" />
 		<property name="moment" value="11/10/2018 00:00:00" />
 		<property name="auditor" ref="auditor1"/>
 		<property name="position" ref="position2"/>
@@ -1418,7 +1422,7 @@
 	<bean id="audit3" class="domain.Audit">
 		<property name="finalMode" value="true" />
 		<property name="text" value="Audit 3 about position 3" />
-		<property name="score" value="0" />
+		<property name="score" value="0.0" />
 		<property name="moment" value="11/10/2018 00:00:00" />
 		<property name="auditor" ref="auditor2"/>
 		<property name="position" ref="position3"/>
@@ -1427,7 +1431,7 @@
 	<bean id="audit4" class="domain.Audit">
 		<property name="finalMode" value="false" />
 		<property name="text" value="Audit 4 about position 4" />
-		<property name="score" value="0" />
+		<property name="score" value="0.0" />
 		<property name="moment" value="11/10/2018 00:00:00" />
 		<property name="auditor" ref="auditor2"/>
 		<property name="position" ref="position4"/>

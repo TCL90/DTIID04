@@ -12,6 +12,8 @@
 		<security:authorize access="hasRole('ADMIN')">
 		<form:hidden path="id"/>
 		<form:hidden path="version"/>
+		<form:hidden path="notified"/>
+		<form:hidden path="rebranded"/>
 		<form:label path="systemName">
 			<spring:message code="customisation.systemName" />:
 		</form:label>
@@ -64,7 +66,20 @@
 		</form:label>
 		<form:input path="phoneNumberCode" />
 		<form:errors cssClass="error" path="phoneNumberCode" />
-		<br />			
+		<br />
+		<form:label path="vat">
+			<spring:message code="customisation.vat" />:
+		</form:label>
+		<form:input path="vat" />
+		<form:errors cssClass="error" path="vat" />
+		<br />
+		<form:label path="flatRate">
+			<spring:message code="customisation.flatRate" />:
+		</form:label>
+		<form:input path="flatRate" />
+		<form:errors cssClass="error" path="flatRate" />
+		<br />
+					
 		
 		<input type="submit" name="save" value = "<spring:message code ="customisation.save" /> " />
 		

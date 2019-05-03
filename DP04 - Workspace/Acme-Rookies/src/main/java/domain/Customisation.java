@@ -7,6 +7,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
@@ -27,7 +28,28 @@ public class Customisation extends DomainEntity {
 	private Integer			resultsNumber;
 	private boolean			notified;
 	private boolean			rebranded;
+	private Integer			vat;
+	private Integer			flatRate;
 
+
+	@Range(min = 0, max = 100)
+	@NotNull
+	public Integer getVat() {
+		return this.vat;
+	}
+
+	public void setVat(final Integer vat) {
+		this.vat = vat;
+	}
+	@Min(0)
+	@NotNull
+	public Integer getFlatRate() {
+		return this.flatRate;
+	}
+
+	public void setFlatRate(final Integer flatRate) {
+		this.flatRate = flatRate;
+	}
 
 	@NotBlank
 	public String getSystemName() {

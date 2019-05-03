@@ -91,4 +91,51 @@
 	<jstl:out value="${ratioFinders}"/>
 	<br/>
 	
+	<spring:message code="dashboard.minAuditScore"/>
+	<jstl:out value="${minAuditScore}"/>
+	<br/>
+	<spring:message code="dashboard.maxAuditScore"/>
+	<jstl:out value="${maxAuditScore}"/>
+	<br/>
+	<spring:message code="dashboard.avgAuditScore"/>
+	<jstl:out value="${avgAuditScore}"/>
+	<br/>
+	<spring:message code="dashboard.stddevAuditScore"/>
+	<jstl:out value="${stddevAuditScore}"/>
+	<br/>
+	<spring:message code="dashboard.minCompanyScore"/>
+	<jstl:out value="${minCompanyScore}"/>
+	<br/>
+	<spring:message code="dashboard.maxCompanyScore"/>
+	<jstl:out value="${maxCompanyScore}"/>
+	<br/>
+	<spring:message code="dashboard.avgCompanyScore"/>
+	<jstl:out value="${avgCompanyScore}"/>
+	<br/>
+	<spring:message code="dashboard.stddevCompanyScore"/>
+	<jstl:out value="${stddevCompanyScore}"/>
+	<br/>
+	<spring:message code="dashboard.highestScoreCompanies"/>
+	<jstl:out value="${highestScoreCompanies}"/>
+	<br/>
+	<spring:message code="dashboard.avgSalaryHighestScore"/>
+	<jstl:out value="${avgSalaryHighestScore}"/>
+	<br/>
+	<spring:message code="dashboard.minItems"/>
+	<jstl:out value="${minItems}"/>
+	<br/>
+	<spring:message code="dashboard.maxItems"/>
+	<jstl:out value="${maxItems}"/>
+	<br/>
+	<spring:message code="dashboard.avgItems"/>
+	<jstl:out value="${avgItems}"/>
+	<br/>
+	<spring:message code="dashboard.stddevItems"/>
+	<jstl:out value="${stddevItems}"/>
+	<br/>
+	<spring:message code="dashboard.top5Providers"/>
+	<jstl:out value="${top5Providers}"/>
+	<br/>
+	
+	
 </security:authorize>

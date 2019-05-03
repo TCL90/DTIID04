@@ -22,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Audit extends DomainEntity {
 
 	private String	text;
-	private Integer	score;
+	private Double	score;
 	private Date	moment;
 	private boolean	finalMode;
 
@@ -37,11 +37,11 @@ public class Audit extends DomainEntity {
 	}
 	@NotNull
 	@Range(min = 0, max = 10)
-	public Integer getScore() {
+	public Double getScore() {
 		return this.score;
 	}
 
-	public void setScore(final Integer score) {
+	public void setScore(final Double score) {
 		this.score = score;
 	}
 

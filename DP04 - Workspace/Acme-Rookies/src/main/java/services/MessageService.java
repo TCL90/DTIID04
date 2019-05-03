@@ -238,9 +238,16 @@ public class MessageService {
 			}
 		return res;
 	}
-	
-	public void flush(){
+
+	public void flush() {
 		this.messageRepository.flush();
+	}
+
+	public String getTemplateRebrandingMessage() {
+		return "Le informamos de que Acme Hacker Rank, Inc. ahora se denomina legalmente como Acme Rookies. Sus datos permanecerán seguros en la nueva web. Se han añadido funcionalidades"
+			+ "como la creación de auditorías o el registro de auditores y de proveedores. Además, las compañías tienen ahora una puntuación."
+			+ " \n \n We inform you that AcmeHacker Rank, Inc. now is named Acme Rokies, Inc. The information about your account is secure in the new web. New functionalities were added"
+			+ "like the creation of audits an the register of auditors and providers. Also, companies now have a score. ";
 	}
 
 }

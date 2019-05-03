@@ -26,6 +26,7 @@ public class Customisation extends DomainEntity {
 	private Integer			finderDuration;
 	private Integer			resultsNumber;
 	private boolean			notified;
+	private boolean			rebranded;
 
 
 	@NotBlank
@@ -103,6 +104,14 @@ public class Customisation extends DomainEntity {
 
 	public void setNotified(final boolean notified) {
 		this.notified = notified;
+	}
+
+	public boolean isRebranded() {
+		return this.rebranded;
+	}
+
+	public void setRebranded(final boolean rebranded) {
+		this.rebranded = rebranded;
 	}
 
 }

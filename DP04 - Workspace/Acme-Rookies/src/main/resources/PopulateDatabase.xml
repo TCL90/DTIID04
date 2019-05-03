@@ -36,6 +36,7 @@
 		<property name="finderDuration" value="1" />
 		<property name="resultsNumber" value="10" />
 		<property name="notified" value="false" />
+		<property name="rebranded" value="false" />
 	</bean>
 <!-- User accounts -->
 

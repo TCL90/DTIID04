@@ -24,6 +24,7 @@ import services.BoxService;
 import services.MessageService;
 import domain.Actor;
 import domain.Box;
+import domain.Customisation;
 import domain.Message;
 
 @Controller
@@ -207,6 +208,72 @@ public class MessageController extends AbstractController {
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "sendToAll")
 	public ModelAndView broadcast(@Valid final Message message, final BindingResult binding) {
 		ModelAndView result;
+
+		final UserAccount actual = LoginService.getPrincipal();
+		final Actor a = this.ar.getActor(actual);
+
+		if (binding.hasErrors())
+			result = this.createEditModelAndView(message);
+		else
+			try {
+				if (!message.getTag().contains("SYSTEM"))
+					message.setTag(message.getTag() + ", SYSTEM");
+				this.ms.broadcastMessage(message);
+				final List<Box> mbox = (List<Box>) a.getBoxes();
+				final Integer id = mbox.get(0).getId();
+				result = new ModelAndView("redirect:list.do?boxId=" + id);
+
+			} catch (final Throwable oops) {
+				result = this.createEditModelAndView(message, "messages.commit.error");
+			}
+
+		return result;
+
+	}
+
+	@RequestMapping(value = "/rebranding", method = RequestMethod.GET)
+	public ModelAndView rebrand() {
+		ModelAndView result;
+		Message message;
+
+		message = this.ms.create();
+		final String messageText = this.ms.getTemplateRebrandingMessage();
+		message.setBody(messageText);
+		message.setSubject("Rebranding. Acme Hacker Rank is now Acme Rookies");
+		message.setTag("SYSTEM, ");
+
+		result = this.createEditModelAndViewRebrand(message);
+		return result;
+	}
+
+	protected ModelAndView createEditModelAndViewRebrand(final Message m) {
+		ModelAndView result;
+		result = this.createEditModelAndView(m, null);
+
+		return result;
+	}
+
+	protected ModelAndView createEditModelAndViewRebrand(final Message m, final String messageCode) {
+		ModelAndView result;
+		Collection<Actor> recipients;
+
+		recipients = this.as.findAll();
+
+		result = new ModelAndView("messages/edit");
+		result.addObject("mesInformation", m);
+		result.addObject("recipient", recipients);
+		result.addObject("mesError", messageCode);
+		result.addObject("rebrand", true);
+		return result;
+	}
+
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "rebrand")
+	public ModelAndView broadcastRebrand(@Valid final Message message, final BindingResult binding) {
+		ModelAndView result;
+
+		final Customisation cus = this.customisationService.getCustomisation();
+		Assert.isTrue(!cus.isRebranded());
+		cus.setRebranded(true);
 
 		final UserAccount actual = LoginService.getPrincipal();
 		final Actor a = this.ar.getActor(actual);

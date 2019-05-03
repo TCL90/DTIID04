@@ -99,4 +99,5 @@ public class BanAdministratorController extends AbstractController {
 
 		return res;
 	}
+
 }

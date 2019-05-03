@@ -30,9 +30,19 @@
 	<a href="messages/create.do">
 				<spring:message	code="mes.create" />
 	</a>
+		<br/>
+		<br/>
+	
 	<security:authorize access="hasRole('ADMIN')">
 		<br/>
 	<a href="messages/breach.do">
 				<spring:message	code="mes.breach.create" />
 	</a>
+	<br/>
+
+	<jstl:if test="${customisation.rebranded == false}">
+	<a href="messages/rebranding.do">
+				<spring:message	code="mes.rebranding.create" />
+	</a>
+	</jstl:if>
 		</security:authorize>

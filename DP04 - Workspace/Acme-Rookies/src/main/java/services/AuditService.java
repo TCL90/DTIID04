@@ -85,7 +85,7 @@ public class AuditService {
 	}
 
 	public void save(final Audit a) {
-		Assert.isTrue(this.actorService.checkAuditor() && a.getFinalMode() != true);
+		Assert.isTrue(this.actorService.checkAuditor());
 		if (a.getId() != 0)
 			Assert.isTrue(this.findOne(a.getId()).getAuditor() == this.auditorService.findByPrincipal());
 		Assert.isTrue(a.getAuditor() == this.auditorService.findByPrincipal());

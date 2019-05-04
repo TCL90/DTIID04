@@ -210,6 +210,7 @@ public class HackerService {
 		aus.add(com);
 		final UserAccount ua = hackerForm.getUserAccount();
 		ua.setAuthorities(aus);
+		ua.setStatus(true);
 
 		hacker.setAddress(hackerForm.getAddress());
 		hacker.setEmail(hackerForm.getEmail());

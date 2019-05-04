@@ -46,6 +46,17 @@
 			</li>
 		</security:authorize>
 		
+						<security:authorize access="hasRole('PROVIDER')">
+			<li><a class="fNiv"><spring:message	code="master.page.provider" /></a>
+			
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="provider/provider/edit.do"><spring:message code="master.page.edit.provider" /></a></li>
+					<li><a href="item/provider/list.do"><spring:message code="master.page.provider.items" /></a></li>
+			</ul>
+			</li>
+		</security:authorize>
+		
 		
 		
 		<security:authorize access="hasRole('COMPANY')">
@@ -74,15 +85,6 @@
 			</li>
 		</security:authorize>
 
-		<security:authorize access="hasRole('PROVIDER')">
-			<li><a class="fNiv"><spring:message	code="master.page.provider" /></a>
-				<ul>
-					<li class="arrow"></li>
-					<li><a href="provider/provider/edit.do"><spring:message code="master.page.edit.provider" /></a></li>
-				</ul>
-			</li>
-		</security:authorize>	
-	
 		
 		<security:authorize access="isAuthenticated()">
 		<li>
@@ -118,6 +120,7 @@
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="position/list.do"><spring:message code="master.page.position" /></a></li>
 			<li><a class="fNiv" href="company/list.do"><spring:message code="master.page.company" /></a></li>
+			<li><a class="fNiv" href="provider/list.do"><spring:message code="master.page.provider.list" /></a></li>
 			<li>
 			<a class="fNiv" href="company/register.do"><spring:message code="master.page.register.company" /></a>
 			</li>
@@ -125,11 +128,12 @@
 			<a class="fNiv" href="hacker/register.do"><spring:message code="master.page.register.hacker" /></a>
 			</li>
 			<li>
-			<a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a>
-			</li>
-			<li>
 			<a class="fNiv" href="provider/register.do"><spring:message code="master.page.register.provider" /></a>
 			</li>
+			<li>
+			<a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a>
+			</li>
+
 			</security:authorize>
 		<security:authorize access="permitAll">
 			<li><a class="fNiv"><spring:message	code="master.page.actions" /></a>

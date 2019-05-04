@@ -54,6 +54,9 @@
   		<bean class="converters.StringToMiscellaneousDataConverter" />
   		<bean class="converters.ActorToStringConverter" /> 
   		<bean class="converters.StringToActorConverter" />
+  		
+  		<bean class="converters.ProviderToStringConverter"/>
+		<bean class="converters.StringToProviderConverter"/>
 	</util:list>
 	
 </beans>

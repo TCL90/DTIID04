@@ -17,22 +17,60 @@ import org.springframework.web.servlet.ModelAndView;
 
 import security.Authority;
 import security.UserAccount;
+import services.ItemService;
 import services.ProviderService;
+import domain.Item;
 import domain.Provider;
 import forms.ProviderForm;
 
+/**
+ * ESTE CONTROLADOR SE USA PARA PODER LISTAR LOS PROVIDERS Y LOS ITEMS SIENDO
+ * UN USUARIO NO AUTENTICADO.
+ * */
 @Controller
 @RequestMapping("/provider")
 public class ProviderController extends AbstractController {
 
 	@Autowired
-	ProviderService	providerService;
+	private ProviderService	providerService;
+
+	@Autowired
+	private ItemService		itemService;
 
 
-	// Constructors -----------------------------------------------------------
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ModelAndView list() {
+		final ModelAndView res;
 
-	public ProviderController() {
-		super();
+		final Collection<Provider> providers = this.providerService.findAll();
+
+		res = new ModelAndView("provider/list");
+		res.addObject("requestURI", "provider/list.do");
+		res.addObject("providers", providers);
+		return res;
+	}
+
+	@RequestMapping(value = "/item/list", method = RequestMethod.GET)
+	public ModelAndView listItems(@RequestParam final int providerId) {
+		ModelAndView res;
+		Provider prov;
+
+		try {
+			prov = this.providerService.findOne(providerId);
+			if (prov == null)
+				throw new IllegalArgumentException();
+		} catch (final IllegalArgumentException e) {
+			res = new ModelAndView("redirect:/provider/list.do");
+			return res;
+		}
+		final Collection<Item> items = this.itemService.findAllByProvider(prov);
+
+		res = new ModelAndView("provider/item/list");
+		res.addObject("requestURI", "provider/item/list.do");
+		res.addObject("items", items);
+
+		return res;
+
 	}
 
 	// Edition ------------------------------

@@ -165,9 +165,9 @@ public class CompanyController extends AbstractController {
 	//		result.addObject("userAccount", userAccount);
 	//		return result;
 	//	}
-	
+
 	@RequestMapping(value = "/show", method = RequestMethod.GET)
-	public ModelAndView show(@RequestParam int companyId) {
+	public ModelAndView show(@RequestParam final int companyId) {
 		ModelAndView res;
 		Company company;
 

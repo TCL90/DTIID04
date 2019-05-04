@@ -193,6 +193,7 @@ public class CompanyService {
 		aus.add(com);
 		final UserAccount ua = companyForm.getUserAccount();
 		ua.setAuthorities(aus);
+		ua.setStatus(true);
 
 		company.setAddress(companyForm.getAddress());
 		company.setEmail(companyForm.getEmail());

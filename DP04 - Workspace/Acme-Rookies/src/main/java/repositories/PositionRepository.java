@@ -40,4 +40,7 @@ public interface PositionRepository extends JpaRepository<Position, Integer> {
 	@Query("select p from Position p where p.finalMode = 1 and p.isCancelled = 0")
 	Collection<Position> findPositionFinalModeNotCancelled();
 
+	@Query("select p from Position p where p not in (select a.position from Audit a) and p.finalMode=1")
+	List<Position> findAllNotAssigned();
+
 }

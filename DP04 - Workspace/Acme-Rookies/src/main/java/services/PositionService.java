@@ -29,6 +29,9 @@ import domain.Problem;
 public class PositionService {
 
 	@Autowired
+	private ActorService		actorService;
+
+	@Autowired
 	private PositionRepository	positionRepository;
 
 	@Autowired
@@ -181,5 +184,9 @@ public class PositionService {
 
 	public Collection<Position> findPositionFinalModeNotCancelled() {
 		return this.positionRepository.findPositionFinalModeNotCancelled();
+	}
+	public List<Position> findAllNotAssigned() {
+		Assert.isTrue(this.actorService.checkAuditor());
+		return this.positionRepository.findAllNotAssigned();
 	}
 }

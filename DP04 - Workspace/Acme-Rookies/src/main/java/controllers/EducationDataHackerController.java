@@ -17,7 +17,7 @@ import domain.EducationData;
 
 @Controller
 @RequestMapping("/educationData/hacker")
-public class EducationDataHackerController {
+public class EducationDataHackerController extends AbstractController {
 
 	@Autowired
 	EducationDataService	educationDataService;

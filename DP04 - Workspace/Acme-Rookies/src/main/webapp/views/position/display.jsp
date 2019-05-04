@@ -37,7 +37,7 @@
 <jstl:out value="${position.company.companyName}"/>
 <br/>
 
-<security:authorize access="hasRole('COMPANY')">
+<security:authorize access="hasRole('COMPANY')||hasRole('AUDITOR')">
 <b><spring:message code="position.problems"/></b>
 <br/>
 	<jstl:forEach var = "result" items="${position.problems}">

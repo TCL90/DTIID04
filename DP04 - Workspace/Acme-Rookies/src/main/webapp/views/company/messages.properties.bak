@@ -7,7 +7,6 @@
 # http://www.tdg-seville.info/License.html
 
 #Show 
-company.score=Score
 company.delete		= Leave being a company
 message.confirm.delete	= Are you sure?
 company.edit	= Edit

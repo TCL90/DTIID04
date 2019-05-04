@@ -30,6 +30,7 @@
 					<li><a href="dashboard/administrator/dashboard.do"><spring:message code="master.page.administrator.dashboard" /></a></li>
 					<li><a href="customisation/administrator/edit.do"><spring:message code="master.page.administrator.customisation" /></a></li>
 					<li><a href="ban/administrator/list.do"><spring:message code="master.page.administrator.ban" /></a></li>
+					<li><a href="score/administrator/calculate.do"><spring:message code="master.page.administrator.scoreCalculator" /></a></li>
 
 				</ul>
 			</li>
@@ -40,6 +41,7 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="auditor/auditor/edit.do"><spring:message code="master.page.auditor.edit" /></a></li>
+					<li><a href="position/auditor/list.do"><spring:message code="master.page.auditor.position.list" /></a></li>
 			</ul>
 			</li>
 		</security:authorize>

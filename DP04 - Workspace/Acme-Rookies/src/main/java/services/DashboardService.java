@@ -14,6 +14,8 @@ import repositories.DashboardRepository;
 import security.Authority;
 import security.LoginService;
 import security.UserAccount;
+import domain.Company;
+import domain.Hacker;
 import domain.Position;
 
 @Service

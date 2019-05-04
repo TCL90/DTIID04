@@ -21,32 +21,18 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Access(AccessType.PROPERTY)
 public class Audit extends DomainEntity {
 
-	private String	text;
-	private Double	score;
-	private Date	moment;
-	private boolean	finalMode;
+	private Date		moment;
+	private String		text;
+	private Double		score;
+	private Boolean		finalMode;
+
+	//Relaciones
+	private Auditor		auditor;
+	private Position	position;
 
 
-	@NotBlank
-	public String getText() {
-		return this.text;
-	}
-
-	public void setText(final String text) {
-		this.text = text;
-	}
-	@NotNull
-	@Range(min = 0, max = 10)
-	public Double getScore() {
-		return this.score;
-	}
-
-	public void setScore(final Double score) {
-		this.score = score;
-	}
-
-	@NotNull
 	@Past
+	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	public Date getMoment() {
@@ -57,19 +43,32 @@ public class Audit extends DomainEntity {
 		this.moment = moment;
 	}
 
-	public boolean isFinalMode() {
+	@NotBlank
+	public String getText() {
+		return this.text;
+	}
+
+	public void setText(final String text) {
+		this.text = text;
+	}
+
+	@NotNull
+	@Range(min = 0, max = 10)
+	public Double getScore() {
+		return this.score;
+	}
+
+	public void setScore(final Double score) {
+		this.score = score;
+	}
+
+	public Boolean getFinalMode() {
 		return this.finalMode;
 	}
 
-	public void setFinalMode(final boolean finalMode) {
+	public void setFinalMode(final Boolean finalMode) {
 		this.finalMode = finalMode;
 	}
-
-
-	private Auditor		auditor;
-	private Position	position;
-
-
 	@Valid
 	@ManyToOne(optional = false)
 	public Auditor getAuditor() {
@@ -89,5 +88,4 @@ public class Audit extends DomainEntity {
 	public void setPosition(final Position position) {
 		this.position = position;
 	}
-
 }

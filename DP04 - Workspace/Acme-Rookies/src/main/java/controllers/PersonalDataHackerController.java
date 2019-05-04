@@ -17,7 +17,7 @@ import domain.PersonalData;
 
 @Controller
 @RequestMapping("/personalData/hacker")
-public class PersonalDataHackerController {
+public class PersonalDataHackerController extends AbstractController {
 
 	@Autowired
 	PersonalDataService	personalDataService;

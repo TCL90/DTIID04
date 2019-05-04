@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import security.Authority;
 import security.UserAccount;
+import services.AuditService;
 import services.CompanyService;
 import domain.Company;
 import forms.CompanyForm;
@@ -27,6 +28,9 @@ public class CompanyController extends AbstractController {
 
 	@Autowired
 	CompanyService	companyService;
+
+	@Autowired
+	AuditService	auditService;
 
 
 	// Constructors -----------------------------------------------------------
@@ -190,7 +194,7 @@ public class CompanyController extends AbstractController {
 		//		boxes = company.getBoxes();
 		//		socialProfiles = company.getSocialProfiles();
 		//		endorsements = company.getEndorsements();
-		
+
 		//		 if (socialProfiles.isEmpty())
 		//		 * socialProfiles = null;
 		//		 * if (endorsements.isEmpty())
@@ -200,10 +204,12 @@ public class CompanyController extends AbstractController {
 
 		result = new ModelAndView("company/show");
 		result.addObject("company", company);
+		final Integer audits = this.auditService.numOfAudits(company.getId());
+		result.addObject("audits", audits);
 		//		result.addObject("boxes", boxes);
 		//		result.addObject("socialProfiles", socialProfiles);
 		result.addObject("message", message);
-		
+
 		return result;
 	}
 }

@@ -20,7 +20,7 @@ import domain.PositionData;
 
 @Controller
 @RequestMapping("/positionData/hacker")
-public class PositionDataHackerController {
+public class PositionDataHackerController extends AbstractController {
 
 	@Autowired
 	PositionDataService	positionDataService;

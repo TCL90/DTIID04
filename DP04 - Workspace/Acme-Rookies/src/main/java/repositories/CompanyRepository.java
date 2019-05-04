@@ -13,4 +13,7 @@ public interface CompanyRepository extends JpaRepository<Company, Integer> {
 	@Query("select c from Company c where c.userAccount.id = ?1")
 	Company findByUserAccountId(int userAccount);
 
+	@Query("select avg(a.score) from Audit a where a.position.company.id = ?1")
+	Double avgAuditScores(Integer companyId);
+
 }

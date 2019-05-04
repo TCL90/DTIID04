@@ -17,7 +17,7 @@ import domain.MiscellaneousData;
 
 @Controller
 @RequestMapping("/miscellaneousData/hacker")
-public class MiscellaneousDataHackerController {
+public class MiscellaneousDataHackerController extends AbstractController {
 
 	@Autowired
 	MiscellaneousDataService	miscellaneousDataService;

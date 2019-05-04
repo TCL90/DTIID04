@@ -23,6 +23,7 @@ import utilities.TickerGenerator;
 import domain.Actor;
 import domain.Administrator;
 import domain.Box;
+import domain.Company;
 import domain.Customisation;
 import domain.Message;
 import domain.SocialProfile;
@@ -34,6 +35,9 @@ public class AdministratorService {
 
 	@Autowired
 	public AdministratorRepository	adminRepository;
+
+	@Autowired
+	public CompanyService			companyService;
 
 	@Autowired
 	public ActorService				actorService;
@@ -334,4 +338,19 @@ public class AdministratorService {
 		}
 	}
 
+	public void computeCompanyScore() {
+		Assert.isTrue(this.actorService.checkAdmin());
+		final List<Company> c1 = new ArrayList<Company>(this.companyService.findAll());
+		for (final Company c : c1) {
+			Double score = this.companyService.avgAuditScores(c.getId());
+			if (score == null)
+				score = 0.0;
+
+			score = score / 100;
+			score = Math.round(score * 100d) / 100d;
+			c.setScore(score);
+
+			this.companyService.saveScore(c);
+		}
+	}
 }

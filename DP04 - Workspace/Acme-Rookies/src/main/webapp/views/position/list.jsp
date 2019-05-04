@@ -19,7 +19,7 @@
 
 
 <display:table name="positions" id="row" requestURI="${requestURI}" pagesize="5" class ="displaytag">
-<security:authorize access="hasRole('COMPANY')">
+<security:authorize access="hasRole('COMPANY')||hasRole('AUDITOR')">
 
 
 <display:column property="deadline" titleKey="position.deadline"/>
@@ -39,6 +39,21 @@
 </display:column>
 </security:authorize>
 
+<security:authorize access="hasRole('AUDITOR')">
+	
+	<display:column>
+		<a href="position/auditor/display.do?positionId=${row.id}">
+			<spring:message code="position.display"/>
+		</a>
+	</display:column>
+	
+	<display:column>
+		<a href="audit/auditor/create.do?positionId=${row.id}">
+			<spring:message code="position.create.audit"/>
+		</a>
+	</display:column>
+
+</security:authorize>
 
 <security:authorize access="hasRole('COMPANY')">
 

@@ -300,4 +300,14 @@ public class CompanyService {
 		this.companyRepository.flush();
 	}
 
+	public Double avgAuditScores(final Integer companyId) {
+		return this.companyRepository.avgAuditScores(companyId);
+
+	}
+
+	public void saveScore(final Company c) {
+		this.actorService.checkAdmin();
+		this.companyRepository.save(c);
+	}
+
 }

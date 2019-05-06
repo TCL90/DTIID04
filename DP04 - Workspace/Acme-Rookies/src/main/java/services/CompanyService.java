@@ -178,7 +178,6 @@ public class CompanyService {
 		Assert.isTrue(CompanyId != 0);
 		c = this.companyRepository.findOne(CompanyId);
 
-		Assert.notNull(c);
 		return c;
 	}
 

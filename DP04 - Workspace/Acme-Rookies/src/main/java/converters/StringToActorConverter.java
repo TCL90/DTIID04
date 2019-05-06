@@ -48,11 +48,11 @@ public class StringToActorConverter implements Converter<String, Actor> {
 				if (result == null) {
 					result = this.as.findOne(id);
 					if (result == null)
-						result = this.providerService.findOne(id);
+						result = this.auditorService.findOne(id);
 					if (result == null)
 						result = this.cr.findOne(id);
 					if (result == null)
-						result = this.auditorService.findOne(id);
+						result = this.providerService.findOne(id);
 
 					if (result == null)
 						result = this.as.findOne(id);

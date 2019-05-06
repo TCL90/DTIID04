@@ -199,6 +199,7 @@ public class AdministratorService {
 		aus.add(com);
 		final UserAccount ua = adminForm.getUserAccount();
 		ua.setAuthorities(aus);
+		ua.setStatus(true);
 
 		admin.setAddress(adminForm.getAddress());
 		admin.setEmail(adminForm.getEmail());

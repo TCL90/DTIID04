@@ -223,6 +223,7 @@
 		<property name="userAccount" ref="userAccount2" />
 		<property name="socialProfiles">
 			<list>
+				<ref bean="socialProfile1" />
 			</list>
 		</property>
 		<property name="boxes">
@@ -1299,6 +1300,9 @@
 		<property name="messages">
 			<list>
 				<ref bean="message1" />
+				<ref bean="message2" />
+
+				
 			</list>
 		</property>
 	</bean>
@@ -1608,4 +1612,121 @@
 	  	<property name="provider" ref="provider2"/>
 	  </bean>
 	  
+	  <!-- Other data, used for acceptance testing -->
+	  
+	  <bean id="userAccount11" class="security.UserAccount">
+		<property name="username" value="spammerprovider" />
+		<property name="password" value="4929539f6c0fea8799c223b27ba8e88c" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PROVIDER" />
+				</bean>
+			</list>
+		</property>
+		<property name="status" value="true" />
+	</bean>
+	
+	<bean id="userAccount12" class="security.UserAccount">
+		<property name="username" value="bannedprovider" />
+		<property name="password" value="941b2697b7c95ccc7299ac31f7436196" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PROVIDER" />
+				</bean>
+			</list>
+		</property>
+		<property name="status" value="false" />
+	</bean>
+	  
+	 <bean id="provider3" class="domain.Provider">
+		  <property name="name" value="Provider 3" /> 
+		  <property name="computed" value="false" /> 
+		  <property name="surname" value="Three" /> 
+		  <property name="photo" value="http://www.foto.com" /> 
+		  <property name="email" value="provider@hackerrank.com" /> 
+		  <property name="phoneNumber" value="+34 654654654" /> 
+		  <property name="address" value="Address of the provider" /> 
+		  <property name="vat" value="21" /> 
+		  <property name="flagSpam" value="false" /> 
+		  <property name="isBanned" value="false" /> 
+		  <property name="userAccount" ref="userAccount11" /> 
+		 <property name="socialProfiles">
+		  	<list /> 
+		  	</property>
+		 	<property name="boxes">
+		 	<list>
+		  		<ref bean="in11" /> 
+		  	</list>
+		  </property>
+		  <property name="holderName" value="Provider one" /> 
+		  <property name="makeName" value="VISA" /> 
+		  <property name="number" value="1111222233334444" /> 
+		  <property name="expirationYear" value="2022" /> 
+		  <property name="expirationMonth" value="2" /> 
+		  <property name="cvv" value="247" /> 
+	  </bean>
+		
+	<bean id="provider4" class="domain.Provider">
+		  <property name="name" value="Provider 4" /> 
+		  <property name="computed" value="false" /> 
+		  <property name="surname" value="One" /> 
+		  <property name="photo" value="http://www.foto.com" /> 
+		  <property name="email" value="provider@hackerrank.com" /> 
+		  <property name="phoneNumber" value="+34 654654654" /> 
+		  <property name="address" value="Address of the provider" /> 
+		  <property name="vat" value="21" /> 
+		  <property name="flagSpam" value="false" /> 
+		  <property name="isBanned" value="true" /> 
+		  <property name="userAccount" ref="userAccount12" /> 
+		 <property name="socialProfiles">
+		  	<list /> 
+		  	</property>
+		 	<property name="boxes">
+		 	<list>
+		  		<ref bean="in12" /> 
+		  	</list>
+		  </property>
+		  <property name="holderName" value="Provider one" /> 
+		  <property name="makeName" value="VISA" /> 
+		  <property name="number" value="1111222233334444" /> 
+		  <property name="expirationYear" value="2022" /> 
+		  <property name="expirationMonth" value="2" /> 
+		  <property name="cvv" value="247" /> 
+	  </bean>
+	
+	<bean id="in11" class="domain.Box">
+		<property name="name" value="Pool" />
+		<property name="messages">
+			<list>
+				<ref bean="message2" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="in12" class="domain.Box">
+		<property name="name" value="Pool" />
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+	</bean>
+		<bean id="message2" class="domain.Message">
+		<property name="body" value="SOY EL PRINCIPE DE NIGERIA MI FORTUNA DE ONE MILLION DE DOLLARS ES TUYA" />
+		<property name="broadcast" value="FALSE" />
+		<property name="flagSpam" value="TRUE" />
+		<property name="moment" value="10/10/2018 00:00:00" />
+		<property name="recipient" ref="company1"/>
+		<property name="sender" ref="provider3" />
+		<property name="subject" value="NIGERIA PRINCE" />
+		<property name="tag" value="NIGERIA" />
+	</bean>
+	
+	
+	<bean id="socialProfile1" class="domain.SocialProfile">
+		<property name ="nick" value="UserTest" />
+		<property name ="link" value="http://www.twitter.com" />
+		<property name ="socialNetwork" value = "Twitter" />
+	</bean>
 </beans>

@@ -12,7 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.ActorService;
 import services.AdministratorService;
+import services.AuditorService;
 import services.CompanyService;
+import services.ProviderService;
 import controllers.AbstractController;
 import domain.Actor;
 
@@ -28,6 +30,12 @@ public class BanAdministratorController extends AbstractController {
 
 	@Autowired
 	AdministratorService	administratorService;
+
+	@Autowired
+	ProviderService			providerService;
+
+	@Autowired
+	AuditorService			auditorService;
 
 
 	//list
@@ -78,7 +86,12 @@ public class BanAdministratorController extends AbstractController {
 		ModelAndView res;
 		Actor a = this.actorService.findOne(actorId);
 		if (a == null)
+			a = this.providerService.findOne(actorId);
+		if (a == null)
+			a = this.auditorService.findOne(actorId);
+		if (a == null)
 			a = this.companyService.findOne(actorId);
+
 		this.actorService.banActor(a);
 
 		res = new ModelAndView("redirect:list.do");
@@ -90,7 +103,10 @@ public class BanAdministratorController extends AbstractController {
 	public ModelAndView unban(@RequestParam final int actorId) {
 		ModelAndView res;
 		Actor a = this.actorService.findOne(actorId);
-
+		if (a == null)
+			a = this.providerService.findOne(actorId);
+		if (a == null)
+			a = this.auditorService.findOne(actorId);
 		if (a == null)
 			a = this.companyService.findOne(actorId);
 
@@ -99,5 +115,4 @@ public class BanAdministratorController extends AbstractController {
 
 		return res;
 	}
-
 }

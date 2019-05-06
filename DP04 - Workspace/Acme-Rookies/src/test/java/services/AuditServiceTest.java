@@ -2,6 +2,7 @@
 package services;
 
 import javax.transaction.Transactional;
+import javax.validation.ConstraintViolationException;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,6 +25,9 @@ public class AuditServiceTest extends AbstractTest {
 	AuditService	auditService;
 
 	@Autowired
+	AuditorService	auditorService;
+
+	@Autowired
 	PositionService	positionService;
 
 
@@ -39,12 +43,13 @@ public class AuditServiceTest extends AbstractTest {
 	public void createAudit() {
 		this.authenticate("auditor1");
 		final Audit au = this.auditService.create(this.getEntityId("position1"));
+		au.setAuditor(this.auditorService.findOne(this.getEntityId("auditor1")));
 		au.setFinalMode(false);
 		au.setScore(9.0);
 		au.setText("Creo que deberían contar con un administrador de seguridad más");
 
 		final Audit au2 = this.auditService.create((this.getEntityId("position2")));
-		au2.setFinalMode(false);
+		au2.setAuditor(this.auditorService.findOne(this.getEntityId("auditor1")));
 
 		au2.setScore(9.0);
 		au2.setText("");
@@ -61,6 +66,18 @@ public class AuditServiceTest extends AbstractTest {
 			 * */
 			{
 				"auditor1", au, null
+			},
+
+			/**
+			 * TESTING REQUIREMENT #3.1 and #3.2
+			 * NEGATIVE TEST (YOU CAN NOT CREATE AN AUDIT WITH NO TEXT)
+			 * (Expected ConstraintViolationException)
+			 * COVERED INSTRUCTIONS: 100%
+			 * COVERED DATA: 10%
+			 * */
+			{
+
+				"auditor1", au2, ConstraintViolationException.class
 			}
 		};
 
@@ -79,10 +96,10 @@ public class AuditServiceTest extends AbstractTest {
 	public void editAudit() {
 		this.authenticate("auditor1");
 
-		final Audit aue1 = this.auditService.findOne(this.getEntityId("audit2"));
+		final Audit aue1 = this.auditService.findOne(this.getEntityId("audit1"));
 		aue1.setText("Cambio");
 
-		final Audit aue2 = this.auditService.findOne(this.getEntityId("audit2"));
+		final Audit aue2 = this.auditService.findOne(this.getEntityId("audit1"));
 		aue2.setFinalMode(false);
 		aue2.setText("Cambio");
 
@@ -92,20 +109,24 @@ public class AuditServiceTest extends AbstractTest {
 
 			/**
 			 * TESTING REQUIREMENT #15
-			 * NEGATIVE TEST: YOU CANNOT EDIT AN Audit In final mode
+			 * NEGATIVE TEST: YOU CANNOT EDIT AN Audit BEING A COMPANY
 			 * (Expected IllegalArgumentException)
 			 * COVERED INSTRUCTIONS: 100%
 			 * COVERED DATA: 10%
 			 * */
 			{
-				"auditor1", aue1, IllegalArgumentException.class
+				"company1", aue1, IllegalArgumentException.class
+			},
+			/**
+			 * TESTING REQUIREMENT #3.2
+			 * POSITIVE TEST
+			 * COVERED INSTRUCTIONS: 100%
+			 * COVERED DATA: 10%
+			 * */
+
+			{
+				"auditor1", aue2, null
 			}
-		/**
-		 * TESTING REQUIREMENT #3.2
-		 * POSITIVE TEST
-		 * COVERED INSTRUCTIONS: 100%
-		 * COVERED DATA: 10%
-		 * */
 
 		};
 
@@ -121,44 +142,43 @@ public class AuditServiceTest extends AbstractTest {
 	 * COVERED DATA IN THIS TEST: 12%
 	 * */
 
-	//	@Test
-	//	public void deleteAudit() {
-	//		this.authenticate("auditor1");
-	//		final Audit a1 = this.auditService.findOne(this.getEntityId("audit2"));
-	//
-	//		final Audit a2 = this.auditService.findOne(this.getEntityId("audit2"));
-	//		a2.setFinalMode(false);
-	//
-	//		this.unauthenticate();
-	//
-	//		final Object testingData[][] = {
-	//
-	//			/**
-	//			 * TESTING REQUIREMENT #15
-	//			 * NEGATIVE TEST: YOU CANNOT DELETE AN AUDIT WHICH IS IN FINAL MODE
-	//			 * (Expected IllegalArgumentException)
-	//			 * COVERED INSTRUCTIONS: 100%
-	//			 * COVERED DATA: 10%
-	//			 * */
-	//			{
-	//				"hacker1", a1, IllegalArgumentException.class
-	//			},
-	//
-	//			/**
-	//			 * TESTING REQUIREMENT #3.2
-	//			 * POSITIVE TEST
-	//			 * COVERED INSTRUCTIONS: 100%
-	//			 * COVERED DATA: 10%
-	//			 * */
-	//			{
-	//				"hacker1", a2, null
-	//			}
-	//
-	//		};
-	//
-	//		for (int i = 0; i < testingData.length; i++)
-	//			this.templateD((String) testingData[i][0], (Audit) testingData[i][1], (Class<?>) testingData[i][2]);
-	//	}
+	@Test
+	public void deleteAudit() {
+		this.authenticate("auditor2");
+		final Audit a1 = this.auditService.findOne(this.getEntityId("audit3"));
+
+		final Audit a2 = this.auditService.findOne(this.getEntityId("audit4"));
+
+		this.unauthenticate();
+
+		final Object testingData[][] = {
+
+			/**
+			 * TESTING REQUIREMENT #15
+			 * NEGATIVE TEST: YOU CANNOT DELETE AN AUDIT WHICH IS IN FINAL MODE
+			 * (Expected IllegalArgumentException)
+			 * COVERED INSTRUCTIONS: 100%
+			 * COVERED DATA: 10%
+			 * */
+			{
+				"auditor2", a1, IllegalArgumentException.class
+			},
+
+			/**
+			 * TESTING REQUIREMENT #3.2
+			 * POSITIVE TEST
+			 * COVERED INSTRUCTIONS: 100%
+			 * COVERED DATA: 10%
+			 * */
+			{
+				"auditor2", a2, null
+			}
+
+		};
+
+		for (int i = 0; i < testingData.length; i++)
+			this.templateD((String) testingData[i][0], (Audit) testingData[i][1], (Class<?>) testingData[i][2]);
+	}
 	protected void template2(final String username, final Audit au, final Class<?> expected) {
 
 		Class<?> caught;

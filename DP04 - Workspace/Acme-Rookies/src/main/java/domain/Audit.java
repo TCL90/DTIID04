@@ -51,6 +51,7 @@ public class Audit extends DomainEntity {
 	public void setText(final String text) {
 		this.text = text;
 	}
+
 	@NotNull
 	@Range(min = 0, max = 10)
 	public Double getScore() {

@@ -14,11 +14,14 @@
 		<form:hidden path="version"/>
 		<form:hidden path="moment"/>
 		<form:hidden path="sender"/>
+		<jstl:if test="${rebrand == false}">
 		<spring:message code="mes.recipients" />:*
 		<form:select multiple="false" id="recipient" path="recipient">
 		    <form:options items="${recipient}" itemLabel="email" itemValue="id" />
 		    </form:select>
 		   <br />
+		</jstl:if>
+		
 		<form:label path="subject">
 			<spring:message code="mes.subject" />:*
 		</form:label>
@@ -43,7 +46,9 @@
 	
 	
 	
+		<jstl:if test="${rebrand == false}">
 		<input type="submit" name = "send" value = "<spring:message code ="mes.send" /> " />
+		</jstl:if>
 		<spring:message code ="mes.cancel" var="cancel" />
 		
 		<security:authorize access="hasRole('ADMIN')">

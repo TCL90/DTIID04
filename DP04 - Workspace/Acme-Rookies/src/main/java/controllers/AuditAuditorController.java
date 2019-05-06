@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.AuditService;
 import services.AuditorService;
+import services.PositionService;
 import domain.Audit;
 import domain.Auditor;
 
@@ -25,6 +26,9 @@ public class AuditAuditorController extends AbstractController {
 
 	@Autowired
 	private AuditService	auditService;
+
+	@Autowired
+	private PositionService	positionService;
 
 	@Autowired
 	private AuditorService	auditorService;
@@ -109,6 +113,8 @@ public class AuditAuditorController extends AbstractController {
 		try {
 			if (a.getId() != 0)
 				Assert.isTrue(!this.auditService.findOne(a.getId()).getFinalMode(), "auditFinalMode");
+
+			Assert.isTrue(this.positionService.findAllNotAssigned().contains(a.getPosition()), "auditAssigned");
 			a = this.auditService.reconstruct(a, binding);
 			this.auditService.save(a);
 
@@ -118,6 +124,8 @@ public class AuditAuditorController extends AbstractController {
 		} catch (final Throwable oops) {
 			if (oops.getMessage() == "auditFinalMode")
 				res = this.createEditModelAndView(a, "audit.finalMode.error");
+			else if (oops.getMessage() == "auditAssigned")
+				res = this.createEditModelAndView(a, "audit.assigned.error");
 
 			else
 				res = this.createEditModelAndView(a, "error.audit");

@@ -22,7 +22,7 @@ public class ScoreAdministratorController extends AbstractController {
 		ModelAndView res;
 
 		this.administratorService.computeCompanyScore();
-		final String redirect="company/list.do";
+		final String redirect = "company/list.do";
 		res = new ModelAndView("redirect:../../" + redirect);
 		return res;
 

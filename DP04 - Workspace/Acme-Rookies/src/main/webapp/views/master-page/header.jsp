@@ -42,6 +42,7 @@
 					<li class="arrow"></li>
 					<li><a href="auditor/auditor/edit.do"><spring:message code="master.page.auditor.edit" /></a></li>
 					<li><a href="position/auditor/list.do"><spring:message code="master.page.auditor.position.list" /></a></li>
+					<li><a href="audit/auditor/list.do"><spring:message code="master.page.auditor.audits.list" /></a></li>
 			</ul>
 			</li>
 		</security:authorize>

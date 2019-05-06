@@ -98,6 +98,7 @@ public class MessageController extends AbstractController {
 		result.addObject("mesInformation", m);
 		result.addObject("recipient", recipients);
 		result.addObject("mesError", messageCode);
+		result.addObject("rebrand", false);
 
 		return result;
 	}
@@ -248,7 +249,7 @@ public class MessageController extends AbstractController {
 
 	protected ModelAndView createEditModelAndViewRebrand(final Message m) {
 		ModelAndView result;
-		result = this.createEditModelAndView(m, null);
+		result = this.createEditModelAndViewRebrand(m, null);
 
 		return result;
 	}

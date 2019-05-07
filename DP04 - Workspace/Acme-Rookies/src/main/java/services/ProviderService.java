@@ -95,7 +95,13 @@ public class ProviderService {
 	}
 
 	public Provider findOne(final Provider Provider) {
-		return this.providerRepository.findOne(Provider.getId());
+		Provider p;
+		try {
+			p = this.providerRepository.findOne(Provider.getId());
+		} catch (final Exception e) {
+			return null;
+		}
+		return p;
 	}
 
 	public Collection<Provider> findAll() {
@@ -177,7 +183,6 @@ public class ProviderService {
 		Assert.isTrue(ProviderId != 0);
 		c = this.providerRepository.findOne(ProviderId);
 
-		Assert.notNull(c);
 		return c;
 	}
 

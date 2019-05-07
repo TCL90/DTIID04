@@ -97,7 +97,13 @@ public class AuditorService {
 	}
 
 	public Auditor findOne(final Auditor Auditor) {
-		return this.auditorRepository.findOne(Auditor.getId());
+		Auditor p;
+		try {
+			p = this.auditorRepository.findOne(Auditor.getId());
+		} catch (final Exception e) {
+			return null;
+		}
+		return p;
 	}
 
 	public Collection<Auditor> findAll() {
@@ -158,7 +164,6 @@ public class AuditorService {
 		Assert.isTrue(AuditorId != 0);
 		c = this.auditorRepository.findOne(AuditorId);
 
-		Assert.notNull(c);
 		return c;
 	}
 

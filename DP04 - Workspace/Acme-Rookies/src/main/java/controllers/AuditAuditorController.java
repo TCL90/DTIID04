@@ -113,8 +113,8 @@ public class AuditAuditorController extends AbstractController {
 		try {
 			if (a.getId() != 0)
 				Assert.isTrue(!this.auditService.findOne(a.getId()).getFinalMode(), "auditFinalMode");
-
-			Assert.isTrue(this.positionService.findAllNotAssigned().contains(a.getPosition()), "auditAssigned");
+			if (a.getId() == 0)
+				Assert.isTrue(this.positionService.findAllNotAssigned().contains(a.getPosition()), "auditAssigned");
 			a = this.auditService.reconstruct(a, binding);
 			this.auditService.save(a);
 

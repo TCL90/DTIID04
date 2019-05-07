@@ -10,8 +10,6 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 
-<security:authorize access="hasRole('AUDITOR')">
-
 	<h3 style="color:blue;">
 		<spring:message code="audit.moment" />:
 	</h3>
@@ -42,7 +40,7 @@
 	
 	<form:form action="audit/auditor/edit.do" modelAttribute="audit">
 	<form:hidden path="id"/>
-	<jstl:if test="${!audit.finalMode }">
+	<jstl:if test="${audit.finalMode==false }">
 	<input type="submit" name="delete"
 			value="<spring:message code="audit.delete" />"
 			onclick="return confirm('<spring:message code="audit.confirm.delete" />')" />&nbsp;
@@ -52,4 +50,3 @@
 	
 	<input type="button" name="back" onclick="javascript: window.location.replace('audit/auditor/list.do')"
 		value="<spring:message code="audit.back" />" />
-	</security:authorize>

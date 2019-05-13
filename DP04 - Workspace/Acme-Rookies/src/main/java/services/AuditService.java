@@ -104,4 +104,9 @@ public class AuditService {
 	public Integer numOfAudits(final int id) {
 		return this.auditRepository.numOfAudits(id);
 	}
+
+	public Audit findByPositionId(final int companyId) {
+
+		return this.auditRepository.findByPositionId(companyId);
+	}
 }

@@ -44,5 +44,21 @@
 		<jstl:out value="${result.title}"/>
 		<br/>
 	</jstl:forEach>
-	
 </security:authorize>
+
+<jstl:if test="${audit!=null}">
+<h3><spring:message code="position.audit"/></h3>
+
+<h4><spring:message code="audit.score"/></h4>
+<jstl:out value="${audit.score }"></jstl:out><br/>
+	
+<h4><spring:message code="audit.text"/></h4>
+<jstl:out value="${audit.text }"></jstl:out><br/>
+	
+<h4><spring:message code="audit.moment"/></h4>
+<jstl:out value="${audit.moment }"></jstl:out><br/>
+
+<h4><spring:message code="audit.finalMode"/></h4>
+<jstl:out value="${audit.finalMode }"></jstl:out><br/>
+</jstl:if>
+	

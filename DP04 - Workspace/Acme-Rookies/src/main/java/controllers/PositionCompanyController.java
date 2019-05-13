@@ -15,14 +15,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.AuditService;
 import services.MessageService;
 import services.PositionService;
+import domain.Audit;
 import domain.Position;
 import domain.Problem;
 
 @Controller
 @RequestMapping("/position/company")
 public class PositionCompanyController extends AbstractController {
+
+	@Autowired
+	private AuditService	auditService;
 
 	@Autowired
 	private PositionService	positionService;
@@ -93,7 +98,7 @@ public class PositionCompanyController extends AbstractController {
 					this.messageService.doesPositionMatchesFinderCriteria(p);
 			} catch (final IllegalArgumentException e) {
 				result = this.createEditModelAndView(position, "position.deadline.error");
-//				result.addObject("deadlineError", "position.deadline.error");
+				//				result.addObject("deadlineError", "position.deadline.error");
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(position, "position.commit.error");
 			}
@@ -152,25 +157,27 @@ public class PositionCompanyController extends AbstractController {
 		if (position.getCompany().getId() != this.positionService.getThisCompany().getId())
 			return new ModelAndView("redirect:/welcome/index.do");
 
+		final Audit a = this.auditService.findByPositionId(positionId);
 		Assert.notNull(position);
 
-		result = this.createDisplayModelAndView(position);
+		result = this.createDisplayModelAndView(position, a);
 
 		return result;
 	}
 
-	protected ModelAndView createDisplayModelAndView(final Position position) {
+	protected ModelAndView createDisplayModelAndView(final Position position, final Audit a) {
 		ModelAndView result;
-		result = this.createDisplayModelAndView(position, null);
+		result = this.createDisplayModelAndView(position, null, a);
 
 		return result;
 	}
 
-	protected ModelAndView createDisplayModelAndView(final Position position, final String messageCode) {
+	protected ModelAndView createDisplayModelAndView(final Position position, final String messageCode, final Audit a) {
 		ModelAndView result;
 
 		result = new ModelAndView("position/company/display");
 		result.addObject("position", position);
+		result.addObject("audit", a);
 		result.addObject("messageCode", messageCode);
 
 		return result;

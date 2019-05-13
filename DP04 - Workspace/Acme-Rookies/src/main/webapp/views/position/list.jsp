@@ -39,29 +39,25 @@
 </display:column>
 </security:authorize>
 
-<security:authorize access="hasRole('AUDITOR')">
-	
 	<display:column>
-		<a href="position/auditor/display.do?positionId=${row.id}">
+		<a href="position/display.do?positionId=${row.id}">
 			<spring:message code="position.display"/>
 		</a>
 	</display:column>
+
+<security:authorize access="hasRole('AUDITOR')">
 	
+
+	<jstl:if test="${creatingAudit==true}">
 	<display:column>
 		<a href="audit/auditor/create.do?positionId=${row.id}">
 			<spring:message code="position.create.audit"/>
 		</a>
 	</display:column>
-
+</jstl:if>
 </security:authorize>
 
 <security:authorize access="hasRole('COMPANY')">
-
-<display:column>
-	<a href="position/company/display.do?positionId=${row.id}">
-		<spring:message code="position.display"/>
-	</a>
-</display:column>
 
 <display:column>
 	<jstl:if test="${row.isCancelled==false && row.finalMode==true}">
@@ -82,7 +78,9 @@
 
 
 
+
 </security:authorize>
+
 <security:authorize access="hasRole('HACKER')">
  		<display:column>
 
@@ -107,10 +105,3 @@
 			<spring:message code="application.creation.error"/>
 		</div>
 	</jstl:if>
-
-
-
-
-
-
-

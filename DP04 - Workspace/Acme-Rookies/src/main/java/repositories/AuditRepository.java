@@ -17,4 +17,7 @@ public interface AuditRepository extends JpaRepository<Audit, Integer> {
 
 	@Query("select count(a) from Audit a where a.position.company.id = ?1")
 	Integer numOfAudits(int id);
+
+	@Query("select a from Audit a where a.position.id = ?1")
+	Audit findByPositionId(int companyId);
 }

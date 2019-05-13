@@ -1,3 +1,4 @@
+
 package controllers;
 
 import java.util.Collection;
@@ -10,31 +11,35 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import domain.Position;
-
+import services.AuditService;
 import services.PositionService;
+import domain.Audit;
+import domain.Position;
 
 @Controller
 @RequestMapping("/position")
-public class PositionController extends AbstractController{
-	
+public class PositionController extends AbstractController {
+
 	@Autowired
-	private PositionService positionService;
-	
-	@RequestMapping(value="/list", method=RequestMethod.GET)
-	public ModelAndView list(){
+	private PositionService	positionService;
+	@Autowired
+	private AuditService	auditService;
+
+
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ModelAndView list() {
 		ModelAndView res;
-		
-		Collection<Position> positions = positionService.findPositionFinalMode();
-		
+
+		final Collection<Position> positions = this.positionService.findPositionFinalMode();
+
 		res = new ModelAndView("position/list");
 		res.addObject("requestURI", "position/list.do");
 		res.addObject("positions", positions);
-		
+
 		return res;
-		
+
 	}
-	
+
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
 	public ModelAndView display(@RequestParam final int positionId) {
 		ModelAndView result;
@@ -43,23 +48,27 @@ public class PositionController extends AbstractController{
 		position = this.positionService.findOne(positionId);
 		Assert.notNull(position);
 
-		result = this.createDisplayModelAndView(position);
+		final Audit a = this.auditService.findByPositionId(positionId);
+		Assert.notNull(position);
+
+		result = this.createDisplayModelAndView(position, a);
 
 		return result;
 	}
 
-	protected ModelAndView createDisplayModelAndView(final Position position) {
+	protected ModelAndView createDisplayModelAndView(final Position position, final Audit a) {
 		ModelAndView result;
-		result = this.createDisplayModelAndView(position, null);
+		result = this.createDisplayModelAndView(position, a, null);
 
 		return result;
 	}
 
-	protected ModelAndView createDisplayModelAndView(final Position position, final String messageCode) {
+	protected ModelAndView createDisplayModelAndView(final Position position, final Audit a, final String messageCode) {
 		ModelAndView result;
 
 		result = new ModelAndView("position/company/display");
 		result.addObject("position", position);
+		result.addObject("audit", a);
 		result.addObject("messageCode", messageCode);
 
 		return result;

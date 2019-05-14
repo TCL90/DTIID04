@@ -51,8 +51,8 @@
 	
 	<input type="submit" name="save"
 		value="<spring:message code="audit.save" />" />&nbsp;
-		<jstl:if test="${audit.id!=0 }">
-	<jstl:if test="${audit.finalMode==false}"/>
+	<jstl:if test="${audit.id!=0 }">
+	<jstl:if test="${audit.finalMode==false}">
 	<input type="submit" name="delete"
 		value="<spring:message code="audit.delete" />"
 		onclick="return confirm('<spring:message code="audit.confirm.delete" />')" />&nbsp;

@@ -45,8 +45,9 @@
 	<input type ="submit" name="save" value="<spring:message code="socialProfile.save"/>" />
 
 	<input type="button" name="cancel" value="<spring:message code="socialProfile.cancel" />" onclick="javascript:relativeRedir('socialprofile/list.do');" />
-	
+	<jstl:if test ="${socialProfile.id !=0}">
 	<input type ="submit" name="delete" value="<spring:message code="socialProfile.delete"/>" />
+	</jstl:if>
 
 </form:form>
 

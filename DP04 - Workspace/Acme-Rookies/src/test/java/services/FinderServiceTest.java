@@ -35,7 +35,7 @@ public class FinderServiceTest extends AbstractTest {
 
 	@Test
 	public void testFinder() {
-		super.authenticate("hacker1");
+		super.authenticate("rookie1");
 		final int finderId = super.getEntityId("finder1");
 		final Finder f = this.finderService.findOne(finderId);
 		f.setKeyword("cod");
@@ -49,7 +49,7 @@ public class FinderServiceTest extends AbstractTest {
 
 	@Test(expected = ConstraintViolationException.class)
 	public void testFinderBadSalary() {
-		super.authenticate("hacker1");
+		super.authenticate("rookie1");
 		final int finderId = super.getEntityId("finder1");
 		final Finder f = this.finderService.findOne(finderId);
 		f.setKeyword("cod");

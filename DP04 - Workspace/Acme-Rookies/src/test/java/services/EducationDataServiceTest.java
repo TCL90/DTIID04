@@ -26,7 +26,7 @@ public class EducationDataServiceTest extends AbstractTest {
 
 	//SUT
 	@Autowired
-	HackerService			hackerService;
+	RookieService			rookieService;
 
 	@Autowired
 	CurriculaService		curriculaService;
@@ -44,7 +44,7 @@ public class EducationDataServiceTest extends AbstractTest {
 
 	@Test
 	public void createEducationData() {
-		this.authenticate("hacker1");
+		this.authenticate("rookie1");
 		final EducationData ed = this.educationDataService.create(this.getEntityId("curricula1"));
 		ed.setDegree("Degree1");
 		Date d1 = new Date();
@@ -75,7 +75,7 @@ public class EducationDataServiceTest extends AbstractTest {
 			 * COVERED DATA: 10%
 			 * */
 			{
-				"hacker1", ed, null
+				"rookie1", ed, null
 			},
 
 			/**
@@ -88,7 +88,7 @@ public class EducationDataServiceTest extends AbstractTest {
 			 */
 
 			{
-				"hacker1", ed2, ConstraintViolationException.class
+				"rookie1", ed2, ConstraintViolationException.class
 			}
 
 		};
@@ -104,7 +104,7 @@ public class EducationDataServiceTest extends AbstractTest {
 	 * */
 	@Test
 	public void editEducationData() {
-		this.authenticate("hacker1");
+		this.authenticate("rookie1");
 		final List<EducationData> edL = this.educationDataService.findByCurriculaId(this.getEntityId("curricula1"));
 		final EducationData ed20 = edL.get(0);
 		ed20.setInstitution("ETSII2");
@@ -128,7 +128,7 @@ public class EducationDataServiceTest extends AbstractTest {
 			 * COVERED DATA: 10%
 			 * */
 			{
-				"hacker1", ed20, null
+				"rookie1", ed20, null
 			}
 		};
 
@@ -143,7 +143,7 @@ public class EducationDataServiceTest extends AbstractTest {
 	 * */
 	@Test
 	public void editEducationData2() {
-		this.authenticate("hacker1");
+		this.authenticate("rookie1");
 		final List<EducationData> edL = this.educationDataService.findByCurriculaId(this.getEntityId("curricula1"));
 		Date d1 = new Date();
 		d1 = DateTimeFormat.forPattern("yyyy-MM-dd").parseDateTime("2005-06-12").toDate();
@@ -167,7 +167,7 @@ public class EducationDataServiceTest extends AbstractTest {
 			 * COVERED DATA: 10%
 			 * */
 			{
-				"hacker1", ed2, ConstraintViolationException.class
+				"rookie1", ed2, ConstraintViolationException.class
 			}
 
 		};
@@ -184,7 +184,7 @@ public class EducationDataServiceTest extends AbstractTest {
 	 * */
 	@Test
 	public void deleteEducationData() {
-		this.authenticate("hacker1");
+		this.authenticate("rookie1");
 		final List<EducationData> edL = this.educationDataService.findByCurriculaId(this.getEntityId("curricula1"));
 		final EducationData ed = edL.get(0);
 
@@ -199,7 +199,7 @@ public class EducationDataServiceTest extends AbstractTest {
 			 * COVERED DATA: 10%
 			 * */
 			{
-				"hacker1", ed, null
+				"rookie1", ed, null
 			}
 
 		};
@@ -216,7 +216,7 @@ public class EducationDataServiceTest extends AbstractTest {
 	 * */
 	@Test
 	public void deleteEducationData2() {
-		this.authenticate("hacker1");
+		this.authenticate("rookie1");
 		final List<EducationData> edL = this.educationDataService.findByCurriculaId(this.getEntityId("curricula1"));
 		final EducationData ed2 = edL.get(1);
 		ed2.getCurricula().setIsCopy(true);
@@ -233,7 +233,7 @@ public class EducationDataServiceTest extends AbstractTest {
 			 * COVERED DATA: 10%
 			 * */
 			{
-				"hacker1", ed2, IllegalArgumentException.class
+				"rookie1", ed2, IllegalArgumentException.class
 			}
 
 		};

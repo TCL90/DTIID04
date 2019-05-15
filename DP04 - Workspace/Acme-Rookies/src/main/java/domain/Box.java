@@ -11,6 +11,7 @@ import javax.persistence.ManyToMany;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -32,6 +33,7 @@ public class Box extends DomainEntity {
 	}
 
 	@NotBlank
+	@SafeHtml
 	public String getName() {
 		return this.name;
 	}

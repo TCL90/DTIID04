@@ -59,7 +59,7 @@ public class ScoreServiceTest extends AbstractTest {
 			 * */
 			{
 
-				"hacker1", IllegalArgumentException.class
+				"rookie1", IllegalArgumentException.class
 			}
 		};
 

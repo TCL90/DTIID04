@@ -26,23 +26,23 @@ public interface DashboardRepository extends JpaRepository<Administrator, Intege
 	@Query("select stddev(1.0*(select count(p) from Position p where p.company.id =c.id group by p.company)) from Company c")
 	Double stddevPositions();
 
-	@Query("select avg(1.0*(select count(a) from Application a where a.hacker.id =h.id group by a.hacker)) from Hacker h")
+	@Query("select avg(1.0*(select count(a) from Application a where a.rookie.id =h.id group by a.rookie)) from Rookie h")
 	Double avgApplications();
 
-	@Query("select min(1*(select count(a) from Application a where a.hacker.id =h.id group by a.hacker)) from Hacker h")
+	@Query("select min(1*(select count(a) from Application a where a.rookie.id =h.id group by a.rookie)) from Rookie h")
 	Integer minApplications();
 
-	@Query("select max(1*(select count(a) from Application a where a.hacker.id =h.id group by a.hacker)) from Hacker h")
+	@Query("select max(1*(select count(a) from Application a where a.rookie.id =h.id group by a.rookie)) from Rookie h")
 	Integer maxApplications();
 
-	@Query("select stddev(1.0*(select count(a) from Application a where a.hacker.id =h.id group by a.hacker)) from Hacker h")
+	@Query("select stddev(1.0*(select count(a) from Application a where a.rookie.id =h.id group by a.rookie)) from Rookie h")
 	Double stddevApplications();
 
 	@Query("select c.companyName from Position p join p.company c group by p.company order by count(p) desc")
 	Collection<String> companiesWithMorePositions();
 
-	@Query("select h.userAccount.username from Application a join a.hacker h group by a.hacker order by count(a) desc")
-	Collection<String> hackersWithMoreApplications();
+	@Query("select h.userAccount.username from Application a join a.rookie h group by a.rookie order by count(a) desc")
+	Collection<String> rookiesWithMoreApplications();
 
 	@Query("select avg(p.salary) from Position p")
 	Double avgSalary();
@@ -62,16 +62,16 @@ public interface DashboardRepository extends JpaRepository<Administrator, Intege
 	@Query("select p.title from Position p order by p.salary asc")
 	Collection<String> lowestSalaryPosition();
 
-	@Query("select min(1*(select count(c) from Curricula c where c.hacker.id = h.id group by c.hacker)) from Hacker h")
+	@Query("select min(1*(select count(c) from Curricula c where c.rookie.id = h.id group by c.rookie)) from Rookie h")
 	Integer minCurricula();
 
-	@Query("select max(1*(select count(c) from Curricula c where c.hacker.id = h.id group by c.hacker)) from Hacker h")
+	@Query("select max(1*(select count(c) from Curricula c where c.rookie.id = h.id group by c.rookie)) from Rookie h")
 	Integer maxCurricula();
 
-	@Query("select avg(1.0*(select count(c) from Curricula c where c.hacker.id = h.id group by c.hacker)) from Hacker h")
+	@Query("select avg(1.0*(select count(c) from Curricula c where c.rookie.id = h.id group by c.rookie)) from Rookie h")
 	Double avgCurricula();
 
-	@Query("select stddev(1.0*(select count(c) from Curricula c where c.hacker.id = h.id group by c.hacker)) from Hacker h")
+	@Query("select stddev(1.0*(select count(c) from Curricula c where c.rookie.id = h.id group by c.rookie)) from Rookie h")
 	Double stddevCurricula();
 
 	@Query("select min(f.positions.size) from Finder f")

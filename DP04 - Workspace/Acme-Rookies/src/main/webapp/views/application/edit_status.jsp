@@ -28,7 +28,7 @@
 		<form:hidden path="answerExplanation"/>
 		<form:hidden path="link"/>
 		<form:hidden path="position"/>
-		<form:hidden path="hacker"/>
+		<form:hidden path="rookie"/>
 		<form:hidden path="problem"/>
 
 		

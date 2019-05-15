@@ -26,7 +26,7 @@ public class PositionDataServiceTest extends AbstractTest {
 
 	//SUT
 	@Autowired
-	HackerService		hackerService;
+	RookieService		rookieService;
 
 	@Autowired
 	CurriculaService	curriculaService;
@@ -45,7 +45,7 @@ public class PositionDataServiceTest extends AbstractTest {
 
 	@Test
 	public void createPositionData() {
-		this.authenticate("hacker1");
+		this.authenticate("rookie1");
 		final PositionData pd = this.positionDataService.create(this.getEntityId("curricula1"));
 		pd.setDescription("Descrption1");
 		Date d1 = new Date();
@@ -69,7 +69,7 @@ public class PositionDataServiceTest extends AbstractTest {
 			 * COVERED DATA: 10%
 			 * */
 			{
-				"hacker1", pd, null
+				"rookie1", pd, null
 			},
 
 			/**
@@ -82,7 +82,7 @@ public class PositionDataServiceTest extends AbstractTest {
 			 */
 
 			{
-				"hacker1", pd2, ConstraintViolationException.class
+				"rookie1", pd2, ConstraintViolationException.class
 			}
 
 		};
@@ -100,7 +100,7 @@ public class PositionDataServiceTest extends AbstractTest {
 
 	@Test
 	public void editpositionData() {
-		this.authenticate("hacker1");
+		this.authenticate("rookie1");
 
 		final List<PositionData> edL = this.positionDataService.findByCurriculaId(this.getEntityId("curricula1"));
 		final PositionData pd = edL.get(0);
@@ -117,7 +117,7 @@ public class PositionDataServiceTest extends AbstractTest {
 			 * COVERED DATA: 10%
 			 * */
 			{
-				"hacker1", pd, null
+				"rookie1", pd, null
 			}
 		};
 
@@ -127,7 +127,7 @@ public class PositionDataServiceTest extends AbstractTest {
 
 	@Test
 	public void editpositionData2() {
-		this.authenticate("hacker1");
+		this.authenticate("rookie1");
 		final List<PositionData> edL2 = this.positionDataService.findByCurriculaId(this.getEntityId("curricula2"));
 		final PositionData pd2 = edL2.get(0);
 		pd2.setDescription("");
@@ -145,7 +145,7 @@ public class PositionDataServiceTest extends AbstractTest {
 			 * */
 
 			{
-				"hacker1", pd2, ConstraintViolationException.class
+				"rookie1", pd2, ConstraintViolationException.class
 			}
 		};
 
@@ -163,7 +163,7 @@ public class PositionDataServiceTest extends AbstractTest {
 
 	@Test
 	public void deletePositionData() {
-		this.authenticate("hacker1");
+		this.authenticate("rookie1");
 		final List<PositionData> edL = this.positionDataService.findByCurriculaId(this.getEntityId("curricula1"));
 		final PositionData pd = edL.get(0);
 		pd.getCurricula().setIsCopy(false);
@@ -183,7 +183,7 @@ public class PositionDataServiceTest extends AbstractTest {
 			 * COVERED DATA: 10%
 			 * */
 			{
-				"hacker1", pd, null
+				"rookie1", pd, null
 			},
 
 			/**
@@ -194,7 +194,7 @@ public class PositionDataServiceTest extends AbstractTest {
 			 * COVERED DATA: 10%
 			 * */
 			{
-				"hacker1", pd2, IllegalArgumentException.class
+				"rookie1", pd2, IllegalArgumentException.class
 			}
 
 		};

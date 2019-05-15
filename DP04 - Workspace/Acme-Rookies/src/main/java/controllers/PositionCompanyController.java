@@ -91,11 +91,18 @@ public class PositionCompanyController extends AbstractController {
 		else
 			try {
 				Assert.isTrue(position.getDeadline().after(Calendar.getInstance().getTime()));
+				try {
+					Assert.isTrue(this.positionService.has2Problem(position));
+				} catch (final Throwable e) {
+					result = this.createEditModelAndView(position, "position.problems.error");
+					return result;
+				}
 				final Position p = this.positionService.save(position);
 				result = new ModelAndView("redirect:list.do");
 
 				if (p.isFinalMode() == true)
 					this.messageService.doesPositionMatchesFinderCriteria(p);
+
 			} catch (final IllegalArgumentException e) {
 				result = this.createEditModelAndView(position, "position.deadline.error");
 				//				result.addObject("deadlineError", "position.deadline.error");

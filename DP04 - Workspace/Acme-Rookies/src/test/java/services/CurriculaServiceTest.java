@@ -22,7 +22,7 @@ public class CurriculaServiceTest extends AbstractTest {
 
 	//SUT
 	@Autowired
-	HackerService		hackerService;
+	RookieService		rookieService;
 
 	@Autowired
 	CurriculaService	curriculaService;
@@ -37,7 +37,7 @@ public class CurriculaServiceTest extends AbstractTest {
 
 	@Test
 	public void createCurricula() {
-		this.authenticate("hacker1");
+		this.authenticate("rookie1");
 		final Curricula c = this.curriculaService.create();
 		c.setName("Curricula1");
 
@@ -60,7 +60,7 @@ public class CurriculaServiceTest extends AbstractTest {
 			 * COVERED DATA: 20%
 			 * */
 			{
-				"hacker1", c, null
+				"rookie1", c, null
 			},
 
 			/**
@@ -73,7 +73,7 @@ public class CurriculaServiceTest extends AbstractTest {
 			 */
 
 			{
-				"hacker2", c2, IllegalArgumentException.class
+				"rookie2", c2, IllegalArgumentException.class
 			},
 
 			/**
@@ -84,7 +84,7 @@ public class CurriculaServiceTest extends AbstractTest {
 			 * COVERED DATA: 10%
 			 * */
 			{
-				"hacker1", c3, NullPointerException.class
+				"rookie1", c3, NullPointerException.class
 			}
 
 		};
@@ -102,7 +102,7 @@ public class CurriculaServiceTest extends AbstractTest {
 
 	@Test
 	public void editCurricula() {
-		this.authenticate("hacker1");
+		this.authenticate("rookie1");
 		final Curricula c = this.curriculaService.findOne(this.getEntityId("curricula1"));
 		c.setName("C1");
 		c.setIsCopy(false);
@@ -119,7 +119,7 @@ public class CurriculaServiceTest extends AbstractTest {
 			 * COVERED DATA: 10%
 			 * */
 			{
-				"hacker1", c, null
+				"rookie1", c, null
 			}
 		};
 
@@ -145,7 +145,7 @@ public class CurriculaServiceTest extends AbstractTest {
 			 * COVERED DATA: 10%
 			 * */
 			{
-				"hacker1", c2, ConstraintViolationException.class
+				"rookie1", c2, ConstraintViolationException.class
 			}
 
 		};
@@ -162,7 +162,7 @@ public class CurriculaServiceTest extends AbstractTest {
 	 * */
 	@Test
 	public void deleteCurricula() {
-		this.authenticate("hacker1");
+		this.authenticate("rookie1");
 		final Curricula c = this.curriculaService.findOne(this.getEntityId("curricula1"));
 		c.setIsCopy(true);
 
@@ -179,7 +179,7 @@ public class CurriculaServiceTest extends AbstractTest {
 			 * COVERED DATA: 10%
 			 * */
 			{
-				"hacker1", c2, null
+				"rookie1", c2, null
 			},
 
 			/**
@@ -190,7 +190,7 @@ public class CurriculaServiceTest extends AbstractTest {
 			 * COVERED DATA: 10%
 			 * */
 			{
-				"hacker1", c, IllegalArgumentException.class
+				"rookie1", c, IllegalArgumentException.class
 			}
 
 		};

@@ -9,7 +9,7 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<security:authorize access="hasRole('HACKER')">
+<security:authorize access="hasRole('ROOKIE')">
 	
 	
 	<spring:message code="finder.moment"/>
@@ -42,9 +42,9 @@
 		<br/>
 	</jstl:forEach>
 	<%-- <display:table pagesize="5" class="displaytag" keepStatus="true"
-	name="positions" requestURI="finder/hacker/show.do?finderId=${finder.id}" id="row">
+	name="positions" requestURI="finder/rookie/show.do?finderId=${finder.id}" id="row">
 	</display:table> --%>
 	<br/>
 	
-	<a href="finder/hacker/edit.do"><spring:message code="finder.edit"/></a>
+	<a href="finder/rookie/edit.do"><spring:message code="finder.edit"/></a>
 </security:authorize>

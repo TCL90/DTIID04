@@ -26,8 +26,8 @@
 	<spring:message code="dashboard.companiesWithMorePositions"/>
 	<jstl:out value="${companiesWithMorePositions}"/>
 	<br/>
-	<spring:message code="dashboard.hackersWithMoreApplications"/>
-	<jstl:out value="${hackersWithMoreApplications}"/>
+	<spring:message code="dashboard.rookiesWithMoreApplications"/>
+	<jstl:out value="${rookiesWithMoreApplications}"/>
 	<br/>
 	
 	<spring:message code="dashboard.avgApplications"/>

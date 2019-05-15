@@ -14,6 +14,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -28,6 +29,7 @@ public class PositionData extends DomainEntity {
 
 
 	@NotBlank
+	@SafeHtml
 	public String getTitle() {
 		return this.title;
 	}
@@ -36,6 +38,7 @@ public class PositionData extends DomainEntity {
 		this.title = title;
 	}
 	@NotBlank
+	@SafeHtml
 	public String getDescription() {
 		return this.description;
 	}

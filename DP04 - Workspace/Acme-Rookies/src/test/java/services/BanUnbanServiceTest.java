@@ -12,7 +12,7 @@ import org.springframework.util.Assert;
 
 import utilities.AbstractTest;
 import domain.Actor;
-import domain.Hacker;
+import domain.Rookie;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {
@@ -26,7 +26,7 @@ public class BanUnbanServiceTest extends AbstractTest {
 	private ActorService	actorService;
 
 	@Autowired
-	private HackerService	hackerService;
+	private RookieService	rookieService;
 
 
 	/**
@@ -39,10 +39,10 @@ public class BanUnbanServiceTest extends AbstractTest {
 	@Test
 	public void testBan() {
 		this.authenticate("admin");
-		final Hacker h1 = this.hackerService.findOne(this.getEntityId("hacker1"));
+		final Rookie h1 = this.rookieService.findOne(this.getEntityId("rookie1"));
 		h1.setFlagSpam(true);
 
-		final Hacker h2 = this.hackerService.findOne(this.getEntityId("hacker2"));
+		final Rookie h2 = this.rookieService.findOne(this.getEntityId("rookie2"));
 		h2.setFlagSpam(false);
 
 		this.unauthenticate();
@@ -88,11 +88,11 @@ public class BanUnbanServiceTest extends AbstractTest {
 	@Test
 	public void testUnBan() {
 		this.authenticate("admin");
-		final Hacker h1 = this.hackerService.findOne(this.getEntityId("hacker1"));
+		final Rookie h1 = this.rookieService.findOne(this.getEntityId("rookie1"));
 		h1.setFlagSpam(true);
 		h1.setIsBanned(true);
 
-		final Hacker h2 = this.hackerService.findOne(this.getEntityId("hacker2"));
+		final Rookie h2 = this.rookieService.findOne(this.getEntityId("rookie2"));
 		h2.setFlagSpam(true);
 		h2.setIsBanned(true);
 
@@ -120,7 +120,7 @@ public class BanUnbanServiceTest extends AbstractTest {
 			 */
 
 			{
-				"hacker1", h2, IllegalArgumentException.class
+				"rookie1", h2, IllegalArgumentException.class
 			}
 
 		};

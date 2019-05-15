@@ -31,7 +31,7 @@ public class BroadCastMessageServiceTest extends AbstractTest {
 	private MessageService	messageService;
 
 	@Autowired
-	private HackerService	hackerService;
+	private RookieService	rookieService;
 
 
 	/**
@@ -98,10 +98,10 @@ public class BroadCastMessageServiceTest extends AbstractTest {
 
 		try {
 			this.authenticate(username);
-			final List<Box> lb = new ArrayList<Box>(this.hackerService.findOne(this.getEntityId("hacker1")).getBoxes());
+			final List<Box> lb = new ArrayList<Box>(this.rookieService.findOne(this.getEntityId("rookie1")).getBoxes());
 			final Integer i1 = lb.get(0).getMessages().size();
 			this.messageService.broadcastMessage(m);
-			final List<Box> lb2 = new ArrayList<Box>(this.hackerService.findOne(this.getEntityId("hacker1")).getBoxes());
+			final List<Box> lb2 = new ArrayList<Box>(this.rookieService.findOne(this.getEntityId("rookie1")).getBoxes());
 			final Integer i2 = lb2.get(0).getMessages().size();
 			Assert.isTrue(i1 < i2);
 

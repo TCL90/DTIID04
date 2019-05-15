@@ -15,6 +15,7 @@ import javax.validation.constraints.Past;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -27,7 +28,7 @@ public class Application extends DomainEntity {
 	private String		answerExplanation;
 	private String		link;
 	private Position	position;
-	private Hacker		hacker;
+	private Rookie		rookie;
 	private Problem		problem;
 
 
@@ -52,7 +53,7 @@ public class Application extends DomainEntity {
 	public void setStatus(final String status) {
 		this.status = status;
 	}
-
+	@SafeHtml
 	public String getAnswerExplanation() {
 		return this.answerExplanation;
 	}
@@ -81,12 +82,12 @@ public class Application extends DomainEntity {
 
 	@Valid
 	@ManyToOne(optional = false)
-	public Hacker getHacker() {
-		return this.hacker;
+	public Rookie getRookie() {
+		return this.rookie;
 	}
 
-	public void setHacker(final Hacker hacker) {
-		this.hacker = hacker;
+	public void setRookie(final Rookie rookie) {
+		this.rookie = rookie;
 	}
 
 	//PROVISIONAL

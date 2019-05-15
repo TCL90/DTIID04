@@ -10,7 +10,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
 
-<security:authorize access="hasRole('HACKER')">
+<security:authorize access="hasRole('ROOKIE')">
 
 	<h3 style="color:blue;">
 		<spring:message code="curricula.name" />:
@@ -32,7 +32,7 @@
 	
 	<jstl:if test="${!curricula.isCopy }">
 	<display:column>
-	<a href="personalData/hacker/edit.do?personalDataId=${row.id }">
+	<a href="personalData/rookie/edit.do?personalDataId=${row.id }">
 	<spring:message code="edit.pesonalData"/></a>
 
 	</display:column>
@@ -41,7 +41,7 @@
 </display:table>
 
 	<jstl:if test="${!curricula.isCopy }">
-	<a href="personalData/hacker/create.do?curriculaId=${curricula.id }">
+	<a href="personalData/rookie/create.do?curriculaId=${curricula.id }">
 	<spring:message code="create.pesonalData"/></a>
 	<br/>
 	<br/>
@@ -63,7 +63,7 @@
 	
 	<jstl:if test="${!curricula.isCopy }">
 	<display:column>
-	<a href="educationData/hacker/edit.do?educationDataId=${row.id }">
+	<a href="educationData/rookie/edit.do?educationDataId=${row.id }">
 	<spring:message code="edit.educationData"/></a>
 
 	</display:column>
@@ -72,7 +72,7 @@
 </display:table>
 	
 	<jstl:if test="${!curricula.isCopy }">
-	<a href="educationData/hacker/create.do?curriculaId=${curricula.id }">
+	<a href="educationData/rookie/create.do?curriculaId=${curricula.id }">
 	<spring:message code="create.educationData"/></a>
 	
 	<br/>
@@ -93,7 +93,7 @@
 	
 	<jstl:if test="${!curricula.isCopy }">
 	<display:column>
-	<a href="positionData/hacker/edit.do?positionDataId=${row.id }">
+	<a href="positionData/rookie/edit.do?positionDataId=${row.id }">
 	<spring:message code="edit.positionData"/></a>
 
 	</display:column>
@@ -102,7 +102,7 @@
 </display:table>
 	
 	<jstl:if test="${!curricula.isCopy }">
-	<a href="positionData/hacker/create.do?curriculaId=${curricula.id }">
+	<a href="positionData/rookie/create.do?curriculaId=${curricula.id }">
 	<spring:message code="create.positionData"/></a>
 	<br/>
 	</jstl:if>
@@ -119,7 +119,7 @@
 	
 	<jstl:if test="${!curricula.isCopy }">
 	<display:column>
-	<a href="miscellaneousData/hacker/edit.do?miscellaneousDataId=${row.id }">
+	<a href="miscellaneousData/rookie/edit.do?miscellaneousDataId=${row.id }">
 	<spring:message code="edit.miscellaneousData"/></a>
 
 	</display:column>
@@ -128,7 +128,7 @@
 </display:table>
 	
 	<jstl:if test="${!curricula.isCopy }">
-	<a href="miscellaneousData/hacker/create.do?curriculaId=${curricula.id }">
+	<a href="miscellaneousData/rookie/create.do?curriculaId=${curricula.id }">
 	<spring:message code="create.miscellaneousData"/></a>
 	</jstl:if>
 	
@@ -136,7 +136,7 @@
 	<br/>
 
 	
-	<form:form action="curricula/hacker/edit.do" modelAttribute="curricula">
+	<form:form action="curricula/rookie/edit.do" modelAttribute="curricula">
 	<form:hidden path="id"/>
 	<jstl:if test="${!curricula.isCopy }">
 	<input type="submit" name="delete"
@@ -146,6 +146,6 @@
 	</form:form>
 	
 	
-	<input type="button" name="back" onclick="javascript: window.location.replace('curricula/hacker/list.do')"
+	<input type="button" name="back" onclick="javascript: window.location.replace('curricula/rookie/list.do')"
 		value="<spring:message code="curricula.back" />" />
 	</security:authorize>

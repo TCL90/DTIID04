@@ -81,10 +81,10 @@
 
 </security:authorize>
 
-<security:authorize access="hasRole('HACKER')">
+<security:authorize access="hasRole('ROOKIE')">
  		<display:column>
 
-			<a href="application/hacker/create.do?positionId=${row.id}">
+			<a href="application/rookie/create.do?positionId=${row.id}">
 			<spring:message code="position.application.create" />
 			</a>
 	</display:column>

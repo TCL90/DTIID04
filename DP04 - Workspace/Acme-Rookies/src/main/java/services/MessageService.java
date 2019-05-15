@@ -4,6 +4,7 @@ package services;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,9 +19,9 @@ import domain.Actor;
 import domain.Administrator;
 import domain.Box;
 import domain.Finder;
-import domain.Hacker;
 import domain.Message;
 import domain.Position;
+import domain.Rookie;
 
 @Service
 @Transactional
@@ -42,7 +43,7 @@ public class MessageService {
 	private AdministratorService	adminService;
 
 	@Autowired
-	private HackerService			hackerService;
+	private RookieService			rookieService;
 
 	@Autowired
 	private FinderService			finderService;
@@ -194,6 +195,11 @@ public class MessageService {
 	}
 
 	public Message save(final Message message) {
+		try {
+			TimeUnit.MILLISECONDS.sleep(10);
+		} catch (final Throwable oops) {
+			throw new IllegalArgumentException("Moment Error");
+		}
 		return this.messageRepository.save(message);
 	}
 
@@ -202,8 +208,8 @@ public class MessageService {
 	}
 
 	public void doesPositionMatchesFinderCriteria(final Position p) {
-		final Collection<Hacker> allHackers = this.hackerService.findAll();
-		for (final Hacker h : allHackers) {
+		final Collection<Rookie> allRookies = this.rookieService.findAll();
+		for (final Rookie h : allRookies) {
 			final Finder f = h.getFinder();
 			if (this.auxMatchesFinderCriteria(f, p))
 				this.sendApplicationMatchesFinderMessage(h);
@@ -232,7 +238,7 @@ public class MessageService {
 				return res;
 			}
 		if (f.getMaximumDeadline() != null)
-			if (!(p.getDeadline().before(f.getDeadline()))) {
+			if (!(p.getDeadline().before(f.getMaximumDeadline()))) {
 				res = false;
 				return res;
 			}
@@ -244,9 +250,9 @@ public class MessageService {
 	}
 
 	public String getTemplateRebrandingMessage() {
-		return "Le informamos de que Acme Hacker Rank, Inc. ahora se denomina legalmente como Acme Rookies. Sus datos permanecerán seguros en la nueva web. Se han añadido funcionalidades"
+		return "Le informamos de que Acme Rookie Rank, Inc. ahora se denomina legalmente como Acme Rookies. Sus datos permanecerán seguros en la nueva web. Se han añadido funcionalidades"
 			+ "como la creación de auditorías o el registro de auditores y de proveedores. Además, las compañías tienen ahora una puntuación."
-			+ " \n \n We inform you that AcmeHacker Rank, Inc. now is named Acme Rokies, Inc. The information about your account is secure in the new web. New functionalities were added"
+			+ " \n \n We inform you that AcmeRookie Rank, Inc. now is named Acme Rokies, Inc. The information about your account is secure in the new web. New functionalities were added"
 			+ "like the creation of audits an the register of auditors and providers. Also, companies now have a score. ";
 	}
 

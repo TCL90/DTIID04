@@ -23,7 +23,7 @@
 <display:table name="applicationsS" id="row" requestURI="${requestURI}"
 	pagesize="5" class="displaytag">
 
-	<display:column property="hacker.name" titleKey="application.hacker" />
+	<display:column property="rookie.name" titleKey="application.rookie" />
 	<display:column property="moment" titleKey="application.moment" />
 	<display:column property="status" titleKey="application.status" />
 

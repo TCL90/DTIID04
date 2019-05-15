@@ -6,6 +6,7 @@ import javax.persistence.AccessType;
 import javax.persistence.Entity;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
 
 @Entity
@@ -18,6 +19,7 @@ public class SocialProfile extends DomainEntity {
 
 
 	@NotBlank
+	@SafeHtml
 	public String getNick() {
 		return this.nick;
 	}
@@ -27,6 +29,7 @@ public class SocialProfile extends DomainEntity {
 	}
 
 	@NotBlank
+	@SafeHtml
 	public String getSocialNetwork() {
 		return this.socialNetwork;
 	}

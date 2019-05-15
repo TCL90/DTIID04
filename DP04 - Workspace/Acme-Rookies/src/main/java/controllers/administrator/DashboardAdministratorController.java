@@ -41,7 +41,7 @@ public class DashboardAdministratorController extends AbstractController {
 		final Double stddevApplications = this.dashboardService.stddevPositions();
 
 		final List<String> companiesWithMorePositions = new ArrayList<>(this.dashboardService.companiesWithMorePositions());
-		final List<String> hackersWithMorePositions = new ArrayList<>(this.dashboardService.hackersWithMorePositions());
+		final List<String> rookiesWithMorePositions = new ArrayList<>(this.dashboardService.rookiesWithMorePositions());
 
 		final Double avgSalary = this.dashboardService.avgSalary();
 		final Integer minSalary = this.dashboardService.minSalary();
@@ -91,7 +91,7 @@ public class DashboardAdministratorController extends AbstractController {
 		res.addObject("maxSalary", maxSalary);
 		res.addObject("stddevSalary", stddevSalary);
 		res.addObject("companiesWithMorePositions", companiesWithMorePositions);
-		res.addObject("hackersWithMoreApplications", hackersWithMorePositions);
+		res.addObject("rookiesWithMoreApplications", rookiesWithMorePositions);
 		res.addObject("highestSalaryPosition", highestSalaryPosition.get(0));
 		res.addObject("lowestSalaryPosition", lowestSalaryPosition.get(0));
 

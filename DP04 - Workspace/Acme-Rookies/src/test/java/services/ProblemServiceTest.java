@@ -66,7 +66,7 @@ public class ProblemServiceTest extends AbstractTest {
 
 		this.unauthenticate();
 
-		this.authenticate("hacker1");
+		this.authenticate("rookie1");
 		final Problem p5 = this.problemService.create();
 		p5.setStatement("Esto es un statement");
 		p5.setAttachments("Sample address");
@@ -124,7 +124,7 @@ public class ProblemServiceTest extends AbstractTest {
 
 			/**
 			 * TESTING REQUIREMENT #9.2
-			 * NEGATIVE TEST: YOU CANNOT CREATE A PROBLEM BEING A HACKER
+			 * NEGATIVE TEST: YOU CANNOT CREATE A PROBLEM BEING A ROOKIE
 			 * (Expected ConstraintViolationException)
 			 * COVERED INSTRUCTIONS: 100%
 			 * COVERED DATA: 10%

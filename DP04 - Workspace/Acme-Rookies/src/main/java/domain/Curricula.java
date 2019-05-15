@@ -8,12 +8,13 @@ import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
 
 @Entity
 @Access(AccessType.PROPERTY)
 public class Curricula extends DomainEntity {
 
-	private Hacker		hacker;
+	private Rookie		rookie;
 	private String		name;
 	private Application	application;
 	private Boolean		isCopy;
@@ -26,7 +27,7 @@ public class Curricula extends DomainEntity {
 	public void setIsCopy(final Boolean isCopy) {
 		this.isCopy = isCopy;
 	}
-
+	@SafeHtml
 	@NotBlank
 	public String getName() {
 		return this.name;
@@ -38,12 +39,12 @@ public class Curricula extends DomainEntity {
 
 	@Valid
 	@ManyToOne
-	public Hacker getHacker() {
-		return this.hacker;
+	public Rookie getRookie() {
+		return this.rookie;
 	}
 
-	public void setHacker(final Hacker hacker) {
-		this.hacker = hacker;
+	public void setRookie(final Rookie rookie) {
+		this.rookie = rookie;
 	}
 	@Valid
 	@ManyToOne(optional = true)

@@ -98,7 +98,7 @@ public class MessageController extends AbstractController {
 		result.addObject("mesInformation", m);
 		result.addObject("recipient", recipients);
 		result.addObject("mesError", messageCode);
-		result.addObject("rebrand", false);
+		result.addObject("rebrandFlag", false);
 
 		return result;
 	}
@@ -240,10 +240,11 @@ public class MessageController extends AbstractController {
 		message = this.ms.create();
 		final String messageText = this.ms.getTemplateRebrandingMessage();
 		message.setBody(messageText);
-		message.setSubject("Rebranding. Acme Hacker Rank is now Acme Rookies");
+		message.setSubject("Rebranding. Acme Rookie Rank is now Acme Rookies");
 		message.setTag("SYSTEM, ");
 
 		result = this.createEditModelAndViewRebrand(message);
+
 		return result;
 	}
 
@@ -257,6 +258,7 @@ public class MessageController extends AbstractController {
 	protected ModelAndView createEditModelAndViewRebrand(final Message m, final String messageCode) {
 		ModelAndView result;
 		Collection<Actor> recipients;
+		final boolean rebrandFlag = true;
 
 		recipients = this.as.findAll();
 
@@ -264,10 +266,9 @@ public class MessageController extends AbstractController {
 		result.addObject("mesInformation", m);
 		result.addObject("recipient", recipients);
 		result.addObject("mesError", messageCode);
-		result.addObject("rebrand", true);
+		result.addObject("rebrandFlag", rebrandFlag);
 		return result;
 	}
-
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "rebrand")
 	public ModelAndView broadcastRebrand(@Valid final Message message, final BindingResult binding) {
 		ModelAndView result;
@@ -280,7 +281,7 @@ public class MessageController extends AbstractController {
 		final Actor a = this.ar.getActor(actual);
 
 		if (binding.hasErrors())
-			result = this.createEditModelAndView(message);
+			result = this.createEditModelAndViewRebrand(message);
 		else
 			try {
 				if (!message.getTag().contains("SYSTEM"))
@@ -291,7 +292,7 @@ public class MessageController extends AbstractController {
 				result = new ModelAndView("redirect:list.do?boxId=" + id);
 
 			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(message, "messages.commit.error");
+				result = this.createEditModelAndViewRebrand(message, "messages.commit.error");
 			}
 
 		return result;

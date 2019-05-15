@@ -21,14 +21,14 @@
 
 	<display:column>
 		<jstl:if test="${row.status == 'PENDING'}">
-			<a href="application/hacker/solve.do?applicationId=${row.id }">
+			<a href="application/rookie/solve.do?applicationId=${row.id }">
 			<spring:message code="application.solve" />
 			</a>
 				</jstl:if>		
 	</display:column>
 	
 		<display:column>
-			<a href="application/hacker/show.do?applicationId=${row.id }">
+			<a href="application/rookie/show.do?applicationId=${row.id }">
 			<spring:message code="application.show" />
 			</a>
 	</display:column>

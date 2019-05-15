@@ -14,7 +14,7 @@
 		<form:hidden path="version"/>
 		<form:hidden path="moment"/>
 		<form:hidden path="sender"/>
-		<jstl:if test="${rebrand == false}">
+		<jstl:if test="${rebrandFlag == false}">
 		<spring:message code="mes.recipients" />:*
 		<form:select multiple="false" id="recipient" path="recipient">
 		    <form:options items="${recipient}" itemLabel="email" itemValue="id" />
@@ -46,17 +46,20 @@
 	
 	
 	
-		<jstl:if test="${rebrand == false}">
+		<jstl:if test="${rebrandFlag == false}">
 		<input type="submit" name = "send" value = "<spring:message code ="mes.send" /> " />
 		</jstl:if>
 		<spring:message code ="mes.cancel" var="cancel" />
 		
 		<security:authorize access="hasRole('ADMIN')">
-		<jstl:if test="${rebrand == false}">
+		<jstl:if test="${rebrandFlag == false}">
 		<input type="submit" name = "sendToAll" value = "<spring:message code ="mes.sendToAll" /> " />
 		</jstl:if>
-		
+		<jstl:if test="${rebrandFlag == true}">
+		<jstl:if test="${customisation.rebranded == false}">
 		<input type="submit" name = "rebrand" value = "<spring:message code = "mes.notify" /> " />
+		</jstl:if>
+		</jstl:if>
 
 		</security:authorize>
 		

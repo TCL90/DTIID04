@@ -8,7 +8,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<form:form action="application/hacker/create.do" modelAttribute="curricula">
+<form:form action="application/rookie/create.do" modelAttribute="curricula">
 	<form:hidden path="application"/>
 
 	<fieldset>
@@ -29,7 +29,7 @@
 		value="<spring:message code="curricula.save" />" />&nbsp;
 		
 	<input type="button" name="cancel"
-		onclick="javascript: window.location.replace('application/hacker/list.do')"
+		onclick="javascript: window.location.replace('application/rookie/list.do')"
 		value="<spring:message code="curricula.edit.cancel" />" />
 
 </form:form>

@@ -37,7 +37,7 @@ public class SocialProfileServiceTest extends AbstractTest{
 	 */
 	@Test
 	public void createSocialProfileGood() {
-		authenticate("hacker1");
+		authenticate("rookie1");
 		SocialProfile s = socialProfileService.create();
 		s.setNick("sp1");
 		s.setLink("http://sp1.com");
@@ -57,7 +57,7 @@ public class SocialProfileServiceTest extends AbstractTest{
 	 */
 	@Test(expected = ConstraintViolationException.class)
 	public void createSocialProfileBad() {
-		authenticate("hacker1");
+		authenticate("rookie1");
 		SocialProfile s = socialProfileService.create();
 		s.setNick("");
 		s.setLink("http://sp1.com");

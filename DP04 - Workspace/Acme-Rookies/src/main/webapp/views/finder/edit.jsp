@@ -9,9 +9,9 @@
 <%@taglib prefix="security"	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<security:authorize access="hasRole('HACKER')">
+<security:authorize access="hasRole('ROOKIE')">
 	
-	<form:form action="finder/hacker/edit.do" modelAttribute="finder">
+	<form:form action="finder/rookie/edit.do" modelAttribute="finder">
 		<form:hidden path="id"/>		
 		
 		<form:label path="keyword">
@@ -42,7 +42,7 @@
 		<form:errors cssClass ="error" path ="minimumSalary"/>
 		<br/>
 		
-		<input type="button" name="cancel" value="<spring:message code="finder.cancel"/>" onclick ="javascript: relativeRedir('finder/hacker/show.do');"/>
+		<input type="button" name="cancel" value="<spring:message code="finder.cancel"/>" onclick ="javascript: relativeRedir('finder/rookie/show.do');"/>
 		<input type="submit" name="save" value="<spring:message code="finder.save"/>"/>
 		<input type="submit" name="clear" value="<spring:message code="finder.clear"/>"/>
 	</form:form>

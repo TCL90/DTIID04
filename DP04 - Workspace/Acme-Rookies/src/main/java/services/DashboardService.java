@@ -15,7 +15,7 @@ import security.Authority;
 import security.LoginService;
 import security.UserAccount;
 import domain.Company;
-import domain.Hacker;
+import domain.Rookie;
 import domain.Position;
 
 @Service
@@ -78,9 +78,9 @@ public class DashboardService {
 		return this.repository.companiesWithMorePositions();
 	}
 
-	public Collection<String> hackersWithMorePositions() {
+	public Collection<String> rookiesWithMorePositions() {
 		Assert.isTrue(this.checkAdmin());
-		return this.repository.hackersWithMoreApplications();
+		return this.repository.rookiesWithMoreApplications();
 	}
 
 	public Double avgSalary() {

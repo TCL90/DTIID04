@@ -16,7 +16,7 @@ import repositories.CurriculaRepository;
 import security.Authority;
 import domain.Curricula;
 import domain.EducationData;
-import domain.Hacker;
+import domain.Rookie;
 import domain.MiscellaneousData;
 import domain.PersonalData;
 import domain.PositionData;
@@ -32,7 +32,7 @@ public class CurriculaService {
 	private CurriculaRepository			curriculaRepository;
 
 	@Autowired
-	private HackerService				hackerService;
+	private RookieService				rookieService;
 
 	@Autowired
 	private PersonalDataService			personalDataService;
@@ -50,50 +50,50 @@ public class CurriculaService {
 	public Curricula findOne(final int curriculaId) {
 		final Curricula c = this.curriculaRepository.findOne(curriculaId);
 		this.checkConditions();
-		Assert.isTrue(this.getCurriculasFromHacker().contains(c));
+		Assert.isTrue(this.getCurriculasFromRookie().contains(c));
 		return c;
 	}
 
-	public List<Curricula> getCurriculasFromHacker() {
+	public List<Curricula> getCurriculasFromRookie() {
 		this.checkConditions();
-		final Hacker h = this.hackerService.findOnePrincipal();
-		final List<Curricula> lc = this.curriculaRepository.findCurriculaByHackerId(h.getId());
+		final Rookie h = this.rookieService.findOnePrincipal();
+		final List<Curricula> lc = this.curriculaRepository.findCurriculaByRookieId(h.getId());
 		return lc;
 	}
 
-	public List<Curricula> getCurriculasFromHackerNotCopies() {
+	public List<Curricula> getCurriculasFromRookieNotCopies() {
 		this.checkConditions();
-		final Hacker h = this.hackerService.findOnePrincipal();
-		final List<Curricula> lc = this.curriculaRepository.findCurriculaByHackerIdNotCopies(h.getId());
+		final Rookie h = this.rookieService.findOnePrincipal();
+		final List<Curricula> lc = this.curriculaRepository.findCurriculaByRookieIdNotCopies(h.getId());
 		return lc;
 	}
 
 	public Curricula create() {
 		final Curricula res = new Curricula();
-		final Hacker h = this.hackerService.findOnePrincipal();
+		final Rookie h = this.rookieService.findOnePrincipal();
 		res.setId(0);
-		res.setHacker(h);
+		res.setRookie(h);
 		res.setIsCopy(false);
 
 		return res;
 	}
 
 	private void checkConditions() {
-		final Hacker h = this.hackerService.findOnePrincipal();
+		final Rookie h = this.rookieService.findOnePrincipal();
 		final Authority a = new Authority();
-		a.setAuthority(Authority.HACKER);
+		a.setAuthority(Authority.ROOKIE);
 		Assert.isTrue(h.getUserAccount().getAuthorities().contains(a));
 		Assert.isTrue(!h.getIsBanned());
 	}
 
 	public void save(final Curricula c) {
 		this.checkConditions();
-		Assert.isTrue(c.getHacker().getId() == this.hackerService.findOnePrincipal().getId());
+		Assert.isTrue(c.getRookie().getId() == this.rookieService.findOnePrincipal().getId());
 
 		if (c.getApplication() != null) {
 			Curricula copy = this.create();
 
-			copy.setHacker(c.getHacker());
+			copy.setRookie(c.getRookie());
 			copy.setApplication(c.getApplication());
 			final String title = c.getName();
 			copy.setName(title + " copy");
@@ -147,7 +147,7 @@ public class CurriculaService {
 
 	public void delete(final Curricula c) {
 		this.checkConditions();
-		Assert.isTrue(this.getCurriculasFromHacker().contains(c));
+		Assert.isTrue(this.getCurriculasFromRookie().contains(c));
 
 		if (c.getIsCopy())
 			Assert.isTrue(c.getApplication() == null);

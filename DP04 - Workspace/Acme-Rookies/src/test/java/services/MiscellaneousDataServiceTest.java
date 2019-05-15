@@ -24,7 +24,7 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 
 	//SUT
 	@Autowired
-	HackerService				hackerService;
+	RookieService				rookieService;
 
 	@Autowired
 	CurriculaService			curriculaService;
@@ -42,7 +42,7 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 
 	@Test
 	public void createMiscellaneousData() {
-		this.authenticate("hacker1");
+		this.authenticate("rookie1");
 		final MiscellaneousData pd = this.miscellaneousDataService.create(this.getEntityId("curricula1"));
 		pd.setFreeText("freeText");
 		pd.setAttachments("Attachement1");
@@ -62,7 +62,7 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 			 * COVERED DATA: 10%
 			 * */
 			{
-				"hacker1", pd, null
+				"rookie1", pd, null
 			},
 
 			/**
@@ -75,7 +75,7 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 			 */
 
 			{
-				"hacker1", pd2, ConstraintViolationException.class
+				"rookie1", pd2, ConstraintViolationException.class
 			}
 
 		};
@@ -91,7 +91,7 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 	 * */
 	@Test
 	public void editMiscellaneousData() {
-		this.authenticate("hacker1");
+		this.authenticate("rookie1");
 
 		final List<MiscellaneousData> edL = this.miscellaneousDataService.findByCurriculaId(this.getEntityId("curricula1"));
 		final MiscellaneousData md = edL.get(0);
@@ -108,7 +108,7 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 			 * COVERED DATA: 10%
 			 * */
 			{
-				"hacker1", md, null
+				"rookie1", md, null
 			}
 		};
 
@@ -124,7 +124,7 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 	 * */
 	@Test
 	public void editMiscellaneousData2() {
-		this.authenticate("hacker1");
+		this.authenticate("rookie1");
 		final List<MiscellaneousData> edL2 = this.miscellaneousDataService.findByCurriculaId(this.getEntityId("curricula2"));
 		final MiscellaneousData md2 = edL2.get(0);
 		md2.setFreeText("");
@@ -142,7 +142,7 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 			 * */
 
 			{
-				"hacker1", md2, ConstraintViolationException.class
+				"rookie1", md2, ConstraintViolationException.class
 			}
 		};
 
@@ -158,7 +158,7 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 	 * */
 	@Test
 	public void deleteMiscellaneousData() {
-		this.authenticate("hacker1");
+		this.authenticate("rookie1");
 		final List<MiscellaneousData> edL = this.miscellaneousDataService.findByCurriculaId(this.getEntityId("curricula1"));
 		final MiscellaneousData md = edL.get(0);
 		md.getCurricula().setIsCopy(false);
@@ -178,7 +178,7 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 			 * COVERED DATA: 10%
 			 * */
 			{
-				"hacker1", md, null
+				"rookie1", md, null
 			},
 
 			/**
@@ -189,7 +189,7 @@ public class MiscellaneousDataServiceTest extends AbstractTest {
 			 * COVERED DATA: 10%
 			 * */
 			{
-				"hacker1", md2, IllegalArgumentException.class
+				"rookie1", md2, IllegalArgumentException.class
 			}
 
 		};

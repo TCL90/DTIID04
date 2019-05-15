@@ -12,7 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import utilities.AbstractTest;
-import domain.Hacker;
+import domain.Rookie;
 import domain.Message;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -27,7 +27,7 @@ public class MessageServiceTest extends AbstractTest {
 	private MessageService	messageService;
 
 	@Autowired
-	private HackerService	hs;
+	private RookieService	hs;
 
 	@Autowired
 	private BoxService		bs;
@@ -44,13 +44,13 @@ public class MessageServiceTest extends AbstractTest {
 
 	@Test
 	public void createMessage() {
-		this.authenticate("hacker1");
+		this.authenticate("rookie1");
 		final Message m = this.messageService.create();
-		final int idhacker = super.getEntityId("hacker1");
-		final Hacker h = this.hs.findOne(idhacker);
+		final int idrookie = super.getEntityId("rookie1");
+		final Rookie h = this.hs.findOne(idrookie);
 		m.setRecipient(h);
-		final int idhacker2 = super.getEntityId("hacker2");
-		final Hacker h2 = this.hs.findOne(idhacker2);
+		final int idrookie2 = super.getEntityId("rookie2");
+		final Rookie h2 = this.hs.findOne(idrookie2);
 		m.setRecipient(h2);
 		m.setBody("test message");
 		m.setBroadcast(false);
@@ -61,7 +61,7 @@ public class MessageServiceTest extends AbstractTest {
 
 		this.unauthenticate();
 
-		this.authenticate("hacker1");
+		this.authenticate("rookie1");
 		final Message m2 = this.messageService.create();
 		m.setRecipient(h2);
 		m.setBody("test message");
@@ -82,7 +82,7 @@ public class MessageServiceTest extends AbstractTest {
 			 * COVERED DATA: 21%
 			 * */
 			{
-				"hacker2", m, null
+				"rookie2", m, null
 			},
 
 			/**
@@ -94,7 +94,7 @@ public class MessageServiceTest extends AbstractTest {
 			 */
 
 			{
-				"hacker2", m2, NullPointerException.class
+				"rookie2", m2, NullPointerException.class
 			},
 
 		};

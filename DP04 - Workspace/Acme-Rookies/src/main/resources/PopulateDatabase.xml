@@ -11,12 +11,12 @@
 	">
 	<!-- Customisation -->
 	<bean id="customisation1" class="domain.Customisation">
-		<property name="systemName" value="Acme Hacker-Rank" />
-		<property name="bannerUrl" value="https://i.imgur.com/7b8lu4b.png" />
+		<property name="systemName" value="Acme Rookie-Rank" />
+		<property name="bannerUrl" value="https://tinyurl.com/acme-rookies" />
 		<property name="welcomeMessageEng"
-			value="Welcome to Acme hacker Rank! We're IT hacker's favourite job marketplace!" />
+			value="Welcome to Acme Rookies! We're IT rookie's favourite job marketplace!" />
 		<property name="welcomeMessageEsp"
-			value="¡Bienvenidos a Acme Hacker Rank! �Somos el mercado de trabajo favorito de los profesionales de las TICs!" />
+			value="¡Bienvenidos a Acme Rookies! �Somos el mercado de trabajo favorito de los profesionales de las TICs!" />
 		<property name="phoneNumberCode" value="+34" />
 		<property name="spamWords">
 			<list>
@@ -56,12 +56,12 @@
 	</bean>
 
 	<bean id="userAccount2" class="security.UserAccount">
-		<property name="username" value="hacker1" />
-		<property name="password" value="2ba2a8ac968a7a2b0a7baa7f2fef18d2" />
+		<property name="username" value="rookie1" />
+		<property name="password" value="9701eb1802a4c63f51e1501512fbdd30" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="HACKER" />
+					<property name="authority" value="ROOKIE" />
 				</bean>
 			</list>
 		</property>
@@ -69,12 +69,12 @@
 	</bean>
 
 	<bean id="userAccount3" class="security.UserAccount">
-		<property name="username" value="hacker2" />
-		<property name="password" value="91af68b69a50a98dbc0800942540342c" />
+		<property name="username" value="rookie2" />
+		<property name="password" value="124be4fa2a59341a1d7e965ac49b2923" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
-					<property name="authority" value="HACKER" />
+					<property name="authority" value="ROOKIE" />
 				</bean>
 			</list>
 		</property>
@@ -155,7 +155,7 @@
 		<property name="phoneNumber" value="+34 676676676" />
 		<property name="computed" value="false" />
 		<property name="address" value="Address 1" />
-		<property name="vat" value="21" />
+		<property name="vat" value="10101010A" />
 		<property name="flagSpam" value="false" />
 		<property name="isBanned" value="false" />
 		<property name="userAccount" ref="userAccount1" />
@@ -185,7 +185,7 @@
 		<property name="email" value="admin2@"/>
 		<property name="phoneNumber" value="+34 123676676"/>
 		<property name="address" value="Address admin2"/>
-		<property name="vat" value="21"/>
+		<property name="vat" value="12121212A"/>
 		<property name="flagSpam" value="false"/>
 		<property name="isBanned" value="false"/>
 		<property name="userAccount" ref="userAccount6"/>
@@ -208,16 +208,16 @@
 		<property name="cvv" value="583"/>
 	</bean>
 
-	<bean id="hacker1" class="domain.Hacker">
-		<property name="name" value="Hacker" />
+	<bean id="rookie1" class="domain.Rookie">
+		<property name="name" value="Rookie" />
 		<property name="computed" value="false" />
 		<property name="finder" ref="finder1" />
 		<property name="surname" value="One" />
 		<property name="photo" value="http://www.foto.com" />
-		<property name="email" value="hacker1@hackerrank.com" />
+		<property name="email" value="rookie1@rookierank.com" />
 		<property name="phoneNumber" value="+34 611111111" />
 		<property name="address" value="Address 2" />
-		<property name="vat" value="21" />
+		<property name="vat" value="11111111R" />
 		<property name="flagSpam" value="false" />
 		<property name="isBanned" value="false" />
 		<property name="userAccount" ref="userAccount2" />
@@ -233,23 +233,23 @@
 			</list>
 		</property>
 		
-		<property name="holderName" value="Hacker One"/>
+		<property name="holderName" value="Rookie One"/>
 		<property name="makeName" value="VISA"/>
 		<property name="number" value="4128837079312553"/>
 		<property name="expirationYear" value="2022"/>
 		<property name="expirationMonth" value="4"/>
 		<property name="cvv" value="188"/>
 	</bean>
-	<bean id="hacker2" class="domain.Hacker">
-		<property name="name" value="Hacker" />
+	<bean id="rookie2" class="domain.Rookie">
+		<property name="name" value="Rookie" />
 		<property name="computed" value="false" />
 		<property name="finder" ref="finder2" />
 		<property name="surname" value="Two" />
 		<property name="photo" value="http://www.foto.com" />
-		<property name="email" value="hacker2@hackerrank.com" />
+		<property name="email" value="rookie2@rookierank.com" />
 		<property name="phoneNumber" value="+34 621111111" />
 		<property name="address" value="Address 3" />
-		<property name="vat" value="21" />
+		<property name="vat" value="22222222R" />
 		<property name="flagSpam" value="false" />
 		<property name="isBanned" value="false" />
 		<property name="userAccount" ref="userAccount3" />
@@ -264,7 +264,7 @@
 			</list>
 		</property>
 		
-		<property name="holderName" value="Hacker Two"/>
+		<property name="holderName" value="Rookie Two"/>
 		<property name="makeName" value="VISA"/>
 		<property name="number" value="4338709129661089"/>
 		<property name="expirationYear" value="2023"/>
@@ -280,7 +280,7 @@
 		<property name="email" value="auditor1@rookies.com" />
 		<property name="phoneNumber" value="+34 621232222" />
 		<property name="address" value="Address 4" />
-		<property name="vat" value="21" />
+		<property name="vat" value="33333333A" />
 		<property name="flagSpam" value="false" />
 		<property name="isBanned" value="false" />
 		<property name="userAccount" ref="userAccount7" />
@@ -309,7 +309,7 @@
 		<property name="email" value="auditor2@rookies.com" />
 		<property name="phoneNumber" value="+34 622232222" />
 		<property name="address" value="Address 2" />
-		<property name="vat" value="21" />
+		<property name="vat" value="44444444R" />
 		<property name="flagSpam" value="false" />
 		<property name="isBanned" value="false" />
 		<property name="userAccount" ref="userAccount8" />
@@ -334,10 +334,10 @@
 		  <property name="computed" value="false" /> 
 		  <property name="surname" value="One" /> 
 		  <property name="photo" value="http://www.foto.com" /> 
-		  <property name="email" value="company1@hackerrank.com" /> 
+		  <property name="email" value="company1@rookierank.com" /> 
 		  <property name="phoneNumber" value="+34 622222222" /> 
 		  <property name="address" value="Address 4" /> 
-		  <property name="vat" value="21" /> 
+		  <property name="vat" value="55555555C" /> 
 		  <property name="flagSpam" value="false" /> 
 		  <property name="isBanned" value="false" /> 
 		  <property name="userAccount" ref="userAccount4" /> 
@@ -364,10 +364,10 @@
 		<property name="computed" value="false" />
 		<property name="surname" value="Two" />
 		<property name="photo" value="http://www.foto.com" />
-		<property name="email" value="company2@hackerrank.com" />
+		<property name="email" value="company2@rookierank.com" />
 		<property name="phoneNumber" value="+34 622222233" />
 		<property name="address" value="Address 5" />
-		<property name="vat" value="21" />
+		<property name="vat" value="66666666C" />
 		<property name="flagSpam" value="false" />
 		<property name="isBanned" value="false" />
 		<property name="userAccount" ref="userAccount5" />
@@ -935,7 +935,7 @@
 		<property name="answerExplanation" value="" />
 		<property name="link" value="" />
 		<property name="position" ref="position1" />
-		<property name="hacker" ref="hacker1" />
+		<property name="rookie" ref="rookie1" />
 		<property name="problem" ref="problem1" />
 	</bean>
 	<bean id="application2" class="domain.Application">
@@ -944,7 +944,7 @@
 		<property name="answerExplanation" value="For solve the problem..." />
 		<property name="link" value="http://github.com/unknown/repo" />
 		<property name="position" ref="position2" />
-		<property name="hacker" ref="hacker1" />
+		<property name="rookie" ref="rookie1" />
 		<property name="problem" ref="problem1" />
 	</bean>
 	<bean id="application3" class="domain.Application">
@@ -953,7 +953,7 @@
 		<property name="answerExplanation" value="For solve the problem..." />
 		<property name="link" value="http://github.com/unknown/repo" />
 		<property name="position" ref="position3" />
-		<property name="hacker" ref="hacker1" />
+		<property name="rookie" ref="rookie1" />
 		<property name="problem" ref="problem1" />
 	</bean>
 	<bean id="application4" class="domain.Application">
@@ -962,7 +962,7 @@
 		<property name="answerExplanation" value="For solve the problem..." />
 		<property name="link" value="http://github.com/unknown/repo" />
 		<property name="position" ref="position4" />
-		<property name="hacker" ref="hacker1" />
+		<property name="rookie" ref="rookie1" />
 		<property name="problem" ref="problem1" />
 	</bean>
 	<bean id="application5" class="domain.Application">
@@ -971,7 +971,7 @@
 		<property name="answerExplanation" value="For solve the problem..." />
 		<property name="link" value="http://github.com/unknown/repo" />
 		<property name="position" ref="position5" />
-		<property name="hacker" ref="hacker1" />
+		<property name="rookie" ref="rookie1" />
 		<property name="problem" ref="problem1" />
 	</bean>
 	<bean id="application6" class="domain.Application">
@@ -980,7 +980,7 @@
 		<property name="answerExplanation" value="For solve the problem..." />
 		<property name="link" value="http://github.com/unknown/repo" />
 		<property name="position" ref="position6" />
-		<property name="hacker" ref="hacker1" />
+		<property name="rookie" ref="rookie1" />
 		<property name="problem" ref="problem1" />
 	</bean>
 	<bean id="application7" class="domain.Application">
@@ -989,7 +989,7 @@
 		<property name="answerExplanation" value="For solve the problem..." />
 		<property name="link" value="http://github.com/unknown/repo" />
 		<property name="position" ref="position7" />
-		<property name="hacker" ref="hacker1" />
+		<property name="rookie" ref="rookie1" />
 		<property name="problem" ref="problem1" />
 	</bean>
 
@@ -999,7 +999,7 @@
 		<property name="answerExplanation" value="" />
 		<property name="link" value="" />
 		<property name="position" ref="position8" />
-		<property name="hacker" ref="hacker2" />
+		<property name="rookie" ref="rookie2" />
 		<property name="problem" ref="problem11" />
 	</bean>
 	<bean id="application9" class="domain.Application">
@@ -1008,7 +1008,7 @@
 		<property name="answerExplanation" value="For solve the problem..." />
 		<property name="link" value="http://github.com/unknown/repo" />
 		<property name="position" ref="position9" />
-		<property name="hacker" ref="hacker2" />
+		<property name="rookie" ref="rookie2" />
 		<property name="problem" ref="problem11" />
 		
 	</bean>
@@ -1018,7 +1018,7 @@
 		<property name="answerExplanation" value="For solve the problem..." />
 		<property name="link" value="http://github.com/unknown/repo" />
 		<property name="position" ref="position10" />
-		<property name="hacker" ref="hacker2" />
+		<property name="rookie" ref="rookie2" />
 		<property name="problem" ref="problem11" />
 	</bean>
 	<bean id="application11" class="domain.Application">
@@ -1027,7 +1027,7 @@
 		<property name="answerExplanation" value="For solve the problem..." />
 		<property name="link" value="http://github.com/unknown/repo" />
 		<property name="position" ref="position11" />
-		<property name="hacker" ref="hacker2" />
+		<property name="rookie" ref="rookie2" />
 		<property name="problem" ref="problem11" />
 	</bean>
 	<bean id="application12" class="domain.Application">
@@ -1036,7 +1036,7 @@
 		<property name="answerExplanation" value="For solve the problem..." />
 		<property name="link" value="http://github.com/unknown/repo" />
 		<property name="position" ref="position12" />
-		<property name="hacker" ref="hacker2" />
+		<property name="rookie" ref="rookie2" />
 		<property name="problem" ref="problem11" />
 	</bean>
 	<bean id="application13" class="domain.Application">
@@ -1045,7 +1045,7 @@
 		<property name="answerExplanation" value="For solve the problem..." />
 		<property name="link" value="http://github.com/unknown/repo" />
 		<property name="position" ref="position13" />
-		<property name="hacker" ref="hacker2" />
+		<property name="rookie" ref="rookie2" />
 		<property name="problem" ref="problem11" />
 	</bean>
 	<bean id="application14" class="domain.Application">
@@ -1054,7 +1054,7 @@
 		<property name="answerExplanation" value="For solve the problem..." />
 		<property name="link" value="http://github.com/unknown/repo" />
 		<property name="position" ref="position14" />
-		<property name="hacker" ref="hacker2" />
+		<property name="rookie" ref="rookie2" />
 		<property name="problem" ref="problem11" />
 	</bean>
 
@@ -1098,28 +1098,28 @@
 <bean id="curricula1" class="domain.Curricula">
 	<property name="name" value="Curricula1"/>
 	<property name="isCopy" value="false"/>
-	<property name="hacker" ref="hacker1"/>
+	<property name="rookie" ref="rookie1"/>
 	<property name="application" ref="application1"/>
 </bean>
 
 <bean id="curricula2" class="domain.Curricula">
 	<property name="name" value="Curricula2"/>
 	<property name="isCopy" value="false"/>
-	<property name="hacker" ref="hacker1"/>
+	<property name="rookie" ref="rookie1"/>
 	<property name="application" ref="application2"/>
 </bean>
 
 <bean id="curricula3" class="domain.Curricula">
 	<property name="name" value="Curricula3"/>
 	<property name="isCopy" value="false"/>
-	<property name="hacker" ref="hacker2"/>
+	<property name="rookie" ref="rookie2"/>
 	<property name="application" ref="application3"/>
 </bean>
 
 <bean id="curricula4" class="domain.Curricula">
 	<property name="name" value="Curricula4"/>
 	<property name="isCopy" value="false"/>
-	<property name="hacker" ref="hacker2"/>
+	<property name="rookie" ref="rookie2"/>
 	<property name="application" ref="application4"/>
 </bean>
 
@@ -1400,7 +1400,7 @@
 		<property name="flagSpam" value="FALSE" />
 		<property name="moment" value="10/10/2018 00:00:00" />
 		<property name="recipient" ref="company1"/>
-		<property name="sender" ref="hacker1" />
+		<property name="sender" ref="rookie1" />
 		<property name="subject" value="Prueba" />
 		<property name="tag" value="Prueba" />
 	</bean>
@@ -1469,10 +1469,10 @@
 		  <property name="computed" value="false" /> 
 		  <property name="surname" value="One" /> 
 		  <property name="photo" value="http://www.foto.com" /> 
-		  <property name="email" value="provider1@hackerrank.com" /> 
+		  <property name="email" value="provider1@rookierank.com" /> 
 		  <property name="phoneNumber" value="+34 654654654" /> 
 		  <property name="address" value="Address of the provider" /> 
-		  <property name="vat" value="21" /> 
+		  <property name="vat" value="77777776P" /> 
 		  <property name="flagSpam" value="false" /> 
 		  <property name="isBanned" value="false" /> 
 		  <property name="userAccount" ref="userAccount9" /> 
@@ -1517,10 +1517,10 @@
 		  <property name="computed" value="false" /> 
 		  <property name="surname" value="One" /> 
 		  <property name="photo" value="http://www.foto.com" /> 
-		  <property name="email" value="provider2@hackerrank.com" /> 
+		  <property name="email" value="provider2@rookierank.com" /> 
 		  <property name="phoneNumber" value="+34 654654654" /> 
 		  <property name="address" value="Address of the provider" /> 
-		  <property name="vat" value="21" /> 
+		  <property name="vat" value="77777777P" /> 
 		  <property name="flagSpam" value="false" /> 
 		  <property name="isBanned" value="false" /> 
 		  <property name="userAccount" ref="userAccount10" /> 
@@ -1645,10 +1645,10 @@
 		  <property name="computed" value="false" /> 
 		  <property name="surname" value="Three" /> 
 		  <property name="photo" value="http://www.foto.com" /> 
-		  <property name="email" value="provider@hackerrank.com" /> 
+		  <property name="email" value="provider@rookierank.com" /> 
 		  <property name="phoneNumber" value="+34 654654654" /> 
 		  <property name="address" value="Address of the provider" /> 
-		  <property name="vat" value="21" /> 
+		  <property name="vat" value="88888888P" /> 
 		  <property name="flagSpam" value="false" /> 
 		  <property name="isBanned" value="false" /> 
 		  <property name="userAccount" ref="userAccount11" /> 
@@ -1673,10 +1673,10 @@
 		  <property name="computed" value="false" /> 
 		  <property name="surname" value="One" /> 
 		  <property name="photo" value="http://www.foto.com" /> 
-		  <property name="email" value="provider@hackerrank.com" /> 
+		  <property name="email" value="provider@rookierank.com" /> 
 		  <property name="phoneNumber" value="+34 654654654" /> 
 		  <property name="address" value="Address of the provider" /> 
-		  <property name="vat" value="21" /> 
+		  <property name="vat" value="99999999P" /> 
 		  <property name="flagSpam" value="false" /> 
 		  <property name="isBanned" value="true" /> 
 		  <property name="userAccount" ref="userAccount12" /> 

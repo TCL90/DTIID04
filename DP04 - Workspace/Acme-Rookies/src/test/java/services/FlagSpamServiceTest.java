@@ -24,7 +24,7 @@ public class FlagSpamServiceTest extends AbstractTest {
 	private AdministratorService	administratorService;
 
 	@Autowired
-	private HackerService			hackerService;
+	private RookieService			rookieService;
 
 
 	/**
@@ -76,8 +76,8 @@ public class FlagSpamServiceTest extends AbstractTest {
 		try {
 			this.authenticate(username);
 			this.administratorService.flagSpamProccess();
-			final int hackerId = this.getEntityId("hacker1");
-			Assert.isTrue(this.hackerService.findOne(hackerId).getFlagSpam() == false);
+			final int rookieId = this.getEntityId("rookie1");
+			Assert.isTrue(this.rookieService.findOne(rookieId).getFlagSpam() == false);
 			this.administratorService.flush();
 
 			this.unauthenticate();

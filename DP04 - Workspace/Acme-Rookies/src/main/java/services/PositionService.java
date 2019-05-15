@@ -73,7 +73,7 @@ public class PositionService {
 		return res;
 	}
 
-	private boolean has2Problem(final Position position) {
+	public boolean has2Problem(final Position position) {
 		Boolean res = true;
 		if (position.isFinalMode())
 			if (position.getProblems().size() < 2)
@@ -127,9 +127,9 @@ public class PositionService {
 	public List<Position> getPositionByProblemId(final int id) {
 		return this.positionRepository.findByProblemId(id);
 	}
-	private boolean checkHacker() {
+	private boolean checkRookie() {
 		final Authority a = new Authority();
-		a.setAuthority(Authority.HACKER);
+		a.setAuthority(Authority.ROOKIE);
 		final UserAccount user = LoginService.getPrincipal();
 		return user.getAuthorities().contains(a);
 	}
@@ -139,27 +139,27 @@ public class PositionService {
 	}
 
 	public Collection<Position> finderKeyword(final String keyword) {
-		Assert.isTrue(this.checkHacker());
+		Assert.isTrue(this.checkRookie());
 		return this.positionRepository.finderKeyword(keyword);
 	}
 
 	public Collection<Position> finderDeadline(final Date deadline) {
-		Assert.isTrue(this.checkHacker());
+		Assert.isTrue(this.checkRookie());
 		return this.positionRepository.finderDeadline(deadline);
 	}
 
 	public Collection<Position> finderMaxDeadline(final Date maxDeadline) {
-		Assert.isTrue(this.checkHacker());
+		Assert.isTrue(this.checkRookie());
 		return this.positionRepository.finderMaxDeadline(maxDeadline);
 	}
 
 	public Collection<Position> finderSalary(final Integer salary) {
-		Assert.isTrue(this.checkHacker());
+		Assert.isTrue(this.checkRookie());
 		return this.positionRepository.finderSalary(salary);
 	}
 
 	public Set<Position> finderResults(final Finder finder) {
-		Assert.isTrue(this.checkHacker());
+		Assert.isTrue(this.checkRookie());
 		final Set<Position> res = new HashSet<>();
 		if ((finder.getKeyword() == null || finder.getKeyword() == "") && finder.getDeadline() == null && finder.getMaximumDeadline() == null && finder.getMinimumSalary() == null)
 			res.addAll(this.findPositionFinalMode());

@@ -14,6 +14,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
+import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -28,6 +29,7 @@ public class Finder extends DomainEntity {
 	private Collection<Position>	positions;
 
 
+	@SafeHtml
 	public String getKeyword() {
 		return this.keyword;
 	}

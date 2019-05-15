@@ -16,7 +16,7 @@ import repositories.EducationDataRepository;
 import security.Authority;
 import domain.Curricula;
 import domain.EducationData;
-import domain.Hacker;
+import domain.Rookie;
 
 @Service
 @Transactional
@@ -29,7 +29,7 @@ public class EducationDataService {
 	private EducationDataRepository	educationDataRepository;
 
 	@Autowired
-	private HackerService			hackerService;
+	private RookieService			rookieService;
 
 	@Autowired
 	private CurriculaService		curriculaService;
@@ -37,7 +37,7 @@ public class EducationDataService {
 
 	public List<EducationData> findByCurriculaId(final int curriculaId) {
 		this.checkConditions();
-		final List<Curricula> lc = this.curriculaService.getCurriculasFromHacker();
+		final List<Curricula> lc = this.curriculaService.getCurriculasFromRookie();
 		final List<EducationData> res = this.educationDataRepository.findEducationDataByCurriculaId(curriculaId);
 		for (final EducationData ed : res)
 			Assert.isTrue(lc.contains(ed.getCurricula()));
@@ -45,16 +45,16 @@ public class EducationDataService {
 	}
 
 	private void checkConditions() {
-		final Hacker h = this.hackerService.findOnePrincipal();
+		final Rookie h = this.rookieService.findOnePrincipal();
 		final Authority a = new Authority();
-		a.setAuthority(Authority.HACKER);
+		a.setAuthority(Authority.ROOKIE);
 		Assert.isTrue(h.getUserAccount().getAuthorities().contains(a));
 		Assert.isTrue(!h.getIsBanned());
 	}
 
 	public EducationData create(final int curriculaId) {
 		final Curricula c = this.curriculaService.findOne(curriculaId);
-		Assert.isTrue(this.curriculaService.getCurriculasFromHacker().contains(c));
+		Assert.isTrue(this.curriculaService.getCurriculasFromRookie().contains(c));
 		Assert.isTrue(this.curriculaService.findOne(curriculaId).getIsCopy() == false);
 
 		final EducationData res = new EducationData();
@@ -65,15 +65,15 @@ public class EducationDataService {
 
 	public EducationData findOne(final int id) {
 		this.checkConditions();
-		final Hacker h = this.hackerService.findOnePrincipal();
+		final Rookie h = this.rookieService.findOnePrincipal();
 		final EducationData p = this.educationDataRepository.findOne(id);
-		Assert.isTrue(h == p.getCurricula().getHacker());
+		Assert.isTrue(h == p.getCurricula().getRookie());
 		return p;
 	}
 
 	public void save(final EducationData e) {
 		this.checkConditions();
-		Assert.isTrue(e.getCurricula().getHacker().getId() == this.hackerService.findOnePrincipal().getId());
+		Assert.isTrue(e.getCurricula().getRookie().getId() == this.rookieService.findOnePrincipal().getId());
 
 		this.educationDataRepository.save(e);
 	}
@@ -81,7 +81,7 @@ public class EducationDataService {
 	public void delete(final EducationData p) {
 		this.checkConditions();
 		Assert.isTrue(!p.getCurricula().getIsCopy());
-		Assert.isTrue(this.educationDataRepository.findOne(p.getId()).getCurricula().getHacker() == this.hackerService.findOnePrincipal());
+		Assert.isTrue(this.educationDataRepository.findOne(p.getId()).getCurricula().getRookie() == this.rookieService.findOnePrincipal());
 
 		this.educationDataRepository.delete(p);
 	}

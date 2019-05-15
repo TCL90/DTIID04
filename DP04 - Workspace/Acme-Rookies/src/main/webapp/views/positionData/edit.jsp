@@ -8,7 +8,7 @@
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 
-<form:form action="positionData/hacker/edit.do"
+<form:form action="positionData/rookie/edit.do"
 	modelAttribute="positionData">
 	<form:hidden path="id" />
 	<jstl:if test="${positionData.id==0 }">
@@ -63,12 +63,12 @@
 	</jstl:if>
 	<jstl:if test="${positionData.curricula.id!=null }">
 	<input type="button" name="cancel"
-		onclick="javascript: window.location.replace('curricula/hacker/show.do?curriculaId=${positionData.curricula.id}')"
+		onclick="javascript: window.location.replace('curricula/rookie/show.do?curriculaId=${positionData.curricula.id}')"
 		value="<spring:message code="positionData.edit.cancel" />" />
 	</jstl:if>
 	<jstl:if test="${positionData.curricula.id==null }">
 	<input type="button" name="cancel"
-		onclick="javascript: window.location.replace('curricula/hacker/list.do')"
+		onclick="javascript: window.location.replace('curricula/rookie/list.do')"
 		value="<spring:message code="positionData.edit.cancel" />" />
 	</jstl:if>
 </form:form>

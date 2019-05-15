@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -17,6 +18,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -57,6 +59,7 @@ public class Position extends DomainEntity {
 	}
 
 	@NotBlank
+	@SafeHtml
 	public String getTitle() {
 		return this.title;
 	}
@@ -66,6 +69,7 @@ public class Position extends DomainEntity {
 	}
 
 	@NotBlank
+	@SafeHtml
 	public String getDescription() {
 		return this.description;
 	}
@@ -101,6 +105,7 @@ public class Position extends DomainEntity {
 		this.technologies = technologies;
 	}
 	@NotBlank
+	@SafeHtml
 	public String getProfile() {
 		return this.profile;
 	}
@@ -126,6 +131,8 @@ public class Position extends DomainEntity {
 		this.finalMode = finalMode;
 	}
 	@NotBlank
+	@Column(unique = true)
+	@SafeHtml
 	public String getTicker() {
 		return this.ticker;
 	}

@@ -8,11 +8,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import domain.Application;
-import domain.Hacker;
+import domain.Rookie;
 
 @Repository
 public interface ApplicationRepository extends JpaRepository<Application, Integer> {
 
-	@Query("select a from Application a where ?1 = a.hacker order by a.status")
-	List<Application> getApplicationsByHacker(Hacker p);
+	@Query("select a from Application a where ?1 = a.rookie order by a.status")
+	List<Application> getApplicationsByRookie(Rookie p);
 }

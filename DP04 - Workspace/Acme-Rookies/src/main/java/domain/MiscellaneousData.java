@@ -8,12 +8,14 @@ import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
 
 @Entity
 @Access(AccessType.PROPERTY)
 public class MiscellaneousData extends DomainEntity {
 
 	@NotBlank
+	@SafeHtml
 	public String getFreeText() {
 		return this.freeText;
 	}
@@ -21,7 +23,7 @@ public class MiscellaneousData extends DomainEntity {
 	public void setFreeText(final String freeText) {
 		this.freeText = freeText;
 	}
-
+	@SafeHtml
 	public String getAttachments() {
 		return this.attachments;
 	}

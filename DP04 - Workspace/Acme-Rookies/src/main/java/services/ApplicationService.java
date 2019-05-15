@@ -21,7 +21,7 @@ import security.LoginService;
 import security.UserAccount;
 import domain.Application;
 import domain.Company;
-import domain.Hacker;
+import domain.Rookie;
 import domain.Position;
 import domain.Problem;
 
@@ -39,14 +39,14 @@ public class ApplicationService {
 	private PositionService			ps;
 
 	@Autowired
-	private HackerService			hs;
+	private RookieService			hs;
 
 	@Autowired
 	private CompanyRepository		cr;
 
 
-	public List<Application> getApplicationsByHacker(final Hacker h) {
-		return this.ar.getApplicationsByHacker(h);
+	public List<Application> getApplicationsByRookie(final Rookie h) {
+		return this.ar.getApplicationsByRookie(h);
 	}
 
 	public Application findOne(final int id) {
@@ -86,20 +86,20 @@ public class ApplicationService {
 		final Problem p = this.getRandomProblemByApplication(a);
 		a.setProblem(p);
 
-		Assert.isTrue(this.checkHackerApplications(a.getPosition().getId()));
+		Assert.isTrue(this.checkRookieApplications(a.getPosition().getId()));
 
 		final Application res = this.ar.save(a);
 		this.ar.flush();
 		return res;
 
 	}
-	public boolean checkHackerApplications(final int positionId) {
+	public boolean checkRookieApplications(final int positionId) {
 		boolean result = true;
 		final Position p = this.ps.findOne(positionId);
-		final Hacker h = this.hs.getHackerByUserAccount(LoginService.getPrincipal().getId());
-		final Collection<Application> appsByHacker = this.getApplicationsByHacker(h);
+		final Rookie h = this.hs.getRookieByUserAccount(LoginService.getPrincipal().getId());
+		final Collection<Application> appsByRookie = this.getApplicationsByRookie(h);
 
-		for (final Application app : appsByHacker)
+		for (final Application app : appsByRookie)
 			if (app.getPosition().equals(p) && !app.getStatus().equals("REJECTED")) {
 				result = false;
 				return result;
@@ -122,7 +122,7 @@ public class ApplicationService {
 		return x;
 	}
 
-	public Application reconstructSolveHacker(final Application application, final BindingResult binding) {
+	public Application reconstructSolveRookie(final Application application, final BindingResult binding) {
 		Application res;
 
 		if (application.getId() == 0)

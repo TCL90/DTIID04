@@ -10,23 +10,23 @@
 
 <tiles-definitions>
 
-<definition name="application/hacker/list" extends="master.page">
+<definition name="application/rookie/list" extends="master.page">
 		<put-attribute name="title" value="Lista de aplicaciones" />
 		<put-attribute name="body" value="/views/application/list.jsp" />
 	</definition>
 
 
-	<definition name="application/hacker/solve" extends="master.page">
+	<definition name="application/rookie/solve" extends="master.page">
 		<put-attribute name="title" value="Resuelve el problema" />
 		<put-attribute name="body" value="/views/application/solve.jsp" />
 	</definition>
 
-		<definition name="application/hacker/create" extends="master.page">
+		<definition name="application/rookie/create" extends="master.page">
 		<put-attribute name="title" value="Solicitar un puesto" />
 		<put-attribute name="body" value="/views/application/create.jsp" />
 	</definition>
 
-		<definition name="application/hacker/show" extends="master.page">
+		<definition name="application/rookie/show" extends="master.page">
 		<put-attribute name="title" value="Mostrar aplicación" />
 		<put-attribute name="body" value="/views/application/show.jsp" />
 	</definition>

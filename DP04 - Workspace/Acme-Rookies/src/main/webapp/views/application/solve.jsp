@@ -23,7 +23,7 @@
 		</fieldset>
 <br/>
 
-<form:form action="application/hacker/solve.do" 
+<form:form action="application/rookie/solve.do" 
 modelAttribute="application">
 <form:hidden path="id" />
 
@@ -48,7 +48,7 @@ modelAttribute="application">
 
 	<input type="submit" name="save" value="<spring:message code="application.edit.save" />" />
 	<input type="button" name="cancel"
-		onclick="javascript: window.location.replace('application/hacker/list.do')"
+		onclick="javascript: window.location.replace('application/rookie/list.do')"
 		value="<spring:message code="application.cancel" />" />	
 		
 		

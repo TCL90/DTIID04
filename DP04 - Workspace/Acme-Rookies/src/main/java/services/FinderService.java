@@ -23,7 +23,7 @@ import security.LoginService;
 import security.UserAccount;
 import domain.Customisation;
 import domain.Finder;
-import domain.Hacker;
+import domain.Rookie;
 import domain.Position;
 
 @Service
@@ -34,7 +34,7 @@ public class FinderService {
 	FinderRepository		finderRepository;
 
 	@Autowired
-	HackerService			hackerService;
+	RookieService			rookieService;
 
 	@Autowired
 	PositionService			positionService;
@@ -43,16 +43,16 @@ public class FinderService {
 	CustomisationService	customisationService;
 
 
-	private boolean checkHacker() {
+	private boolean checkRookie() {
 		final Authority a = new Authority();
-		a.setAuthority(Authority.HACKER);
+		a.setAuthority(Authority.ROOKIE);
 		final UserAccount user = LoginService.getPrincipal();
 		return user.getAuthorities().contains(a);
 	}
 
 	public Finder getFinder() {
-		Assert.isTrue(this.checkHacker());
-		final Hacker a = this.hackerService.findOnePrincipal();
+		Assert.isTrue(this.checkRookie());
+		final Rookie a = this.rookieService.findOnePrincipal();
 		return a.getFinder();
 	}
 
@@ -61,7 +61,7 @@ public class FinderService {
 	}
 	//Check cached hours
 	public boolean checkCache(final Finder finder) {
-		Assert.isTrue(this.checkHacker());
+		Assert.isTrue(this.checkRookie());
 		boolean res = false;
 		final Date today = Calendar.getInstance().getTime();
 		final Date moment = finder.getMoment();
@@ -77,7 +77,7 @@ public class FinderService {
 	public Finder save(final Finder finder) {
 		final Finder res = finder;
 		if (finder.getId() != 0) {
-			final Hacker principal = this.hackerService.findOnePrincipal();
+			final Rookie principal = this.rookieService.findOnePrincipal();
 			Assert.isTrue(principal.getFinder().getId() == finder.getId());
 			final Customisation cust = this.customisationService.getCustomisation();
 			final int resultsNumber = cust.getResultsNumber();
@@ -95,7 +95,7 @@ public class FinderService {
 		return res;
 	}
 	public Finder clear(final Finder finder) {
-		Assert.isTrue(this.checkHacker());
+		Assert.isTrue(this.checkRookie());
 		Assert.notNull(finder);
 		final Finder res = finder;
 		res.setDeadline(null);
@@ -116,7 +116,7 @@ public class FinderService {
 
 	public Finder reconstruct(final Finder finder, final BindingResult binding) {
 		Finder res;
-		Assert.isTrue(this.checkHacker());
+		Assert.isTrue(this.checkRookie());
 		if (finder.getId() == 0)
 			res = finder;
 		else {

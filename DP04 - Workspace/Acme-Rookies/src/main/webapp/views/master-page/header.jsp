@@ -72,15 +72,15 @@
 			</li>
 		</security:authorize>
 		
-		<security:authorize access="hasRole('HACKER')">
-			<li><a class="fNiv"><spring:message	code="master.page.hacker" /></a>
+		<security:authorize access="hasRole('ROOKIE')">
+			<li><a class="fNiv"><spring:message	code="master.page.rookie" /></a>
 				<ul>
 					<li class="arrow"></li>
-					<li><a href="hacker/hacker/edit.do"><spring:message code="master.page.edit.hacker" /></a></li>
-					<li><a href="finder/hacker/show.do"><spring:message code="master.page.finder" /></a></li>	
-					<li><a href="curricula/hacker/list.do"><spring:message code="master.page.curricula.list"/></a></li>
-					<li><a href="position/hacker/list.do"><spring:message code="master.page.hacker.list"/></a></li>
-					<li><a href="application/hacker/list.do"><spring:message code="master.page.hacker.applications"/></a></li>
+					<li><a href="rookie/rookie/edit.do"><spring:message code="master.page.edit.rookie" /></a></li>
+					<li><a href="finder/rookie/show.do"><spring:message code="master.page.finder" /></a></li>	
+					<li><a href="curricula/rookie/list.do"><spring:message code="master.page.curricula.list"/></a></li>
+					<li><a href="position/rookie/list.do"><spring:message code="master.page.rookie.list"/></a></li>
+					<li><a href="application/rookie/list.do"><spring:message code="master.page.rookie.applications"/></a></li>
 					
 				</ul>
 			</li>
@@ -126,7 +126,7 @@
 			<a class="fNiv" href="company/register.do"><spring:message code="master.page.register.company" /></a>
 			</li>
 			<li>
-			<a class="fNiv" href="hacker/register.do"><spring:message code="master.page.register.hacker" /></a>
+			<a class="fNiv" href="rookie/register.do"><spring:message code="master.page.register.rookie" /></a>
 			</li>
 			<li>
 			<a class="fNiv" href="provider/register.do"><spring:message code="master.page.register.provider" /></a>

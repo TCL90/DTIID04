@@ -12,6 +12,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.Range;
+import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
 
 @Entity
@@ -52,6 +53,7 @@ public class Customisation extends DomainEntity {
 	}
 
 	@NotBlank
+	@SafeHtml
 	public String getSystemName() {
 		return this.systemName;
 	}
@@ -70,6 +72,7 @@ public class Customisation extends DomainEntity {
 		this.bannerUrl = bannerUrl;
 	}
 	@NotBlank
+	@SafeHtml
 	public String getWelcomeMessageEng() {
 		return this.welcomeMessageEng;
 	}
@@ -78,6 +81,7 @@ public class Customisation extends DomainEntity {
 		this.welcomeMessageEng = welcomeMessageEng;
 	}
 	@NotBlank
+	@SafeHtml
 	public String getWelcomeMessageEsp() {
 		return this.welcomeMessageEsp;
 	}
@@ -86,6 +90,7 @@ public class Customisation extends DomainEntity {
 		this.welcomeMessageEsp = welcomeMessageEsp;
 	}
 	@NotBlank
+	@SafeHtml
 	public String getPhoneNumberCode() {
 		return this.phoneNumberCode;
 	}

@@ -17,7 +17,7 @@
 	<display:column property="name" titleKey="curricula.name"  />
 	
 	<display:column>
-			<a href="curricula/hacker/show.do?curriculaId=${row.id}">
+			<a href="curricula/rookie/show.do?curriculaId=${row.id}">
 			<spring:message code="curricula.show" />
 			</a>
 	</display:column>
@@ -26,7 +26,7 @@
 
 	<jstl:if test="${!row.isCopy }">
 
-	<a href="curricula/hacker/edit.do?curriculaId=${row.id}">
+	<a href="curricula/rookie/edit.do?curriculaId=${row.id}">
 			<spring:message code="curricula.edit.name" />
 			</a>
 	</jstl:if>
@@ -36,6 +36,6 @@
 		
 </display:table>
 
-<a href="curricula/hacker/create.do">
+<a href="curricula/rookie/create.do">
 			<spring:message code="curricula.create" />
 			</a>

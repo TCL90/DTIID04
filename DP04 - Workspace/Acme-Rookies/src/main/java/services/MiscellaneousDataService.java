@@ -15,7 +15,7 @@ import org.springframework.validation.Validator;
 import repositories.MiscellaneousDataRepository;
 import security.Authority;
 import domain.Curricula;
-import domain.Hacker;
+import domain.Rookie;
 import domain.MiscellaneousData;
 
 @Service
@@ -29,7 +29,7 @@ public class MiscellaneousDataService {
 	private MiscellaneousDataRepository	miscellaneousDataRepository;
 
 	@Autowired
-	private HackerService				hackerService;
+	private RookieService				rookieService;
 
 	@Autowired
 	private CurriculaService			curriculaService;
@@ -37,7 +37,7 @@ public class MiscellaneousDataService {
 
 	public List<MiscellaneousData> findByCurriculaId(final int curriculaId) {
 		this.checkConditions();
-		final List<Curricula> lc = this.curriculaService.getCurriculasFromHacker();
+		final List<Curricula> lc = this.curriculaService.getCurriculasFromRookie();
 		final List<MiscellaneousData> res = this.miscellaneousDataRepository.findMiscellaneousDataByCurriculaId(curriculaId);
 		for (final MiscellaneousData ed : res)
 			Assert.isTrue(lc.contains(ed.getCurricula()));
@@ -45,16 +45,16 @@ public class MiscellaneousDataService {
 	}
 
 	private void checkConditions() {
-		final Hacker h = this.hackerService.findOnePrincipal();
+		final Rookie h = this.rookieService.findOnePrincipal();
 		final Authority a = new Authority();
-		a.setAuthority(Authority.HACKER);
+		a.setAuthority(Authority.ROOKIE);
 		Assert.isTrue(h.getUserAccount().getAuthorities().contains(a));
 		Assert.isTrue(!h.getIsBanned());
 	}
 
 	public MiscellaneousData create(final int curriculaId) {
 		final Curricula c = this.curriculaService.findOne(curriculaId);
-		Assert.isTrue(this.curriculaService.getCurriculasFromHacker().contains(c));
+		Assert.isTrue(this.curriculaService.getCurriculasFromRookie().contains(c));
 		Assert.isTrue(this.curriculaService.findOne(curriculaId).getIsCopy() == false);
 
 		final MiscellaneousData res = new MiscellaneousData();
@@ -65,15 +65,15 @@ public class MiscellaneousDataService {
 
 	public MiscellaneousData findOne(final int id) {
 		this.checkConditions();
-		final Hacker h = this.hackerService.findOnePrincipal();
+		final Rookie h = this.rookieService.findOnePrincipal();
 		final MiscellaneousData m = this.miscellaneousDataRepository.findOne(id);
-		Assert.isTrue(h == m.getCurricula().getHacker());
+		Assert.isTrue(h == m.getCurricula().getRookie());
 		return m;
 	}
 
 	public void save(final MiscellaneousData e) {
 		this.checkConditions();
-		Assert.isTrue(e.getCurricula().getHacker().getId() == this.hackerService.findOnePrincipal().getId());
+		Assert.isTrue(e.getCurricula().getRookie().getId() == this.rookieService.findOnePrincipal().getId());
 
 		this.miscellaneousDataRepository.save(e);
 	}
@@ -81,7 +81,7 @@ public class MiscellaneousDataService {
 	public void delete(final MiscellaneousData p) {
 		this.checkConditions();
 		Assert.isTrue(p.getCurricula().getIsCopy() == false);
-		Assert.isTrue(this.miscellaneousDataRepository.findOne(p.getId()).getCurricula().getHacker() == this.hackerService.findOnePrincipal());
+		Assert.isTrue(this.miscellaneousDataRepository.findOne(p.getId()).getCurricula().getRookie() == this.rookieService.findOnePrincipal());
 
 		this.miscellaneousDataRepository.delete(p);
 	}

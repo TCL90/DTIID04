@@ -88,7 +88,7 @@ public class ApplicationCompanyController {
 				//Send the message (A-Level requirement)
 				final Actor actual = this.actorService.findByPrincipal();
 				this.messageService.sendApplicationStatusChangeMessage(actual, a.getStatus());
-				this.messageService.sendApplicationStatusChangeMessage(a.getHacker(), a.getStatus());
+				this.messageService.sendApplicationStatusChangeMessage(a.getRookie(), a.getStatus());
 				//END
 			} catch (final Throwable oops) {
 				result = this.createEditModelAndView(application, "application.commit.error");

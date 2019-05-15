@@ -65,7 +65,7 @@ public class AdministratorServiceTest extends AbstractTest {
 		nc.setPhoto("http://www.sample.com");
 		nc.setSurname("Sample surname");
 		nc.setUserAccount(ua);
-		nc.setVat(12);
+		nc.setVat("34343434D");
 		nc.setCvv(123);
 		nc.setExpirationMonth(12);
 		nc.setExpirationYear(2019);
@@ -91,7 +91,7 @@ public class AdministratorServiceTest extends AbstractTest {
 		nc2.setPhoto("sample");
 		nc2.setSurname("");
 		nc2.setUserAccount(ua2);
-		nc2.setVat(12);
+		nc2.setVat("34343434D");
 		nc2.setCvv(123);
 		nc2.setExpirationMonth(23);
 		nc2.setExpirationYear(1);

@@ -8,6 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
 
 @Entity
@@ -22,6 +23,7 @@ public class PersonalData extends DomainEntity {
 	public Curricula	curricula;
 
 
+	@SafeHtml
 	@NotBlank
 	public String getFullName() {
 		return this.fullName;
@@ -31,6 +33,7 @@ public class PersonalData extends DomainEntity {
 		this.fullName = fullName;
 	}
 	@NotBlank
+	@SafeHtml
 	public String getStatement() {
 		return this.statement;
 	}
@@ -39,6 +42,7 @@ public class PersonalData extends DomainEntity {
 		this.statement = statement;
 	}
 	@NotBlank
+	@SafeHtml
 	public String getPhoneNumber() {
 		return this.phoneNumber;
 	}

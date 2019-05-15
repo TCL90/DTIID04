@@ -24,7 +24,7 @@ public class PersonalDataServiceTest extends AbstractTest {
 
 	//SUT
 	@Autowired
-	HackerService		hackerService;
+	RookieService		rookieService;
 
 	@Autowired
 	CurriculaService	curriculaService;
@@ -43,7 +43,7 @@ public class PersonalDataServiceTest extends AbstractTest {
 
 	@Test
 	public void createPersonalData() {
-		this.authenticate("hacker1");
+		this.authenticate("rookie1");
 		final PersonalData pd = this.personalDataService.create(this.getEntityId("curricula1"));
 		pd.setFullName("Pepe Gonzalez");
 		pd.setGitProfile("http://adsasf.com");
@@ -69,7 +69,7 @@ public class PersonalDataServiceTest extends AbstractTest {
 			 * COVERED DATA: 10%
 			 * */
 			{
-				"hacker1", pd, null
+				"rookie1", pd, null
 			},
 
 			/**
@@ -82,7 +82,7 @@ public class PersonalDataServiceTest extends AbstractTest {
 			 */
 
 			{
-				"hacker1", pd2, ConstraintViolationException.class
+				"rookie1", pd2, ConstraintViolationException.class
 			}
 
 		};
@@ -99,7 +99,7 @@ public class PersonalDataServiceTest extends AbstractTest {
 	 * */
 	@Test
 	public void editpersonalData() {
-		this.authenticate("hacker1");
+		this.authenticate("rookie1");
 
 		final List<PersonalData> edL = this.personalDataService.findByCurriculaId(this.getEntityId("curricula1"));
 		final PersonalData pd = edL.get(0);
@@ -116,7 +116,7 @@ public class PersonalDataServiceTest extends AbstractTest {
 			 * COVERED DATA: 10%
 			 * */
 			{
-				"hacker1", pd, null
+				"rookie1", pd, null
 			}
 		};
 
@@ -133,7 +133,7 @@ public class PersonalDataServiceTest extends AbstractTest {
 	 * */
 	@Test
 	public void editpersonalData2() {
-		this.authenticate("hacker1");
+		this.authenticate("rookie1");
 		final List<PersonalData> edL2 = this.personalDataService.findByCurriculaId(this.getEntityId("curricula2"));
 		final PersonalData pd2 = edL2.get(0);
 		pd2.setLinkedInProfile("");
@@ -151,7 +151,7 @@ public class PersonalDataServiceTest extends AbstractTest {
 			 * */
 
 			{
-				"hacker1", pd2, ConstraintViolationException.class
+				"rookie1", pd2, ConstraintViolationException.class
 			}
 		};
 
@@ -168,7 +168,7 @@ public class PersonalDataServiceTest extends AbstractTest {
 	 * */
 	@Test
 	public void deletePersonalData() {
-		this.authenticate("hacker1");
+		this.authenticate("rookie1");
 		final List<PersonalData> edL = this.personalDataService.findByCurriculaId(this.getEntityId("curricula1"));
 		final PersonalData ed = edL.get(0);
 		ed.getCurricula().setIsCopy(false);
@@ -188,7 +188,7 @@ public class PersonalDataServiceTest extends AbstractTest {
 			 * COVERED DATA: 10%
 			 * */
 			{
-				"hacker1", ed, null
+				"rookie1", ed, null
 			},
 
 			/**
@@ -199,7 +199,7 @@ public class PersonalDataServiceTest extends AbstractTest {
 			 * COVERED DATA: 10%
 			 * */
 			{
-				"hacker1", ed2, IllegalArgumentException.class
+				"rookie1", ed2, IllegalArgumentException.class
 			}
 
 		};

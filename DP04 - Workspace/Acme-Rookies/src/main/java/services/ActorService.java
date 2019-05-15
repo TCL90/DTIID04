@@ -70,11 +70,11 @@ public class ActorService {
 		return res;
 	}
 
-	public boolean checkHacker() {
+	public boolean checkRookie() {
 		boolean res;
 		final Authority a = new Authority();
 		final UserAccount user = LoginService.getPrincipal();
-		a.setAuthority(Authority.HACKER);
+		a.setAuthority(Authority.ROOKIE);
 		res = user.getAuthorities().contains(a);
 		return res;
 	}

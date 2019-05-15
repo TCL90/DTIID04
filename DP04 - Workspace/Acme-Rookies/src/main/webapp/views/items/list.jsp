@@ -22,6 +22,8 @@
 <display:column property="name" titleKey="item.name"/>
 <display:column property="description" titleKey="item.description"/>
 <display:column property="link" titleKey="item.link"/>
+
+<security:authorize access="hasRole('PROVIDER')">
 <display:column>
 	<a href="item/provider/display.do?itemId=${row.id}">
 		<spring:message code="item.display"/>
@@ -38,6 +40,20 @@
 			<spring:message code="item.delete"/>
 		</a>
 </display:column>
+</security:authorize>
+<security:authorize access="isAnonymous()">
+<display:column>
+	<a href="item/display.do?itemId=${row.id}">
+		<spring:message code="item.display"/>
+	</a>
+</display:column>
+<display:column>
+	<a href="provider/show.do?providerId=${row.provider.id}">
+		<spring:message code="item.display_provider"/>
+	</a>
+</display:column>
+</security:authorize>
+
 </display:table>
 
 <security:authorize access="hasRole('PROVIDER')">

@@ -26,7 +26,7 @@
 		<value>/views/company/tiles.xml</value>
 		<value>/views/application/tiles.xml</value>
 		<value>/views/position/tiles.xml</value>
-		<value>/views/hacker/tiles.xml</value>
+		<value>/views/rookie/tiles.xml</value>
 
 		<value>/views/problem/tiles.xml</value>
 		<value>/views/curricula/tiles.xml</value>
@@ -41,6 +41,8 @@
 		<value>/views/box/tiles.xml</value>
 		<value>/views/socialprofile/tiles.xml</value>
 		<value>/views/auditor/tiles.xml</value>
+		<value>/views/items/tiles.xml</value>
+		<value>/views/audit/tiles.xml</value>
 		<value>/views/provider/tiles.xml</value>
 
 

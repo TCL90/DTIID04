@@ -60,6 +60,8 @@
 		<security:intercept-url pattern="/provider/register.do" access="isAnonymous()" /> 
 		<security:intercept-url pattern="/audit/show.do" access="permitAll" />
 		<security:intercept-url pattern="/position/display.do" access="permitAll" /> 
+		<security:intercept-url pattern="/item/list.do" access="permitAll" /> 
+		<security:intercept-url pattern="/item/display.do" access="permitAll" /> 
 		
 		<!-- PROVIDER -->
 		<security:intercept-url pattern="/item/provider/**" access="hasRole('PROVIDER')" />

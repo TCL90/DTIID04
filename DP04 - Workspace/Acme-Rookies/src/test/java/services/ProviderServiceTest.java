@@ -26,17 +26,18 @@ import utilities.AbstractTest;
 })
 @Transactional
 public class ProviderServiceTest extends AbstractTest{
+
 	
 			@Autowired
 			private ProviderService	providerService;
 
 
 			/**
-			 * TESTING REQUIREMENT #7.1 (Register as a provider)
+			 * TESTING REQUIREMENT #9.2 (Register as a provider)
 			 * POSITIVE TEST
 			 * COVERED INSTRUCTIONS IN THIS TEST: 100%
-			 * COVERED INSTRUCTIONS IN CompanyService: 30.1%
-			 * COVERED INSTRUCTIONS IN ActorService: 35.6%
+			 * COVERED INSTRUCTIONS IN ProviderService: 29.8%
+			 * COVERED INSTRUCTIONS IN ActorService: 16.8%
 			 * COVERED DATA IN THIS TEST: 40%
 			 * */
 
@@ -99,7 +100,7 @@ public class ProviderServiceTest extends AbstractTest{
 				final Object testingData[][] = {
 
 					/**
-					 * TESTING REQUIREMENT #7.1
+					 * TESTING REQUIREMENT #9.2
 					 * POSITIVE TEST
 					 * COVERED INSTRUCTIONS: 100%
 					 * COVERED DATA: 10%
@@ -109,7 +110,7 @@ public class ProviderServiceTest extends AbstractTest{
 					},
 
 					/**
-					 * TESTING REQUIREMENT #7.1
+					 * TESTING REQUIREMENT #9.2
 					 * NEGATIVE TEST: YOU CANNOT REGISTER WITH SOME NULL VALUES
 					 * (Expected ConstraintViolationException)
 					 * COVERED INSTRUCTIONS: 100%
@@ -146,8 +147,8 @@ public class ProviderServiceTest extends AbstractTest{
 			/**
 			 * THIS TEST IS FOR TESTING THE REQUIREMENT #9.3 (EDIT PERSONAL DATA)
 			 * COVERED INSTRUCTIONS IN THIS TEST: 100%
-			 * COVERED INSTRUCTIONS IN CompanyService: 30.1%
-			 * COVERED INSTRUCTIONS IN ActorService: 35.6%
+			 * COVERED INSTRUCTIONS IN ProviderService: 29.8%
+			 * COVERED INSTRUCTIONS IN ActorService: 16.8%
 			 * * COVERED DATA IN THIS TEST: 50%
 			 * */
 

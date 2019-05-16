@@ -33,11 +33,11 @@ public class AuditorServiceTest extends AbstractTest{
 
 
 		/**
-		 * TESTING REQUIREMENT #7.1 (Register as a auditor)
+		 * TESTING REQUIREMENT #4.2 (Register as a auditor)
 		 * POSITIVE TEST
 		 * COVERED INSTRUCTIONS IN THIS TEST: 100%
-		 * COVERED INSTRUCTIONS IN CompanyService: 30.1%
-		 * COVERED INSTRUCTIONS IN ActorService: 35.6%
+		 * COVERED INSTRUCTIONS IN AuditorService: 24.5%
+		 * COVERED INSTRUCTIONS IN ActorService: 16.8%
 		 * COVERED DATA IN THIS TEST: 40%
 		 * */
 
@@ -98,7 +98,7 @@ public class AuditorServiceTest extends AbstractTest{
 			final Object testingData[][] = {
 
 				/**
-				 * TESTING REQUIREMENT #7.1
+				 * TESTING REQUIREMENT #4.2
 				 * POSITIVE TEST
 				 * COVERED INSTRUCTIONS: 100%
 				 * COVERED DATA: 10%
@@ -108,7 +108,7 @@ public class AuditorServiceTest extends AbstractTest{
 				},
 
 				/**
-				 * TESTING REQUIREMENT #7.1
+				 * TESTING REQUIREMENT #4.2
 				 * NEGATIVE TEST: YOU CANNOT REGISTER WITH SOME NULL VALUES
 				 * (Expected ConstraintViolationException)
 				 * COVERED INSTRUCTIONS: 100%
@@ -143,10 +143,10 @@ public class AuditorServiceTest extends AbstractTest{
 		}
 
 		/**
-		 * THIS TEST IS FOR TESTING THE REQUIREMENT #8.2 (EDIT PERSONAL DATA)
+		 * THIS TEST IS FOR TESTING THE REQUIREMENT #4.2 (EDIT PERSONAL DATA)
 		 * COVERED INSTRUCTIONS IN THIS TEST: 100%
-		 * COVERED INSTRUCTIONS IN CompanyService: 30.1%
-		 * COVERED INSTRUCTIONS IN ActorService: 35.6%
+		 * COVERED INSTRUCTIONS IN AuditorService: 24.5%
+		 * COVERED INSTRUCTIONS IN ActorService: 16.8%
 		 * * COVERED DATA IN THIS TEST: 50%
 		 * */
 

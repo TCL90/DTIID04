@@ -71,7 +71,7 @@ public class ProviderService {
 		result.setSurname("");
 		result.setPhoneNumber("");
 		result.setPhoto("");
-
+		result.setMake("");
 		// Provider
 
 		return result;
@@ -213,6 +213,7 @@ public class ProviderService {
 		provider.setExpirationMonth(providerForm.getExpirationMonth());
 		provider.setExpirationYear(providerForm.getExpirationYear());
 		provider.setCvv(providerForm.getCvv());
+		provider.setMake(providerForm.getMake());
 
 		provider.setIsBanned(false);
 
@@ -256,6 +257,7 @@ public class ProviderService {
 		res.setExpirationMonth(provider.getExpirationMonth());
 		res.setExpirationYear(provider.getExpirationYear());
 		res.setCvv(provider.getCvv());
+		res.setMake(provider.getMake());
 		this.validator.validate(res, binding);
 		if (binding.hasErrors())
 			throw new ValidationException();
@@ -274,7 +276,7 @@ public class ProviderService {
 		logProvider.setPhoto("http://www.unknown.com");
 		logProvider.setSocialProfiles(null);
 		logProvider.setSurname("Unknown");
-
+		logProvider.setMake("Unknown");
 		logProvider.setHolderName("Unknown");
 		logProvider.setMakeName("Unknown");
 		logProvider.setCvv(123);

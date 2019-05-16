@@ -9,6 +9,7 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.CreditCardNumber;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.Range;
+import org.hibernate.validator.constraints.SafeHtml;
 import org.hibernate.validator.constraints.URL;
 
 import security.UserAccount;
@@ -30,6 +31,7 @@ public class ProviderForm {
 	private Integer		expirationYear;
 	private Integer		expirationMonth;
 	private Integer		cvv;
+	private String		make;
 
 
 	@NotBlank
@@ -163,6 +165,16 @@ public class ProviderForm {
 
 	public void setCvv(final Integer cvv) {
 		this.cvv = cvv;
+	}
+
+	@NotBlank
+	@SafeHtml
+	public String getMake() {
+		return this.make;
+	}
+
+	public void setMake(final String make) {
+		this.make = make;
 	}
 
 }

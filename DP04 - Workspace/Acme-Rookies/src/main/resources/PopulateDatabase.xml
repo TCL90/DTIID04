@@ -11,7 +11,7 @@
 	">
 	<!-- Customisation -->
 	<bean id="customisation1" class="domain.Customisation">
-		<property name="systemName" value="Acme Rookie-Rank" />
+		<property name="systemName" value="Acme Rookies" />
 		<property name="bannerUrl" value="https://tinyurl.com/acme-rookies" />
 		<property name="welcomeMessageEng"
 			value="Welcome to Acme Rookies! We're IT rookie's favourite job marketplace!" />
@@ -1476,7 +1476,8 @@
 		  <property name="flagSpam" value="false" /> 
 		  <property name="isBanned" value="false" /> 
 		  <property name="userAccount" ref="userAccount9" /> 
-		 <property name="socialProfiles">
+		  <property name="make" value="providerMake1" />   
+		  <property name="socialProfiles">
 		  	<list /> 
 		  	</property>
 		 	<property name="boxes">
@@ -1524,6 +1525,7 @@
 		  <property name="flagSpam" value="false" /> 
 		  <property name="isBanned" value="false" /> 
 		  <property name="userAccount" ref="userAccount10" /> 
+		  <property name="make" value="providerMake2" /> 
 		 <property name="socialProfiles">
 		  	<list /> 
 		  	</property>
@@ -1652,6 +1654,8 @@
 		  <property name="flagSpam" value="false" /> 
 		  <property name="isBanned" value="false" /> 
 		  <property name="userAccount" ref="userAccount11" /> 
+		  
+		  <property name="make" value="providerMake3" />   
 		 <property name="socialProfiles">
 		  	<list /> 
 		  	</property>
@@ -1680,6 +1684,8 @@
 		  <property name="flagSpam" value="false" /> 
 		  <property name="isBanned" value="true" /> 
 		  <property name="userAccount" ref="userAccount12" /> 
+		  
+		  <property name="make" value="providerMake4" />   
 		 <property name="socialProfiles">
 		  	<list /> 
 		  	</property>

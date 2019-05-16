@@ -85,6 +85,13 @@
 
 		<br /> <br />
 
+		<form:label path="make">
+			<spring:message code="provider.edit.label.make" />*:
+		</form:label>
+		<form:input path="make"/>
+		<form:errors cssClass="error" path="make" />
+		<br /> <br />
+
 
 	</fieldset>
 	<br />

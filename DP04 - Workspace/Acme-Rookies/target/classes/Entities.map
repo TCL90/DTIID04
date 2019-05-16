@@ -1,5 +1,5 @@
 #./src/main/resources/Entities.map
-#Sat May 04 20:07:31 CEST 2019
+#Thu May 16 13:25:11 CEST 2019
 application4=940
 application3=939
 application2=938
@@ -86,8 +86,6 @@ position13=876
 position12=875
 position11=874
 position10=873
-hacker2=936
-hacker1=935
 message2=933
 message1=951
 problem14=863
@@ -101,6 +99,8 @@ application12=948
 customisation1=835
 application11=947
 application10=946
+rookie2=936
+rookie1=935
 userAccount9=914
 userAccount8=843
 userAccount7=842

@@ -56,6 +56,13 @@
 		<form:input path="vat"/>
 		<form:errors cssClass="error" path="vat" />
 		<br /> <br />
+		
+		<form:label path="make">
+			<spring:message code="provider.edit.label.make" />*:
+		</form:label>
+		<form:input path="make"/>
+		<form:errors cssClass="error" path="make" />
+		<br /> <br />
 
 		<form:label path="phoneNumber">
 			<spring:message code="provider.edit.label.phoneNumber" />:

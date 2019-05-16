@@ -121,6 +121,7 @@
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="position/list.do"><spring:message code="master.page.position" /></a></li>
 			<li><a class="fNiv" href="company/list.do"><spring:message code="master.page.company" /></a></li>
+			<li><a class="fNiv" href="item/list.do"><spring:message code="master.page.item" /></a></li>
 			<li><a class="fNiv" href="provider/list.do"><spring:message code="master.page.provider.list" /></a></li>
 			<li>
 			<a class="fNiv" href="company/register.do"><spring:message code="master.page.register.company" /></a>

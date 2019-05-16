@@ -160,20 +160,20 @@ public class PositionService {
 
 	public Set<Position> finderResults(final Finder finder) {
 		Assert.isTrue(this.checkRookie());
-		final Set<Position> res = new HashSet<>();
+		final Set<Position> res = new HashSet<>(this.positionRepository.findPositionFinalModeNotCancelled());
 		if ((finder.getKeyword() == null || finder.getKeyword() == "") && finder.getDeadline() == null && finder.getMaximumDeadline() == null && finder.getMinimumSalary() == null)
-			res.addAll(this.findPositionFinalMode());
+			res.retainAll(this.findPositionFinalMode());
 		if (finder.getKeyword() != null || finder.getKeyword() != "")
-			res.addAll(this.finderKeyword(finder.getKeyword()));
+			res.retainAll(this.finderKeyword(finder.getKeyword()));
 
 		if (finder.getDeadline() != null)
-			res.addAll(this.finderDeadline(finder.getDeadline()));
+			res.retainAll(this.finderDeadline(finder.getDeadline()));
 
 		if (finder.getMaximumDeadline() != null)
-			res.addAll(this.finderMaxDeadline(finder.getMaximumDeadline()));
+			res.retainAll(this.finderMaxDeadline(finder.getMaximumDeadline()));
 
 		if (finder.getMinimumSalary() != null)
-			res.addAll(this.finderSalary(finder.getMinimumSalary()));
+			res.retainAll(this.finderSalary(finder.getMinimumSalary()));
 
 		return res;
 	}

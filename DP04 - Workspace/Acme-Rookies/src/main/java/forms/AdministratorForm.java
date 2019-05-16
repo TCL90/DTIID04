@@ -127,6 +127,7 @@ public class AdministratorForm {
 	}
 	@NotBlank
 	@CreditCardNumber
+	@Pattern(regexp = "^[0-9]+$")
 	public String getNumber() {
 		return this.number;
 	}

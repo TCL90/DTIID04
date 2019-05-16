@@ -68,11 +68,17 @@ public class MiscellaneousDataRookieController extends AbstractController {
 
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(MiscellaneousData pd, final BindingResult binding) {
-		ModelAndView res;
+		ModelAndView res = new ModelAndView();
 
 		try {
 			if (pd.getId() != 0)
 				Assert.isTrue(!this.miscellaneousDataService.findOne(pd.getId()).getCurricula().getIsCopy(), "errorCopy");
+
+			final String attachments = pd.getAttachments();
+			final String trozos[] = attachments.split(";");
+			for (final String trozo : trozos)
+				Assert.isTrue(trozo.matches("^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]"), "errorAttachments");
+
 			pd = this.miscellaneousDataService.reconstruct(pd, binding);
 			this.miscellaneousDataService.save(pd);
 
@@ -82,9 +88,15 @@ public class MiscellaneousDataRookieController extends AbstractController {
 		} catch (final ValidationException oops) {
 			res = this.createEditModelAndView(pd);
 		} catch (final Throwable oops) {
-			if (oops.getMessage() == "errorCopy")
+			if (oops.getMessage() == "errorAttachments") {
+				res = this.createEditModelAndView(pd, "errorAttachments");
+				res = this.createEditModelAndView(pd, "errorAttachments");
+			}
+			if (oops.getMessage() == "errorCopy") {
 				res = this.createEditModelAndView(pd, "error.copy.miscellaneousData");
-			res = this.createEditModelAndView(pd, "error.miscellaneousData");
+			}else{
+				res = this.createEditModelAndView(pd, "error.miscellaneousData");
+			}
 		}
 
 		return res;

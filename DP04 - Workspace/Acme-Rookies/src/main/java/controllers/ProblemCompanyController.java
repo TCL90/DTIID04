@@ -111,6 +111,12 @@ public class ProblemCompanyController extends AbstractController {
 		try {
 			if (p.getId() != 0)
 				Assert.isTrue(this.problemService.findOne(p.getId()).isFinalMode() != true, "finalMode");
+
+			final String attachments = p.getAttachments();
+			final String trozos[] = attachments.split(";");
+			for (final String trozo : trozos)
+				Assert.isTrue(trozo.matches("^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]"), "errorAttachments");
+
 			p = this.problemService.reconstruct(p, binding);
 			this.problemService.save(p);
 
@@ -119,9 +125,11 @@ public class ProblemCompanyController extends AbstractController {
 			res = this.createEditModelAndView(p);
 		} catch (final Throwable oops) {
 
+			if (oops.getMessage() == "errorAttachments")
+				res = this.createEditModelAndView(p, "errorAttachments");
+
 			if (oops.getMessage() == "finalMode")
 				res = this.createEditModelAndView(p, "problem.finalMode.error");
-
 			else
 				res = this.createEditModelAndView(p, "error.problem");
 		}

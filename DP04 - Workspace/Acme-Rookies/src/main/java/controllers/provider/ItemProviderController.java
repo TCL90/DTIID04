@@ -108,13 +108,27 @@ public class ItemProviderController extends AbstractController {
 			result = this.createEditModelAndView(item);
 		else
 			try {
+
+				final Collection<String> photos = item.getPhotos();
+				for (final String trozo : photos) {
+					Assert.isTrue(trozo.matches("^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]"), "errorPhotos");
+					Assert.isTrue(!trozo.contains(";"), "errorPhotos2");
+				}
 				//Delete if I fix this vaina
 				this.itemService.save(item);
 				this.itemService.flush();
 				result = new ModelAndView("redirect:list.do");
 
 			} catch (final Throwable oops) {
-				result = this.createEditModelAndView(item, "item.commit.error");
+
+				if (oops.getMessage() == "errorPhotos")
+					result = this.createEditModelAndView(item, "errorPhotos");
+
+				else if (oops.getMessage() == "errorPhotos2")
+					result = this.createEditModelAndView(item, "errorPhotos2");
+
+				else
+					result = this.createEditModelAndView(item, "item.commit.error");
 			}
 
 		return result;

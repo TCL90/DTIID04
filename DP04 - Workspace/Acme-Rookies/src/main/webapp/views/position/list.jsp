@@ -27,7 +27,18 @@
 
 </security:authorize>
 <display:column property="title" titleKey="position.title"/>
-<display:column property="finalMode" titleKey="position.finalMode"/>
+
+<display:column titleKey="position.finalMode" >
+	<jstl:if test="${row.finalMode == 'true' }">
+		<spring:message code="position.yes"/>
+	</jstl:if>
+	<jstl:if test="${row.finalMode == 'false' }">
+		<spring:message code="position.no"/>
+	</jstl:if>
+</display:column>
+
+
+
 <display:column property="deadline" titleKey="position.deadline"/>
 <display:column property="ticker" titleKey="position.ticker"/>
 <security:authorize access="hasRole('COMPANY')">

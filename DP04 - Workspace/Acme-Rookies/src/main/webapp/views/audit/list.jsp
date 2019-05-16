@@ -16,8 +16,17 @@
 
 	<display:column property="moment" titleKey="audit.moment"  />
 	<display:column property="text" titleKey="audit.text"  />
-	<display:column property="score" titleKey="audit.score"  />
-	<display:column property="finalMode" titleKey="audit.finalMode"  />
+	<display:column property="score" titleKey="audit.score"  />	
+	
+	<display:column titleKey="audit.finalMode" >
+		<jstl:if test="${row.finalMode == 'true' }">
+			<spring:message code="audit.yes"/>
+		</jstl:if>
+		<jstl:if test="${row.finalMode == 'false' }">
+			<spring:message code="audit.no"/>
+		</jstl:if>
+	</display:column>
+	
 	<display:column property="position.title" titleKey="audit.position.title"  />
 	
 	<display:column>

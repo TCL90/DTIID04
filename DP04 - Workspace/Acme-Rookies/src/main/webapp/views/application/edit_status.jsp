@@ -38,8 +38,18 @@
 	    </form:label>
 	    <form:select path="status">
 
+
+
+		
+	<jstl:if test="${idioma == 'en'}">
 		<form:option value="ACCEPTED"></form:option>
 		<form:option value="REJECTED"></form:option>
+	</jstl:if>
+		
+	<jstl:if test="${idioma == 'es'}">
+		<form:option value="ACCEPTED" label="ACEPTADA"></form:option>
+		<form:option value="REJECTED" label="RECHAZADA"></form:option>
+	</jstl:if>
 		</form:select>
 		
 		

@@ -25,8 +25,27 @@
 
 	<display:column property="rookie.name" titleKey="application.rookie" />
 	<display:column property="moment" titleKey="application.moment" />
-	<display:column property="status" titleKey="application.status" />
-
+	<jstl:if test="${idioma == 'en'}">
+		<display:column property="status" titleKey="application.status"  />
+	</jstl:if>
+		
+	<jstl:if test="${idioma == 'es'}">
+		<display:column titleKey="application.status" >
+			<jstl:if test="${row.status == 'ACCEPTED' }">
+				<spring:message code="application.accepted" />
+			</jstl:if>
+			<jstl:if test="${row.status == 'REJECTED' }">
+				<spring:message code="application.rejected" />
+			</jstl:if>
+			<jstl:if test="${row.status == 'PENDING' }">
+				<spring:message code="application.pending" />
+			</jstl:if>
+			<jstl:if test="${row.status == 'SUBMITTED' }">
+				<spring:message code="application.submitted" />
+			</jstl:if>
+		
+		</display:column>
+	</jstl:if>
 
 
 	<display:column>
@@ -50,8 +69,27 @@
 	pagesize="5" class="displaytag">
 
 	<display:column property="moment" titleKey="application.moment" />
-	<display:column property="status" titleKey="application.status" />
-
+	<jstl:if test="${idioma == 'en'}">
+		<display:column property="status" titleKey="application.status"  />
+	</jstl:if>
+		
+	<jstl:if test="${idioma == 'es'}">
+		<display:column titleKey="application.status" >
+			<jstl:if test="${row.status == 'ACCEPTED' }">
+				<spring:message code="application.accepted" />
+			</jstl:if>
+			<jstl:if test="${row.status == 'REJECTED' }">
+				<spring:message code="application.rejected" />
+			</jstl:if>
+			<jstl:if test="${row.status == 'PENDING' }">
+				<spring:message code="application.pending" />
+			</jstl:if>
+			<jstl:if test="${row.status == 'SUBMITTED' }">
+				<spring:message code="application.submitted" />
+			</jstl:if>
+		
+		</display:column>
+	</jstl:if>
 
 
 	<display:column>
@@ -66,8 +104,27 @@
 	pagesize="5" class="displaytag">
 
 	<display:column property="moment" titleKey="application.moment" />
-	<display:column property="status" titleKey="application.status" />
-
+	<jstl:if test="${idioma == 'en'}">
+		<display:column property="status" titleKey="application.status"  />
+	</jstl:if>
+		
+	<jstl:if test="${idioma == 'es'}">
+		<display:column titleKey="application.status" >
+			<jstl:if test="${row.status == 'ACCEPTED' }">
+				<spring:message code="application.accepted" />
+			</jstl:if>
+			<jstl:if test="${row.status == 'REJECTED' }">
+				<spring:message code="application.rejected" />
+			</jstl:if>
+			<jstl:if test="${row.status == 'PENDING' }">
+				<spring:message code="application.pending" />
+			</jstl:if>
+			<jstl:if test="${row.status == 'SUBMITTED' }">
+				<spring:message code="application.submitted" />
+			</jstl:if>
+		
+		</display:column>
+	</jstl:if>
 
 
 

@@ -17,7 +17,14 @@
 	<display:column property="statement" titleKey="problem.statement"  />
 	<display:column property="hint" titleKey="problem.hint"  />
 	<display:column property="attachments" titleKey="problem.attachments"  />
-	<display:column property="finalMode" titleKey="problem.finalMode"  />
+	<display:column titleKey="problem.finalMode" >
+		<jstl:if test="${row.finalMode == 'true' }">
+			<spring:message code="problem.yes"/>
+		</jstl:if>
+		<jstl:if test="${row.finalMode == 'false' }">
+			<spring:message code="problem.no"/>
+		</jstl:if>
+	</display:column>
 	
 	<display:column>
 			<a href="problem/company/show.do?problemId=${row.id}">

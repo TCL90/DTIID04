@@ -7,6 +7,7 @@ import java.util.List;
 import javax.validation.ValidationException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
@@ -61,6 +62,10 @@ public class ApplicationRookieController {
 
 		final List<Application> applications = this.as.getApplicationsByRookie(h);
 		result = new ModelAndView("application/rookie/list");
+
+		final String idioma = LocaleContextHolder.getLocale().getLanguage();
+		result.addObject("idioma", idioma);
+
 		result.addObject("applications", applications);
 		result.addObject("requestURI", "application/rookie/list.do");
 

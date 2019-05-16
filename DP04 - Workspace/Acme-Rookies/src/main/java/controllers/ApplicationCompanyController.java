@@ -6,6 +6,7 @@ import java.util.Collection;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
 import org.springframework.validation.BindingResult;
@@ -45,6 +46,10 @@ public class ApplicationCompanyController {
 		final Collection<Application> applicationsR = this.applicationService.getAR(applications);
 
 		result = new ModelAndView("application/company/list");
+
+		final String idioma = LocaleContextHolder.getLocale().getLanguage();
+		result.addObject("idioma", idioma);
+
 		result.addObject("applicationsS", applicationsS);
 		result.addObject("applicationsA", applicationsA);
 		result.addObject("applicationsR", applicationsR);
@@ -68,6 +73,9 @@ public class ApplicationCompanyController {
 
 		result = this.createEditModelAndView(application);
 		result.addObject("application", application);
+
+		final String idioma = LocaleContextHolder.getLocale().getLanguage();
+		result.addObject("idioma", idioma);
 
 		return result;
 	}

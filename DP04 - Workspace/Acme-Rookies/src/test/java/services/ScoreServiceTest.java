@@ -76,7 +76,7 @@ public class ScoreServiceTest extends AbstractTest {
 		try {
 			this.authenticate(username);
 			this.administratorService.computeCompanyScore();
-			Assert.isTrue(this.companyService.findOne(this.getEntityId("company1")).getScore() == 0.01);
+			Assert.isTrue(this.companyService.findOne(this.getEntityId("company1")).getScore() == 0.0);
 			Assert.isTrue(this.companyService.findOne(this.getEntityId("company2")).getScore() == 0.0);
 			this.administratorService.flush();
 
